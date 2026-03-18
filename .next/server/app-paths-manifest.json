@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/community/page": "app/community/page.js",
+  "/individual/page": "app/individual/page.js",
+  "/macro/page": "app/macro/page.js",
+  "/micro/page": "app/micro/page.js",
+  "/page": "app/page.js"
+}
