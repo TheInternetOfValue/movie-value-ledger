@@ -28,34 +28,38 @@ const perspectives = [
   {
     id: "macro",
     title: "Macro Perspective",
-    subtitle: "National Economic Impact",
-    description: "How movies contribute to GDP, employment, and cultural exports. See the big picture of cinema as an economic engine.",
+    subtitle: "Country level",
+    description: "How movies move GDP, jobs, and cultural exports.",
     icon: Landmark,
   },
   {
     id: "micro",
     title: "Micro Perspective",
-    subtitle: "Business Investment Analysis",
-    description: "Break down production costs, revenue streams, and ROI. Understand the financial mechanics of filmmaking as a business.",
+    subtitle: "Business level",
+    description: "How production costs, revenue, and ROI stack up.",
     icon: TrendingUp,
   },
   {
     id: "community",
     title: "Community Perspective",
-    subtitle: "Labor vs Attention Asymmetry",
-    description: "Explore the human cost of creation versus audience consumption. Examine collective identity and cultural impact.",
+    subtitle: "Community level",
+    description: "How attention, feeling, and collective identity spread.",
     icon: Users,
   },
   {
     id: "individual",
     title: "Individual Perspective",
-    subtitle: "Personal Value Assessment",
-    description: "Audit your personal investment in movie experiences. Calculate if entertainment truly adds value to your finite time and money.",
+    subtitle: "Personal level",
+    description: "How a movie changes your body, mood, mind, habits, and time.",
     icon: Heart,
   },
 ];
 
 export default function HomePage() {
+  const [title, setTitle] = React.useState("Dhurandhar");
+  const [revealed, setRevealed] = React.useState(false);
+  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+
   return (
     <div className="min-h-screen bg-white text-black px-4 py-12">
       {/* Background pattern - subtle */}
@@ -90,101 +94,98 @@ export default function HomePage() {
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
               Beyond reviews and ratings. A comprehensive analysis of cinema's true value
-              through four interconnected perspectives: economic, business, social, and personal.
+              through four connected perspectives: country, business, community, and personal.
             </p>
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="mx-auto max-w-2xl rounded-3xl border border-gray-200 bg-white p-6 shadow-sm"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5 }}
           >
-            <Button
-              asChild
-              size="lg"
-              className="px-8 py-4 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 text-lg"
-            >
-              <Link href="#perspectives">
-                <Sparkles className="mr-2 h-5 w-5" />
-                Explore Perspectives
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <div className="text-left space-y-4">
+              <div>
+                <div className="text-xs uppercase tracking-[0.35em] text-amber-600 font-semibold mb-2">Start here</div>
+                <p className="text-sm text-gray-600">Type a movie name, then reveal the buzz counters.</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Dhurandhar"
+                  className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-base text-gray-900 outline-none transition-all focus:border-amber-400 focus:bg-white"
+                />
+                <Button
+                  onClick={() => setRevealed(true)}
+                  className="px-8 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  Explore perspectives
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Media Buzz Counters */}
-        <motion.div
-          className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.5 }}
-        >
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-6">
-            <div>
-              <div className="text-sm uppercase tracking-[0.3em] text-amber-600 font-semibold">Buzz counters</div>
-              <h2 className="text-2xl font-bold text-gray-900">Dhurandhar, Dhurandhar 2, and Dhurandhar: The Revenge</h2>
-              <p className="text-gray-600 mt-2 max-w-3xl">Hook these counters to the main source thread from X to show how the conversation spreads across YouTube, tweets, reels, and other relevant mentions.</p>
-            </div>
-            <div className="text-sm text-gray-500">Source: Taran Adarsh post</div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {mediaCounters.map((item) => (
-              <div key={item.label} className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-                <div className="text-sm font-semibold text-gray-600">{item.label}</div>
-                <div className="mt-2 text-3xl font-bold text-gray-900">{item.count}</div>
-                <div className="mt-1 text-xs text-gray-500">Awaiting live data feed</div>
+        {revealed && (
+          <motion.div
+            className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-6">
+              <div>
+                <div className="text-sm uppercase tracking-[0.3em] text-amber-600 font-semibold">Buzz counters</div>
+                <h2 className="text-2xl font-bold text-gray-900">{title || "Dhurandhar"}</h2>
+                <p className="text-gray-600 mt-2 max-w-3xl">A quick pulse read on how the conversation spreads across YouTube, X, reels, and other mentions.</p>
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <div className="text-sm text-gray-500">Live pulse</div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {mediaCounters.map((item) => (
+                <div key={item.label} className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                  <div className="text-sm font-semibold text-gray-600">{item.label}</div>
+                  <div className="mt-2 text-3xl font-bold text-gray-900">{item.count}</div>
+                  <div className="mt-1 text-xs text-gray-500">Awaiting live data feed</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
 
-        {/* Perspectives Grid */}
-        <motion.div
-          id="perspectives"
-          className="grid gap-8 md:grid-cols-2"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          {perspectives.map((perspective, index) => (
-            <motion.div
-              key={perspective.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * index, duration: 0.5 }}
-            >
-              <Card className="h-full border border-gray-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
-                <CardContent className="p-8">
-                  <div className="space-y-6">
-                    {/* Icon and Title */}
-                    <div className="flex items-start gap-4">
-                      <div className="p-4 rounded-2xl bg-amber-100 text-amber-600 group-hover:bg-amber-200 transition-colors duration-300">
-                        <perspective.icon className="h-8 w-8" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                          {perspective.title}
-                        </h3>
-                        <p className="text-sm font-semibold text-amber-600 uppercase tracking-wide">
-                          {perspective.subtitle}
-                        </p>
-                      </div>
+        <div className="space-y-4">
+          <div className="text-center text-sm uppercase tracking-[0.3em] text-gray-500">Pick one view</div>
+          <motion.div
+            id="perspectives"
+            className="space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.4 }}
+          >
+            {perspectives.map((perspective, index) => (
+              <motion.div key={perspective.id} layout className="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+                <button
+                  className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200"
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-4 rounded-2xl bg-amber-50 text-amber-500 border border-amber-100">
+                      <perspective.icon className="h-7 w-7" />
                     </div>
-
-                    {/* Description */}
-                    <p className="text-gray-700 leading-relaxed">
-                      {perspective.description}
-                    </p>
-
-                    {/* CTA Button */}
-                    <div className="pt-4">
-                      <Button
-                        asChild
-                        className="w-full px-6 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group-hover:scale-105"
-                      >
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900">{perspective.title}</h3>
+                      <p className="text-sm font-semibold text-amber-600 uppercase tracking-wide">{perspective.subtitle}</p>
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold text-gray-500">{openIndex === index ? "Close" : "Open"}</div>
+                </button>
+                {openIndex === index && (
+                  <motion.div className="px-6 pb-6" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} transition={{ duration: 0.25 }}>
+                    <div className="rounded-2xl bg-gray-50 p-5 border border-gray-200 space-y-4">
+                      <p className="text-gray-700 leading-relaxed">{perspective.description}</p>
+                      <Button asChild className="w-full px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300">
                         <Link href={`/${perspective.id}`}>
                           <Play className="mr-2 h-4 w-4" />
                           Explore {perspective.title}
@@ -192,37 +193,14 @@ export default function HomePage() {
                         </Link>
                       </Button>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
-        {/* Footer */}
-        <motion.div
-          className="text-center space-y-4 pt-8 border-t border-gray-200"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-        >
-          <p className="text-gray-600">
-            A comprehensive framework for understanding cinema's multifaceted impact on society and individuals.
-          </p>
-          <div className="flex justify-center gap-6 text-sm text-gray-500">
-            <span>🎯 Economic Analysis</span>
-            <span>📊 Business Metrics</span>
-            <span>🤝 Social Dynamics</span>
-            <span>💝 Personal Value</span>
-          </div>
-          <div className="flex flex-col items-center gap-2 text-xs text-gray-500 pt-2">
-            <Link href="/about" className="hover:text-gray-800 transition-colors">About</Link>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="http://author.theinternetofvalue.xyz/" target="_blank" rel="noreferrer" className="hover:text-gray-800 transition-colors">MosesSamPaul J.</a>
-              <a href="https://theinternetofvalue.xyz/" target="_blank" rel="noreferrer" className="hover:text-gray-800 transition-colors">The Internet of Value</a>
-            </div>
-          </div>
-        </motion.div>
+        {/* Footer removed to keep the home story cleaner */}
       </div>
     </div>
   );

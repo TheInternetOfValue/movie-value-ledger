@@ -9,8 +9,8 @@
 ## 🧠 **Core Logic & Business Rules**
 
 ### **Wellbeing Score (W) Calculation**
-- **Baseline W**: 700 (neutral wellbeing state)
-- **Range**: 400-1000 (400 = very poor, 1000 = excellent)
+- **Baseline W**: 1.0 (neutral wellbeing state)
+- **Range**: 0.4-1.2 (1.0 = neutral, higher = better, lower = worse)
 - **Formula**: W = BASE_W + (physiology + emotions + thoughts + habits) × weights
   - Physiology: (calm + movement) × 0.5
   - Emotions: (joy + safety + connection) × 0.42  

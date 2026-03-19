@@ -26,9 +26,9 @@ import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const INR = "₹";
-const BASE_W = 700;
-const MIN_W = 400;
-const MAX_W = 1000;
+const BASE_W = 1.0;
+const MIN_W = 0.4;
+const MAX_W = 1.2;
 
 type LedgerState = {
   salary: number;
@@ -258,7 +258,7 @@ function AvatarInsane({ state }: { state: LedgerState }) {
   const mind = clamp(50 + (state.thoughts.perspective + state.thoughts.inspiration) / 4, 0, 100);
   const habit = clamp(50 + (state.habits.awareness + state.habits.choice) / 4, 0, 100);
   const performance = clamp((w / BASE_W) * 50 + 25, 0, 100);
-  const face = w >= 840 ? "🦾" : w >= 780 ? "😎" : w >= 700 ? "🙂" : w >= 620 ? "😬" : "🥴";
+  const face = w >= 1.08 ? "🦾" : w >= 1.03 ? "😎" : w >= 1.0 ? "🙂" : w >= 0.94 ? "😬" : "🥴";
   const aura = w >= 800 ? "from-green-200 via-white to-green-50" : w >= 680 ? "from-amber-200 via-white to-amber-50" : "from-red-200 via-white to-red-50";
 
   return (
@@ -394,7 +394,7 @@ function StepShell({ title, subtitle, children, onBack, onNext, nextLabel = "Nex
 
 function IntroScreen({ onNext }: { onNext: () => void }) {
   return (
-    <StepShell title="This movie cost you more than a ticket." subtitle="You begin with a baseline well-being score of 700. We'll track body, mood, thinking, habits, and then the economic value of your time." onNext={onNext} nextLabel="Start" showBack={false}>
+  <StepShell title="This movie cost you more than a ticket." subtitle="You begin with a baseline well-being score of 1.0. We'll track body, mood, thinking, habits, and then the economic value of your time." onNext={onNext} nextLabel="Start" showBack={false}>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         <Tile title="Physiology" text="Did your body settle, tense up, or come alive?" icon={<Heart className="h-4 w-4" />} />
         <Tile title="Emotions + feelings" text="Did it feel joyful, safe, connected, or the opposite?" icon={<Sparkles className="h-4 w-4" />} />
@@ -829,7 +829,7 @@ function TimeMoneyScreen({ state, setState, onBack, onNext }: { state: LedgerSta
 function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: () => void; onReset: () => void }) {
   const d = computeDerived(state);
   const positive = d.net >= 0;
-  const shareText = `My Movie Ledger\nW: 700 → ${d.w}\nTime: ${d.totalHours.toFixed(2)} hrs\nNet impact: ${positive ? "+" : ""}${formatInrCompact(d.net)}\nThis movie ${positive ? "added to" : "drained"} my life-value.`;
+  const shareText = `My Movie Ledger\nW: 1.0 → ${d.w}\nTime: ${d.totalHours.toFixed(2)} hrs\nNet impact: ${positive ? "+" : ""}${formatInrCompact(d.net)}\nThis movie ${positive ? "added to" : "drained"} my life-value.`;
 
   const handleCopy = async () => {
     try {
@@ -871,11 +871,11 @@ function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: (
             className="rounded-3xl border-2 border-white/50 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 shadow-xl"
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
             transition={{ type: "spring", stiffness: 300 }}
-            title="Your baseline productivity value: 700 (neutral wellbeing) × total hours spent × your base hourly rate from salary input. This represents what you would have earned working instead."
+            title="Your baseline productivity value: 1.0 (neutral wellbeing) × total hours spent × your base hourly rate from salary input. This represents what you would have earned working instead."
           >
             <div className="text-sm font-semibold text-blue-700 mb-2">Baseline Value</div>
             <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{formatInrCompact(d.baselineVC)}</div>
-            <div className="text-xs text-blue-600 mt-2">700 × time × base hourly</div>
+            <div className="text-xs text-blue-600 mt-2">1.0 × time × base hourly</div>
           </motion.div>
           <motion.div
             className="rounded-3xl border-2 border-white/50 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 p-6 shadow-xl"
@@ -932,10 +932,10 @@ function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: (
             className="rounded-3xl border-2 border-white/50 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 p-6 shadow-xl"
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
-            title={`Wellbeing Score: Calculated from your ratings across Physiology (calm + movement), Emotions (joy + safety + connection), Thoughts (perspective + inspiration), and Habits (awareness + choice). 700 = neutral baseline. Higher = better wellbeing, lower = worse.`}
+            title={`Wellbeing Score: Calculated from your ratings across Physiology (calm + movement), Emotions (joy + safety + connection), Thoughts (perspective + inspiration), and Habits (awareness + choice). 1.0 = neutral baseline. Higher = better wellbeing, lower = worse.`}
           >
             <div className="text-sm font-semibold text-cyan-700 mb-2">W Score</div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">700 → {d.w}</div>
+            <div className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">1.0 → {d.w}</div>
             <div className="text-xs text-cyan-600 mt-2">Wellbeing shift</div>
           </motion.div>
           <motion.div
