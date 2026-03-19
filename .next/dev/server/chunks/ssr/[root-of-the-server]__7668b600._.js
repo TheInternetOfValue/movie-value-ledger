@@ -349,26 +349,26 @@ function WhitepaperPage() {
                                                 className: "h-4 w-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/whitepaper/page.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 242,
                                                 columnNumber: 88
                                             }, this),
                                             "Home"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/whitepaper/page.tsx",
-                                        lineNumber: 241,
+                                        lineNumber: 242,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 240,
+                                    lineNumber: 241,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "h-4 w-px bg-gray-300"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 244,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -376,13 +376,13 @@ function WhitepaperPage() {
                                     children: "Whitepaper"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 245,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                            lineNumber: 239,
+                            lineNumber: 240,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -399,19 +399,19 @@ function WhitepaperPage() {
                                                 className: "h-4 w-4 mr-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/whitepaper/page.tsx",
-                                                lineNumber: 248,
+                                                lineNumber: 249,
                                                 columnNumber: 86
                                             }, this),
                                             "About"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/whitepaper/page.tsx",
-                                        lineNumber: 248,
+                                        lineNumber: 249,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 247,
+                                    lineNumber: 248,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -426,35 +426,35 @@ function WhitepaperPage() {
                                                 className: "h-4 w-4 ml-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/whitepaper/page.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 252,
                                                 columnNumber: 95
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/whitepaper/page.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 252,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 251,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                            lineNumber: 246,
+                            lineNumber: 247,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                    lineNumber: 238,
+                    lineNumber: 239,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/whitepaper/page.tsx",
-                lineNumber: 237,
+                lineNumber: 238,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -481,7 +481,7 @@ function WhitepaperPage() {
                                     children: "Whitepaper"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 261,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -489,7 +489,7 @@ function WhitepaperPage() {
                                     children: "The Movie Value Ledger"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 261,
+                                    lineNumber: 262,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -497,13 +497,13 @@ function WhitepaperPage() {
                                     children: "A movie-first front end for the Internet of Value."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 262,
+                                    lineNumber: 263,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                            lineNumber: 259,
+                            lineNumber: 260,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -516,14 +516,14 @@ function WhitepaperPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 266,
+                                            lineNumber: 267,
                                             columnNumber: 117
                                         }, this),
                                         "Quick read"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 267,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -535,23 +535,23 @@ function WhitepaperPage() {
                                             children: paper
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 269,
+                                            lineNumber: 270,
                                             columnNumber: 9
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/whitepaper/page.tsx",
-                                        lineNumber: 268,
+                                        lineNumber: 269,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 267,
+                                    lineNumber: 268,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                            lineNumber: 265,
+                            lineNumber: 266,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -564,14 +564,14 @@ function WhitepaperPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 275,
+                                            lineNumber: 276,
                                             columnNumber: 117
                                         }, this),
                                         "What to remember"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 276,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -582,7 +582,7 @@ function WhitepaperPage() {
                                             children: "Closing note"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 277,
+                                            lineNumber: 278,
                                             columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -590,7 +590,7 @@ function WhitepaperPage() {
                                             children: "Story first, truth intact."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 278,
+                                            lineNumber: 279,
                                             columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -598,36 +598,36 @@ function WhitepaperPage() {
                                             children: "The whitepaper is not here to replace the spec documents. It is here to make the public story easy to follow while keeping the canonical structure visible."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                                            lineNumber: 279,
+                                            lineNumber: 280,
                                             columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                                    lineNumber: 276,
+                                    lineNumber: 277,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/whitepaper/page.tsx",
-                            lineNumber: 274,
+                            lineNumber: 275,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/whitepaper/page.tsx",
-                    lineNumber: 258,
+                    lineNumber: 259,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/whitepaper/page.tsx",
-                lineNumber: 257,
+                lineNumber: 258,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/whitepaper/page.tsx",
-        lineNumber: 236,
+        lineNumber: 237,
         columnNumber: 3
     }, this);
 }

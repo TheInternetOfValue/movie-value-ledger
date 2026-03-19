@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
 import { Home, ChevronLeft, ChevronRight, BookOpen, FileText, ArrowRight } from "lucide-react";
 
@@ -266,7 +267,7 @@ export default function WhitepaperPage() {
 						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><BookOpen className="h-4 w-4" />Quick read</div>
 						<div className="rounded-2xl bg-gray-50 border border-gray-200 p-5 shadow-sm">
 							<div className="prose prose-gray max-w-none prose-headings:scroll-mt-24 prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900">
-								<pre className="whitespace-pre-wrap font-sans text-sm leading-7 m-0 bg-transparent p-0">{paper}</pre>
+								<ReactMarkdown>{paper}</ReactMarkdown>
 							</div>
 						</div>
 					</section>

@@ -1,52 +1,158 @@
-[00:00:00.821] Server  LOG     ✓ Ready in 656ms
-[00:00:04.384] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.404] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.542] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.598] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.743] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.763] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.408] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.616] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.755] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.947] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:01.150] Server  LOG     ✓ Ready in 871ms
+[00:00:02.034] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.686] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:15.615] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:15.913] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:16.217] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:16.830] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:17.356] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:36.829] Server  LOG     ✓ Compiled in 1306ms
+[00:07:53.622] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:54.656] Server  LOG     ✓ Compiled in 219ms
+[00:11:30.322] Server  LOG     ✓ Compiled in 150ms
+[00:11:57.439] Server  LOG     ✓ Compiled in 105ms
+[00:12:25.381] Server  LOG     ✓ Compiled in 118ms
+[00:14:57.487] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:11.212] Server  LOG     ✓ Compiled in 304ms
+[00:29:24.187] Server  LOG     ✓ Compiled in 161ms
+[00:29:24.692] Browser ERROR   uncaughtError: ReferenceError: CenteredSliderLane is not defined
+[00:29:38.144] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:29:38.146] Server  LOG     ✓ Compiled in 127ms
+[00:29:39.362] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:50.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:35.623] Server  LOG     ✓ Compiled in 187ms
+[00:44:48.821] Server  LOG     ✓ Compiled in 94ms
+[00:44:57.744] Server  LOG     ✓ Compiled in 86ms
+[00:45:07.486] Server  LOG     ✓ Compiled in 145ms
+[00:45:07.692] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+[00:45:35.171] Server  LOG     ✓ Compiled in 107ms
+[00:45:35.172] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:45:35.751] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:52.683] Server  LOG     ✓ Compiled in 162ms
+[00:46:04.054] Server  LOG     ✓ Compiled in 85ms
+[00:46:22.617] Server  LOG     ✓ Compiled in 157ms
+[00:46:30.143] Server  LOG     ✓ Compiled in 504ms
+[00:46:39.805] Server  LOG     ✓ Compiled in 339ms
+[00:46:48.272] Server  LOG     ✓ Compiled in 262ms
+[00:48:13.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:01:08.689] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:07.688] Server  LOG     ✓ Compiled in 165ms
+[01:04:20.364] Server  LOG     ✓ Compiled in 57ms
+[01:04:31.062] Server  LOG     ✓ Compiled in 78ms
+[01:05:04.286] Server  LOG     ✓ Compiled in 454ms
+[01:05:24.646] Server  LOG     ✓ Compiled in 115ms
+[01:05:35.927] Server  LOG     ✓ Compiled in 109ms
+[01:05:46.279] Server  LOG     ✓ Compiled in 484ms
+[01:05:46.692] Browser ERROR   ./src/app/individual/page.tsx:49:21
+Parsing ecmascript source code failed
+  47 |                   <div className="rounded-2xl bg-white/15 px-3 py-2">{positive ? "+" : ""}{formatInrCompact(d.netValue)}</div>
+  48 |                 </div>
+> 49 |               </div>al", name: "Individual", path: "/individual" },
+     |                     ^^
+  50 | ];
+  51 |
+  52 | function NavigationBar({ currentPage }: { currentPage: string }) {
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Expected ',', got 'ident'
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Import traces:
+  Client Component Browser:
+    ./src/app/individual/page.tsx [Client Component Browser]
+    ./src/app/individual/page.tsx [Server Component]
 
-%s%s https://react.dev/link/hydration-mismatch 
+  Client Component SSR:
+    ./src/app/individual/page.tsx [Client Component SSR]
+    ./src/app/individual/page.tsx [Server Component]
+[01:06:34.692] Browser ERROR   ./src/app/individual/page.tsx:49:21
+Parsing ecmascript source code failed
+  47 |                   <div className="rounded-2xl bg-white/15 px-3 py-2">{positive ? "+" : ""}{formatInrCompact(d.netValue)}</div>
+  48 |                 </div>
+> 49 |               </div>al", name: "Individual", path: "/individual" },
+     |                     ^^
+  50 | ];
+  51 |
+  52 | function NavigationBar({ currentPage }: { currentPage: string }) {
 
-  ...
-    <SegmentViewNode type="page" pagePath="page.tsx">
-      <SegmentTrieNode>
-      <ClientPageRoot Component={function HomePage} serverProvidedParams={{...}}>
-        <HomePage params={Promise} searchParams={Promise}>
-          <div className="min-h-scre...">
-            <div>
-            <div className="mx-auto ma...">
-              <motion.div className="space-y-8 ..." initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} ...>
-                <div className="space-y-8 ..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                  <motion.div>
-                  <div>
-                  <motion.div className="mx-auto ma..." initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} ...>
-                    <div className="mx-auto ma..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                      <div className="text-left ...">
-                        <div>
-                        <div className="flex flex-...">
-                          <input
-                            value="Dhurandhar"
-                            onChange={function onChange}
-                            placeholder="Dhurandhar"
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-base text-g..."
--                           data-sharkid="__0"
-                          >
-                          ...
-              ...
-    ...
+Expected ',', got 'ident'
 
-[00:00:07.739] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+Import traces:
+  Client Component Browser:
+    ./src/app/individual/page.tsx [Client Component Browser]
+    ./src/app/individual/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/individual/page.tsx [Client Component SSR]
+    ./src/app/individual/page.tsx [Server Component]
+[01:06:50.339] Server  LOG     ✓ Compiled in 454ms
+[01:06:57.671] Server  LOG     ✓ Compiled in 147ms
+[01:07:09.918] Server  LOG     ✓ Compiled in 102ms
+[01:13:35.780] Server  LOG     ✓ Compiled in 190ms
+[01:13:45.123] Server  LOG     ✓ Compiled in 265ms
+[01:13:45.283] Browser ERROR   ./src/app/individual/page.tsx:987:25
+Ecmascript file had an error
+  985 | }
+  986 |
+> 987 | export default function IndividualPage() {
+      |                         ^^^^^^^^^^^^^^
+  988 |   return (
+  989 |     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.16),transparent_30%),linear-gradient(135deg,#020617 0%,#111827 45%,#0f172a 100%)]">
+  990 |       <NavigationBar currentPage="individual" />
+
+the name `IndividualPage` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/individual/page.tsx [Client Component Browser]
+    ./src/app/individual/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/individual/page.tsx [Client Component SSR]
+    ./src/app/individual/page.tsx [Server Component]
+[01:13:45.283] Browser ERROR   ./src/app/individual/page.tsx:987:1
+Ecmascript file had an error
+  985 | }
+  986 |
+> 987 | export default function IndividualPage() {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 988 |   return (
+      | ^^^^^^^^^^
+> 989 |     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.16),transparent_30%),linear-gradient(135deg,#020617 0%,#111827 45%,#0f172a 100%)]">
+      | ^^^^^^^^^^
+> 990 |       <NavigationBar currentPage="individual" />
+      | ^^^^^^^^^^
+> 991 |       <main className="px-4 pb-16 pt-24 md:px-6">
+      | ^^^^^^^^^^
+> 992 |         <div className="mx-auto max-w-7xl">
+      | ^^^^^^^^^^
+> 993 |           <StepManager />
+      | ^^^^^^^^^^
+> 994 |         </div>
+      | ^^^^^^^^^^
+> 995 |       </main>
+      | ^^^^^^^^^^
+> 996 |       <Footer />
+      | ^^^^^^^^^^
+> 997 |     </div>
+      | ^^^^^^^^^^
+> 998 |   );
+      | ^^^^^^^^^^
+> 999 | }
+      | ^^
+
+the name `default` is exported multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/individual/page.tsx [Client Component Browser]
+    ./src/app/individual/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/individual/page.tsx [Client Component SSR]
+    ./src/app/individual/page.tsx [Server Component]
+[01:16:09.731] Server  LOG     ✓ Compiled in 134ms
+[01:17:07.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:47.499] Server  LOG     ✓ Compiled in 106ms
+[01:18:54.487] Server  LOG     ✓ Compiled in 72ms
+[01:19:46.329] Server  LOG     ✓ Compiled in 114ms
+[01:19:58.250] Server  LOG     ✓ Compiled in 857ms
+[01:27:48.538] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
