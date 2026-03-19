@@ -6,12 +6,14 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Home, ChevronLeft, ChevronRight, Users, Heart, Globe, MessageCircle, Star, Eye, Sparkles, Megaphone, Shield, Languages, Layers, Flame, RadioTower, Clapperboard, Megaphone as Loudspeaker, Camera, PlayCircle } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/Footer";
 
 const perspectives = [
 	{ id: "macro", name: "Macro", path: "/macro" },
 	{ id: "micro", name: "Micro", path: "/micro" },
 	{ id: "community", name: "Community", path: "/community" },
 	{ id: "individual", name: "Individual", path: "/individual" },
+	{ id: "faq", name: "FAQ", path: "/faq" },
 ];
 
 function NavigationBar({ currentPage }: { currentPage: string }) {
@@ -279,6 +281,7 @@ export default function CommunityPage() {
 					</motion.div>
 				</div>
 			</div>
+			<Footer />
 		</div>
 	);
 }

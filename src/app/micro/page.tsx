@@ -6,12 +6,14 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Home, ChevronLeft, ChevronRight, Users, Building, Globe, Film, Music, DollarSign, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/Footer";
 
 const perspectives = [
 	{ id: "macro", name: "Macro", path: "/macro" },
 	{ id: "micro", name: "Micro", path: "/micro" },
 	{ id: "community", name: "Community", path: "/community" },
 	{ id: "individual", name: "Individual", path: "/individual" },
+	{ id: "faq", name: "FAQ", path: "/faq" },
 ];
 
 function NavigationBar({ currentPage }: { currentPage: string }) {
@@ -206,6 +208,7 @@ export default function MicroPage() {
 					</motion.div>
 				</div>
 			</div>
+			<Footer />
 		</div>
 	);
 }

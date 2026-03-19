@@ -139,7 +139,7 @@ export default function AboutPage() {
 						<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 							<div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
 								<div className="flex items-center gap-2 mb-2"><Sparkles className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Movie-first interface</span></div>
-								<p className="text-sm text-gray-600">The app uses cinema as the front door into the Internet of Value.</p>
+								<p className="text-sm text-gray-600">The app uses cinema as the front door into [the Internet of Value](https://theinternetofvalue.xyz/).</p>
 							</div>
 							<div className="rounded-2xl bg-white border border-gray-200 p-4">
 								<div className="flex items-center gap-2 mb-2"><Users className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Four lenses</span></div>

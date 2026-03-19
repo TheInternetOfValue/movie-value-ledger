@@ -2,11 +2,11 @@
 
 ## Purpose
 
-This repo is a movie-first front end for the Internet of Value story.
+This repo is a movie-first front end for [the Internet of Value](https://theinternetofvalue.xyz/) story.
 It uses the cinema experience to make the underlying value framework feel human, relatable, and fun while keeping the canonical meaning intact underneath.
 
 The front end translates spec-aligned concepts into plain language.
-The backend meaning stays grounded in the Internet of Value canonical layers and equations.
+The backend meaning stays grounded in [the Internet of Value](https://theinternetofvalue.xyz/) canonical layers and equations.
 
 ## Current App Shape
 

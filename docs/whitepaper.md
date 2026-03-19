@@ -1,6 +1,6 @@
  # **The Movie Value Ledger**
 
-### *A movie-first front end for the Internet of Value*
+### *A movie-first front end for [the Internet of Value](https://theinternetofvalue.xyz/)*
 
 ---
 
@@ -11,7 +11,7 @@ Modern economic systems are precise at measuring what is easy, and weak at measu
 They count price, revenue, and volume.
 They rarely capture what a movie does to the body, mood, mind, habits, or future time.
 
-This whitepaper positions the Movie Value Ledger as a **front-end translation layer** for the Internet of Value. The app uses the movie-going experience to make the underlying IOV worldview easier to feel, understand, and explore.
+This whitepaper positions the Movie Value Ledger as a **front-end translation layer** for [the Internet of Value](https://theinternetofvalue.xyz/). The app uses the movie-going experience to make the underlying IOV worldview easier to feel, understand, and explore.
 
 The core idea stays simple:
 
@@ -30,7 +30,7 @@ In the live product, `W` is normalized: `1.0` is the neutral baseline. Any 700-s
 Movies are a useful starting point because the experience is bounded, emotional, social, and easy to remember.
 
 One film can change how you feel, how you think, what you crave, and what you do next.
-That makes cinema a strong public-facing entry point for the Internet of Value.
+That makes cinema a strong public-facing entry point for [the Internet of Value](https://theinternetofvalue.xyz/).
 
 The aim is not to replace the spec.
 The aim is to make the spec intuitive by wrapping it in a familiar cultural moment.
@@ -210,7 +210,7 @@ measure not only what happened, but what changed because it happened.
 
 ## **Conclusion**
 
-The Movie Value Ledger is not trying to replace the Internet of Value.
+The Movie Value Ledger is not trying to replace [the Internet of Value](https://theinternetofvalue.xyz/).
 It is trying to make it visible through a movie experience people already care about.
 
 That means the front end stays fun and relatable.
