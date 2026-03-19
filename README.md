@@ -16,3 +16,5 @@ Then open http://localhost:3000
 - `src/app/page.tsx` renders the main UI.
 - `src/components/individual-ledger.tsx` contains the main UI.
 - `src/components/ui/*` contains the shadcn-style UI primitives used by the ledger.
+
+- by Moses Sam Paul
