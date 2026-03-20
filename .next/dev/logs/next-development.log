@@ -1,100 +1,126 @@
-[00:00:01.039] Server  LOG     ✓ Ready in 767ms
-[00:00:01.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:01.985] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:03.501] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:38.524] Server  LOG     ✓ Compiled in 632ms
-[00:02:34.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:36.112] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:36.340] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:36.550] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:36.769] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:36.947] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:26.754] Server  LOG     ✓ Compiled in 200ms
-[00:08:06.303] Server  LOG     ✓ Compiled in 123ms
-[00:08:07.321] Browser ERROR   ./src/app/macro/page.tsx:81:5
+[00:00:01.099] Server  LOG     ✓ Ready in 864ms
+[00:00:03.538] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.622] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.639] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.704] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.006] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:28.233] Server  LOG     ✓ Compiled in 651ms
+[00:03:14.871] Server  LOG     ✓ Compiled in 0ms
+[00:03:15.516] Server  LOG     ✓ Compiled in 183ms
+[00:03:15.586] Server  LOG     ✓ Compiled in 0ms
+[00:06:27.911] Server  LOG     ✓ Compiled in 264ms
+[00:14:21.252] Server  LOG     ✓ Compiled in 148ms
+[00:14:21.364] Browser ERROR   ./src/app/micro/page.tsx:215:19
 Parsing ecmascript source code failed
-  79 | 			formula: "GDP(Y) = W + OS + MI + (T - S)",
-  80 | 			theory: "Framed by the income side of the SNA. Used globally to track who earned what and to reconcile against expenditure.",
-> 81 | 				,
-     | 				^
-  82 | 					referenceTitle: "Theory + reference",
-  83 | 					referenceBody: "The income lens is the earnings-side GDP identity in national accounting. It is associated with Simon Kuznets and later standardized through the SNA, and it is used by statisticians and macro economists to track compensation, surplus, and taxes.",
-  84 | 					referenceNote: "See `macro/dhurandhar_macro_data` for the full variable table and derivation notes.",
+  213 | 								</div>
+  214 | 							</div>
+> 215 | 					</motion.div>
+      | 					             ^
+> 216 | 				</div>
+      | ^^^^^
+  217 | 			</div>
+  218 | 			<Footer />
+  219 | 		</div>
 
-Unexpected token `,`. Expected identifier, string literal, numeric literal or [ for the computed key
+Expected '</', got 'jsx text'
 
 Import traces:
   Client Component Browser:
-    ./src/app/macro/page.tsx [Client Component Browser]
-    ./src/app/macro/page.tsx [Server Component]
+    ./src/app/micro/page.tsx [Client Component Browser]
+    ./src/app/micro/page.tsx [Server Component]
 
   Client Component SSR:
-    ./src/app/macro/page.tsx [Client Component SSR]
-    ./src/app/macro/page.tsx [Server Component]
-[00:08:07.321] Browser ERROR   ./src/app/macro/page.tsx:81:5
+    ./src/app/micro/page.tsx [Client Component SSR]
+    ./src/app/micro/page.tsx [Server Component]
+[00:14:21.695] Browser ERROR   ./src/app/micro/page.tsx:215:19
 Parsing ecmascript source code failed
-  79 | 			formula: "GDP(Y) = W + OS + MI + (T - S)",
-  80 | 			theory: "Framed by the income side of the SNA. Used globally to track who earned what and to reconcile against expenditure.",
-> 81 | 				,
-     | 				^
-  82 | 					referenceTitle: "Theory + reference",
-  83 | 					referenceBody: "The income lens is the earnings-side GDP identity in national accounting. It is associated with Simon Kuznets and later standardized through the SNA, and it is used by statisticians and macro economists to track compensation, surplus, and taxes.",
-  84 | 					referenceNote: "See `macro/dhurandhar_macro_data` for the full variable table and derivation notes.",
+  213 | 								</div>
+  214 | 							</div>
+> 215 | 					</motion.div>
+      | 					             ^
+> 216 | 				</div>
+      | ^^^^^
+  217 | 			</div>
+  218 | 			<Footer />
+  219 | 		</div>
 
-Unexpected token `,`. Expected identifier, string literal, numeric literal or [ for the computed key
+Expected '</', got 'jsx text'
 
 Import traces:
   Client Component Browser:
-    ./src/app/macro/page.tsx [Client Component Browser]
-    ./src/app/macro/page.tsx [Server Component]
+    ./src/app/micro/page.tsx [Client Component Browser]
+    ./src/app/micro/page.tsx [Server Component]
 
   Client Component SSR:
-    ./src/app/macro/page.tsx [Client Component SSR]
-    ./src/app/macro/page.tsx [Server Component]
-[00:08:07.321] Browser ERROR   ./src/app/macro/page.tsx:81:5
+    ./src/app/micro/page.tsx [Client Component SSR]
+    ./src/app/micro/page.tsx [Server Component]
+[00:14:21.695] Browser ERROR   ./src/app/micro/page.tsx:215:19
 Parsing ecmascript source code failed
-  79 | 			formula: "GDP(Y) = W + OS + MI + (T - S)",
-  80 | 			theory: "Framed by the income side of the SNA. Used globally to track who earned what and to reconcile against expenditure.",
-> 81 | 				,
-     | 				^
-  82 | 					referenceTitle: "Theory + reference",
-  83 | 					referenceBody: "The income lens is the earnings-side GDP identity in national accounting. It is associated with Simon Kuznets and later standardized through the SNA, and it is used by statisticians and macro economists to track compensation, surplus, and taxes.",
-  84 | 					referenceNote: "See `macro/dhurandhar_macro_data` for the full variable table and derivation notes.",
+  213 | 								</div>
+  214 | 							</div>
+> 215 | 					</motion.div>
+      | 					             ^
+> 216 | 				</div>
+      | ^^^^^
+  217 | 			</div>
+  218 | 			<Footer />
+  219 | 		</div>
 
-Unexpected token `,`. Expected identifier, string literal, numeric literal or [ for the computed key
+Expected '</', got 'jsx text'
 
 Import traces:
   Client Component Browser:
-    ./src/app/macro/page.tsx [Client Component Browser]
-    ./src/app/macro/page.tsx [Server Component]
+    ./src/app/micro/page.tsx [Client Component Browser]
+    ./src/app/micro/page.tsx [Server Component]
 
   Client Component SSR:
-    ./src/app/macro/page.tsx [Client Component SSR]
-    ./src/app/macro/page.tsx [Server Component]
-[00:14:27.777] Server  LOG     ✓ Compiled in 99ms
-[00:16:43.046] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:17:13.517] Server  LOG     ✓ Compiled in 85ms
-[00:17:44.667] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:22:09.688] Server  LOG     ✓ Compiled in 65ms
-[00:23:23.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:49.534] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:49.809] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:50.046] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:50.259] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:50.503] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:50.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:50.928] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:59.729] Server  LOG     ✓ Compiled in 112ms
-[00:24:12.987] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:35.461] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:36.619] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:36.853] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:37.054] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:37.273] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:37.454] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:51.990] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:38.267] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:26:51.345] Server  LOG     ✓ Compiled in 59ms
-[00:26:54.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:26:57.722] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:27:31.613] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+    ./src/app/micro/page.tsx [Client Component SSR]
+    ./src/app/micro/page.tsx [Server Component]
+[00:14:21.695] Browser ERROR   ./src/app/micro/page.tsx:215:19
+Parsing ecmascript source code failed
+  213 | 								</div>
+  214 | 							</div>
+> 215 | 					</motion.div>
+      | 					             ^
+> 216 | 				</div>
+      | ^^^^^
+  217 | 			</div>
+  218 | 			<Footer />
+  219 | 		</div>
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/micro/page.tsx [Client Component Browser]
+    ./src/app/micro/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/micro/page.tsx [Client Component SSR]
+    ./src/app/micro/page.tsx [Server Component]
+[00:14:21.695] Browser ERROR   ./src/app/micro/page.tsx:215:19
+Parsing ecmascript source code failed
+  213 | 								</div>
+  214 | 							</div>
+> 215 | 					</motion.div>
+      | 					             ^
+> 216 | 				</div>
+      | ^^^^^
+  217 | 			</div>
+  218 | 			<Footer />
+  219 | 		</div>
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/micro/page.tsx [Client Component Browser]
+    ./src/app/micro/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/micro/page.tsx [Client Component SSR]
+    ./src/app/micro/page.tsx [Server Component]
+[00:15:29.259] Server  LOG     ✓ Compiled in 95ms
+[00:18:06.966] Server  LOG     ✓ Compiled in 138ms
+[00:19:53.280] Server  LOG     ✓ Compiled in 227ms
+[00:20:42.187] Server  LOG     ✓ Compiled in 397ms

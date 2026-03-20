@@ -2,11 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Home, ChevronLeft, ChevronRight, Users, Building, Globe, Film, Music, DollarSign, TrendingUp } from "lucide-react";
+import { Home, ChevronLeft, ChevronRight, BookOpen, ArrowRight, Film, Globe, Building, DollarSign, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { dhurandharHomeData, macroAccountRows } from "@/data/dhurandhar";
 
 const perspectives = [
 	{ id: "macro", name: "Macro", path: "/macro" },
@@ -66,142 +66,148 @@ function NavigationBar({ currentPage }: { currentPage: string }) {
 }
 
 export default function MicroPage() {
-	const [actorCosts, setActorCosts] = React.useState([150]);
-	const [directorCosts, setDirectorCosts] = React.useState([50]);
-	const [musicCosts, setMusicCosts] = React.useState([30]);
-	const [belowLineCosts, setBelowLineCosts] = React.useState([80]);
-	const [pandACosts, setPandACosts] = React.useState([200]);
-	const [financingCosts, setFinancingCosts] = React.useState([40]);
-	const [indiaTheatrical, setIndiaTheatrical] = React.useState([300]);
-	const [overseasRevenue, setOverseasRevenue] = React.useState([150]);
-	const [ottRevenue, setOttRevenue] = React.useState([200]);
-	const [wageShare, setWageShare] = React.useState([45]);
-	const [profitShare, setProfitShare] = React.useState([30]);
-	const [interestShare, setInterestShare] = React.useState([10]);
-	const [royaltyShare, setRoyaltyShare] = React.useState([15]);
-
-	const totalCosts = actorCosts[0] + directorCosts[0] + musicCosts[0] + belowLineCosts[0] + pandACosts[0] + financingCosts[0];
-	const totalRevenue = indiaTheatrical[0] + overseasRevenue[0] + ottRevenue[0];
-	const profit = totalRevenue - totalCosts;
-	const roi = totalCosts > 0 ? (profit / totalCosts) * 100 : 0;
-	const wageValue = Math.round((totalRevenue * wageShare[0]) / 100);
-	const profitValue = Math.round((totalRevenue * profitShare[0]) / 100);
-	const interestValue = Math.round((totalRevenue * interestShare[0]) / 100);
-	const royaltyValue = Math.round((totalRevenue * royaltyShare[0]) / 100);
-	const incomeTotal = wageValue + profitValue + interestValue + royaltyValue;
-	const stageCards = [
-		{
-			label: "Pre-production / build",
-			icon: Film,
-			description: "Who and what gets assembled before the camera rolls.",
-			controls: [
-				{ label: "Actors & Cast", value: actorCosts[0], setValue: setActorCosts, max: 300, step: 5, icon: Users },
-				{ label: "Director & Creative", value: directorCosts[0], setValue: setDirectorCosts, max: 100, step: 5, icon: Film },
-				{ label: "Music & Sound", value: musicCosts[0], setValue: setMusicCosts, max: 60, step: 2, icon: Music },
-			],
-		},
-		{
-			label: "Production / spend",
-			icon: Building,
-			description: "The money that keeps the shoot, logistics, and release machine moving.",
-			controls: [
-				{ label: "Below-the-Line", value: belowLineCosts[0], setValue: setBelowLineCosts, max: 150, step: 5, icon: Building },
-				{ label: "P&A", value: pandACosts[0], setValue: setPandACosts, max: 400, step: 10, icon: Globe },
-				{ label: "Financing", value: financingCosts[0], setValue: setFinancingCosts, max: 80, step: 2, icon: TrendingUp },
-			],
-		},
-		{
-			label: "Release / revenue",
-			icon: DollarSign,
-			description: "Where the movie earns back through theaters and downstream channels.",
-			controls: [
-				{ label: "India Theatrical", value: indiaTheatrical[0], setValue: setIndiaTheatrical, max: 400, step: 10, icon: Users },
-				{ label: "Overseas", value: overseasRevenue[0], setValue: setOverseasRevenue, max: 250, step: 5, icon: Globe },
-				{ label: "OTT / Satellite / Other", value: ottRevenue[0], setValue: setOttRevenue, max: 250, step: 5, icon: DollarSign },
-			],
-		},
+	const microSummary = macroAccountRows[0];
+	const part1Anchor = 1353;
+	const part2Multiplier = 1.5;
+	const part2WorldwideGross = 2029.5;
+	const franchiseWorldwideGross = part1Anchor + part2WorldwideGross;
+	const indiaNet = 2300.25;
+	const overseasGross = 660.31;
+	const indiaRealization = 1161.63;
+	const overseasRealization = 277.33;
+	const rightsStack = 550;
+	const producerRevenue = 1988.96;
+	const operatingCosts = 595;
+	const ebitda = producerRevenue - operatingCosts;
+	const amortization = 25;
+	const interest = 17.85;
+	const ebit = ebitda - amortization;
+	const pbt = ebit - interest;
+	const tax = 337.78;
+	const pat = pbt - tax;
+	const roi = operatingCosts > 0 ? ((producerRevenue - operatingCosts) / operatingCosts) * 100 : 0;
+	const revenueSlices = [
+		{ label: "India theatrical realization", value: "₹1,161.63 cr", note: "50.5% of combined India net" },
+		{ label: "Overseas realization", value: "₹277.33 cr", note: "42% of overseas gross" },
+		{ label: "Rights stack", value: "₹550 cr", note: "OTT + satellite + music + ancillary" },
 	];
+	const costSlices = [
+		{ label: "Production", value: "₹380 cr", note: "Combined film production base" },
+		{ label: "P&A / marketing", value: "₹90 cr", note: "Release and promotion spend" },
+		{ label: "Distribution / logistics", value: "₹20 cr", note: "Release and settlement costs" },
+		{ label: "Talent premium + overhead", value: "₹105 cr", note: "Backend, contingency, and overhead" },
+	];
+	const modelNotes = [
+		{ label: "Part 1 anchor", value: "₹1,353 cr", icon: Film },
+		{ label: "Part 2 assumption", value: "1.5x Part 1", icon: TrendingUp },
+		{ label: "Combined gross", value: "₹3,382.5 cr", icon: DollarSign },
+		{ label: "Studio pairing", value: "B62 + Jio", icon: Building },
+	];
+	const [openSection, setOpenSection] = React.useState<"revenue" | "costs" | "profit" | "details">("revenue");
+	const AccordionSection = ({
+		id,
+		title,
+		subtitle,
+		children,
+	}: {
+		id: typeof openSection;
+		title: string;
+		subtitle: string;
+		children: React.ReactNode;
+	}) => {
+		const isOpen = openSection === id;
+		return (
+			<div className="rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden">
+				<button type="button" onClick={() => setOpenSection(isOpen ? "revenue" : id)} className="w-full flex items-center justify-between gap-4 px-5 md:px-6 py-4 text-left">
+					<div>
+						<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">{title}</div>
+						<div className="mt-1 text-sm text-slate-600">{subtitle}</div>
+					</div>
+					<div className="text-sm font-semibold text-slate-500">{isOpen ? "Close" : "Open"}</div>
+				</button>
+				{isOpen && <div className="px-5 md:px-6 pb-5 md:pb-6">{children}</div>}
+			</div>
+		);
+	};
 
 	return (
-		<div className="min-h-screen bg-white text-black">
+		<div className="min-h-screen bg-[#f7f4ee] text-slate-900">
 			<NavigationBar currentPage="micro" />
-			<div className="pt-20 px-4 py-8">
-				<div className="mx-auto max-w-5xl space-y-8">
+			<div className="pt-20 px-3 md:px-4 py-3">
+				<div className="w-full space-y-4">
 					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">Micro level</div>
-						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Movie as Business Investment</h1>
-						<p className="mx-auto max-w-4xl text-base text-gray-700 md:text-lg leading-relaxed">A single focused view for movie cost, revenue, ROI, and earnings distribution.</p>
+						<div className="text-sm uppercase tracking-[0.3em] text-orange-500 font-semibold">Micro level</div>
+						<h1 className="text-4xl md:text-5xl font-black text-slate-900">Microeconomics of Dhurandhar</h1>
+						<p className="mx-auto max-w-4xl text-base text-slate-600 md:text-lg leading-relaxed">A numbers-first view of the franchise as a project-finance asset, with the full readable reference below.</p>
 					</motion.div>
 
-					<motion.div className="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-						<div className="p-6 md:p-8 border-b border-gray-100 bg-gradient-to-br from-white to-gray-50">
-							<div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-								<div>
-									<div className="text-xs uppercase tracking-[0.35em] text-amber-500 font-semibold mb-2">Open micro</div>
-									<h2 className="text-2xl md:text-3xl font-bold text-gray-900">Cost stack, revenue stack, profit stack</h2>
-									<p className="mt-2 max-w-3xl text-gray-600">Keep the business model visible, then let the income shares move live with the sliders.</p>
-								</div>
-								<div className="text-sm text-gray-500">Live view</div>
-							</div>
-						</div>
-
-						<div className="space-y-8 p-6 md:p-8">
-							<div className="grid gap-4 md:grid-cols-3">
-								{stageCards.map((stage) => {
-									const StageIcon = stage.icon;
-									return (
-										<div key={stage.label} className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
-											<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-2"><StageIcon className="h-4 w-4" />{stage.label}</div>
-											<div className="text-sm text-gray-600">{stage.description}</div>
+					<motion.div className="rounded-[2.5rem] border border-slate-200 bg-white p-6 md:p-8 shadow-sm" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+						<div className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr] xl:items-start">
+							<div className="space-y-4">
+								<AccordionSection id="revenue" title="Revenue items" subtitle="The different forms of revenue flowing into the franchise.">
+									<div className="space-y-3">
+										<div className="grid gap-3 md:grid-cols-3">
+											{revenueSlices.map((item) => (
+												<div key={item.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+													<div className="text-sm font-semibold text-slate-900">{item.label}</div>
+													<div className="mt-2 text-2xl font-black tracking-tight text-slate-900">{item.value}</div>
+													<div className="mt-1 text-sm text-slate-600">{item.note}</div>
+												</div>
+											))}
 										</div>
-									);
-								})}
-							</div>
-							<div className="rounded-3xl p-5 bg-amber-50 border border-amber-100">
-								<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold mb-3">Business result</div>
-								<div className="grid gap-4 md:grid-cols-3">
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Total cost</div><div className="text-2xl font-bold text-gray-900">₹{totalCosts} Cr</div></div>
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Total revenue</div><div className="text-2xl font-bold text-gray-900">₹{totalRevenue} Cr</div></div>
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">ROI</div><div className="text-2xl font-bold text-gray-900">{roi.toFixed(1)}%</div></div>
-								</div>
-							</div>
-
-							<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-								{stageCards.map((stage) => (
-									<div key={stage.label} className="rounded-3xl border border-gray-200 bg-white p-4 shadow-sm">
-										<div className="flex items-center gap-2 mb-3 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold">
-											<stage.icon className="h-4 w-4" />
-											{stage.label}
-										</div>
-										<div className="space-y-4">
-											{stage.controls.map((control) => {
-												const ControlIcon = control.icon;
-												return (
-													<div key={control.label} className="space-y-3 rounded-2xl bg-gray-50 border border-gray-100 p-3">
-														<div className="flex items-center gap-2"><ControlIcon className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">{control.label}</span></div>
-														<Slider value={[control.value]} onValueChange={(next) => control.setValue(next)} max={control.max} min={0} step={control.step} className="w-full" />
-														<div className="text-lg font-bold text-gray-900">₹{control.value} Cr</div>
-													</div>
-												);
-											})}
+										<div className="rounded-2xl border border-orange-100 bg-orange-50 p-4">
+											<div className="text-xs uppercase tracking-[0.3em] text-orange-500 font-semibold">Revenue total</div>
+											<div className="mt-2 text-3xl font-black tracking-tight text-slate-900">₹{producerRevenue.toFixed(2)} cr</div>
+											<div className="mt-1 text-sm text-slate-600">Producer-studio top line after realization and rights stacking.</div>
 										</div>
 									</div>
-								))}
+								</AccordionSection>
+
+								<AccordionSection id="costs" title="Cost items" subtitle="Direct and indirect costs needed to mount the project.">
+									<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+										{costSlices.map((item) => (
+											<div key={item.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+												<div className="text-sm font-semibold text-slate-900">{item.label}</div>
+												<div className="mt-2 text-xl font-black tracking-tight text-slate-900">{item.value}</div>
+												<div className="mt-1 text-sm text-slate-600">{item.note}</div>
+											</div>
+										))}
+									</div>
+									<div className="mt-4 rounded-2xl border border-orange-100 bg-orange-50 p-4">
+										<div className="text-xs uppercase tracking-[0.3em] text-orange-500 font-semibold">Operating costs</div>
+										<div className="mt-2 text-3xl font-black tracking-tight text-slate-900">₹{operatingCosts} cr</div>
+										<div className="mt-1 text-sm text-slate-600">Production + P&A + distribution + talent premium + overhead.</div>
+									</div>
+								</AccordionSection>
+
+								<AccordionSection id="profit" title="Profit bridge" subtitle="Gross profit or EBITDA, then debt and non-cash items.">
+									<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+										<div className="rounded-2xl border border-slate-200 bg-white p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">EBITDA</div><div className="mt-2 text-2xl font-black text-slate-900">₹{ebitda.toFixed(2)} cr</div><div className="mt-1 text-sm text-slate-600">Revenue minus operating cost</div></div>
+										<div className="rounded-2xl border border-slate-200 bg-white p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Amortisation</div><div className="mt-2 text-2xl font-black text-slate-900">₹{amortization} cr</div><div className="mt-1 text-sm text-slate-600">Capitalized production cost burden</div></div>
+										<div className="rounded-2xl border border-slate-200 bg-white p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Interest</div><div className="mt-2 text-2xl font-black text-slate-900">₹{interest} cr</div><div className="mt-1 text-sm text-slate-600">Financing cost</div></div>
+										<div className="rounded-2xl border border-slate-200 bg-white p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">EBIT</div><div className="mt-2 text-2xl font-black text-slate-900">₹{ebit.toFixed(2)} cr</div><div className="mt-1 text-sm text-slate-600">After amortisation, before interest</div></div>
+									</div>
+									<div className="mt-4 rounded-2xl border border-orange-100 bg-orange-50 p-4">
+										<div className="text-xs uppercase tracking-[0.3em] text-orange-500 font-semibold">Pre-tax profit</div>
+										<div className="mt-2 text-3xl font-black tracking-tight text-slate-900">₹{pbt.toFixed(2)} cr</div>
+										<div className="mt-1 text-sm text-slate-600">EBIT less interest.</div>
+									</div>
+								</AccordionSection>
+
+								<AccordionSection id="details" title="Tax and returns" subtitle="Tax, PAT, and model checks at the bottom of the stack.">
+									<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+										<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Tax</div><div className="mt-2 text-2xl font-black text-slate-900">₹{tax} cr</div><div className="mt-1 text-sm text-slate-600">Modeled effective tax charge</div></div>
+										<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">PAT</div><div className="mt-2 text-2xl font-black text-slate-900">₹{pat.toFixed(2)} cr</div><div className="mt-1 text-sm text-slate-600">Post-tax project outcome</div></div>
+										<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">ROI</div><div className="mt-2 text-2xl font-black text-slate-900">{roi.toFixed(1)}%</div><div className="mt-1 text-sm text-slate-600">On operating cost</div></div>
+									</div>
+								</AccordionSection>
 							</div>
 
-							<div className="rounded-3xl p-5 bg-amber-50 border border-amber-100">
-								<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold mb-3">Income check</div>
-								<div className="grid gap-4 md:grid-cols-4">
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Wages</div><div className="text-2xl font-bold text-gray-900">₹{wageValue} Cr</div></div>
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Profit</div><div className="text-2xl font-bold text-gray-900">₹{profitValue} Cr</div></div>
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Interest</div><div className="text-2xl font-bold text-gray-900">₹{interestValue} Cr</div></div>
-									<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Royalties</div><div className="text-2xl font-bold text-gray-900">₹{royaltyValue} Cr</div></div>
-								</div>
-								<div className="mt-4 rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Income total</div><div className="text-2xl font-bold text-gray-900">₹{incomeTotal} Cr</div></div>
-								<div className="mt-4 grid gap-4 md:grid-cols-3">
-									<motion.div className="space-y-4 p-4 rounded-2xl bg-gray-50 border border-gray-200" whileHover={{ scale: 1.01 }}><div className="flex items-center gap-2"><Users className="h-5 w-5 text-amber-500" /><span className="font-semibold text-gray-900">Wages share</span></div><Slider value={wageShare} onValueChange={setWageShare} max={70} min={0} step={1} className="w-full" /><div className="text-lg font-bold text-gray-900">{wageShare[0]}%</div></motion.div>
-									<motion.div className="space-y-4 p-4 rounded-2xl bg-gray-50 border border-gray-200" whileHover={{ scale: 1.01 }}><div className="flex items-center gap-2"><Building className="h-5 w-5 text-amber-500" /><span className="font-semibold text-gray-900">Profit share</span></div><Slider value={profitShare} onValueChange={setProfitShare} max={60} min={0} step={1} className="w-full" /><div className="text-lg font-bold text-gray-900">{profitShare[0]}%</div></motion.div>
-									<motion.div className="space-y-4 p-4 rounded-2xl bg-gray-50 border border-gray-200" whileHover={{ scale: 1.01 }}><div className="flex items-center gap-2"><TrendingUp className="h-5 w-5 text-amber-500" /><span className="font-semibold text-gray-900">Interest / royalty weighting</span></div><Slider value={interestShare} onValueChange={setInterestShare} max={50} min={0} step={1} className="w-full" /><div className="text-lg font-bold text-gray-900">{interestShare[0]}% / {royaltyShare[0]}%</div></motion.div>
+							<div className="rounded-[1.75rem] border border-orange-100 bg-[#fffaf1] p-5 shadow-sm">
+								<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">Reference</div>
+								<div className="mt-3 text-sm leading-relaxed text-slate-700">Full document: {dhurandharHomeData.title}</div>
+								<div className="mt-4 flex flex-wrap gap-3">
+									<Link href="/micro/dhurandhar_micro_data" className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700 underline underline-offset-4"><BookOpen className="h-4 w-4" />Open full micro reference</Link>
 								</div>
 							</div>
 						</div>

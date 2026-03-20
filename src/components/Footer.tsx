@@ -12,7 +12,7 @@ export function Footer() {
             <a href="https://theinternetofvalue.xyz/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">The Internet of Value</a>
           </div>
           <div className="text-sm text-gray-500">
-            Built by <a href="https://author.theinternetofvalue.xyz/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">Moses Sampaul</a>
+            Buily by <a href="https://www.linkedin.com/in/mosessampaul/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">Moses Sam Paul</a>
           </div>
         </div>
       </div>
