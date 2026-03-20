@@ -216,15 +216,28 @@ function computeDerived(state: LedgerState) {
   const wellbeingDeltaValue = actualValue - baselineValue;
   const netValue = wellbeingDeltaValue - totalMoney;
   return {
-    w,
     baseHourly,
     totalMoney,
     totalHours,
+    w,
     baselineValue,
     actualValue,
     wellbeingDeltaValue,
     netValue,
   };
+}
+
+function round1(value: number) {
+  return Math.round(value * 10) / 10;
+}
+
+function round2(value: number) {
+  return Math.round(value * 100) / 100;
+}
+
+function formatNetValue(value: number) {
+  const rounded = Math.ceil(Math.abs(value));
+  return `${value >= 0 ? "+" : "-"}₹${rounded.toLocaleString("en-IN")}`;
 }
 
 function Battery({ level }: { level: number }) {
@@ -768,118 +781,176 @@ function FaceAvatar({ state }: { state: LedgerState }) {
 function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: () => void; onReset: () => void }) {
   const d = computeDerived(state);
   const positive = d.netValue >= 0;
-  const filmName = "Dhurandhar 2";
-  const title = positive ? "VICTORY UNLOCKED" : "RUN FAILED";
-  const subtitle = positive
-    ? "Dhurandhar 2 created net positive value — wellbeing improved and the investment paid off."
-    : "Dhurandhar 2 resulted in net loss. The time and money spent outweighed the wellbeing gains.";
-  const posterBattery = computeBattery(state);
-  const posterFaceMood = positive ? "✦‿✦" : "-‿-";
-  const posterMouth = positive ? "⌣" : "﹏";
-  const shareText = `${filmName} | ${positive ? "VICTORY" : "DEFEAT"}\nNet Value: ${positive ? "+" : ""}₹${Math.round(d.netValue).toLocaleString("en-IN")}\nWellbeing Score: ${d.w.toFixed(2)}\n${positive ? "The movie created value beyond the cost." : "The movie cost more than it gave back."}\n\n#${filmName} #MovieLedger`;
+  const title = positive ? "VICTORY" : "LOSS";
+  const roundedW = round2(d.w);
+  const startingBattery = 700;
+  const roundedBattery = Math.round(computeBattery(state));
+  const roundedNetValue = Math.ceil(Math.abs(d.netValue));
+  
+  const bodySignal = Math.round((state.physiology.calm + state.physiology.movement) / 2);
+  const emotionSignal = Math.round((state.emotions.joy + state.emotions.safety + state.emotions.connection) / 3);
+  const thoughtSignal = Math.round((state.thoughts.perspective + state.thoughts.inspiration) / 2);
+  const habitSignal = Math.round((state.habits.awareness + state.habits.choice) / 2);
+  const performanceSignal = Math.round((state.performance.learningOutput + state.performance.earningOutput + state.performance.skillApplication + state.performance.communityContext) / 4);
+
+  const shareText = `Dhurandhar | ${positive ? "VICTORY" : "LOSS"}\nNet Value: ${positive ? "+" : "-"}₹${roundedNetValue.toLocaleString("en-IN")}\nWellbeing: ${startingBattery} → ${roundedBattery} (W: ${roundedW.toFixed(2)})\n\n#Dhurandhar #MovieLedger`;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`;
-  const resultPulseStyle = {
-    boxShadow: positive
-      ? "0 0 0 1px rgba(239,68,68,0.22), 0 0 50px rgba(239,68,68,0.28)"
-      : "0 0 0 1px rgba(248,113,113,0.14), 0 0 50px rgba(248,113,113,0.18)",
-  } as React.CSSProperties;
+
+  const handleWebShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Dhurandhar | ${title}`,
+          text: shareText,
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      navigator.clipboard.writeText(`${shareText}\n${window.location.href}`);
+      alert("Results copied to clipboard! (Web Share not supported in this browser)");
+    }
+  };
 
   return (
     <div className="space-y-6">
       <motion.div
-        className={`relative overflow-hidden rounded-[2.25rem] border p-6 shadow-[0_30px_90px_rgba(0,0,0,0.24)] ${positive ? "border-red-200/20 bg-gradient-to-br from-red-700 via-red-500 to-amber-200" : "border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800"}`}
-        initial={{ opacity: 0, scale: 0.96, y: 18 }}
-        animate={{ opacity: 1, scale: 1, y: 0, rotate: [0, positive ? 0.15 : -0.15, 0] }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-black shadow-[0_40px_100px_rgba(0,0,0,0.4)]"
+        initial={{ opacity: 0, scale: 0.98, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.35),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.15),transparent_28%)]" />
-        <motion.div
-          className={`absolute inset-x-10 top-6 h-24 rounded-full blur-3xl ${positive ? "bg-emerald-300/25" : "bg-rose-300/20"}`}
-          animate={{ opacity: [0.45, 0.85, 0.45], scale: [1, 1.05, 1] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div className="relative grid gap-6 xl:grid-cols-[1.2fr_0.8fr] items-center">
-          <div className="space-y-4 text-white">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-white" />
-              End-of-level screen
-            </div>
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.35em] text-white/80">{filmName}</div>
-              <h2 className={`${positive ? "text-red-50" : "text-white"} mt-2 text-5xl font-black leading-[0.92] tracking-tight md:text-7xl`}>{title}</h2>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/92 md:text-lg">{subtitle}</p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-md">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/70">Wellbeing Score</div>
-                <div className="mt-1 text-2xl font-black tracking-tight">{d.w.toFixed(2)}</div>
-              </div>
-              <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-md">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/70">Battery</div>
-                <div className="mt-1 text-2xl font-black tracking-tight">{posterBattery}/1000</div>
-              </div>
-              <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-md">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/70">Net Value</div>
-                <div className="mt-1 text-2xl font-black tracking-tight">{positive ? "+" : ""}{formatInrCompact(d.netValue)}</div>
-              </div>
-            </div>
-          </div>
+        {/* Poster Background */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/dhurandhar/part-1-poster.jpg" 
+            alt="Dhurandhar Poster" 
+            className="h-full w-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+        </div>
 
-          <div className="relative mx-auto w-full max-w-md">
-            <motion.div className="rounded-[2rem] border border-white/20 bg-white/18 p-6 backdrop-blur-md shadow-inner" animate={{ y: [0, -4, 0] }} transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }} style={resultPulseStyle}>
-              <div className="flex items-center justify-between text-white/80 text-xs uppercase tracking-[0.3em]">
-                <span>{filmName} poster</span>
-                <span>{positive ? "Win" : "Lose"}</span>
+        <div className="relative z-10 p-8 md:p-12">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.4em] text-white backdrop-blur-md">
+                <Sparkles className="h-4 w-4 text-amber-400" />
+                The Cinematic Ledger
               </div>
-                <div className="mt-4 rounded-[1.5rem] border border-white/20 bg-black/20 p-5 text-center text-white shadow-lg">
-                <div className="text-6xl leading-none">{posterFaceMood}</div>
-                <div className="text-5xl leading-none mt-2">{posterMouth}</div>
-                <div className="mt-4 grid grid-cols-3 gap-3 text-xs font-bold uppercase tracking-[0.2em]">
-                  <div className="rounded-2xl bg-white/15 px-3 py-2">{d.totalHours}h</div>
-                  <div className="rounded-2xl bg-white/15 px-3 py-2">{d.w.toFixed(2)}</div>
-                  <div className="rounded-2xl bg-white/15 px-3 py-2">{positive ? "+" : ""}{formatInrCompact(d.netValue)}</div>
+
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-[0.5em] text-amber-400">{positive ? "Wellbeing Surplus" : "Wellbeing Deficit"}</h2>
+                <div className="mt-4 flex items-baseline gap-4">
+                  <span className={`text-8xl font-black tracking-tighter ${positive ? 'text-white' : 'text-red-500'}`}>
+                    {title}
+                  </span>
+                  <span className="text-3xl font-light text-white/50 tracking-[0.2em] uppercase">Impact</span>
                 </div>
               </div>
-            </motion.div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
+                <div className="space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Body</div>
+                  <div className="text-2xl font-black text-white">{bodySignal}%</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Mind</div>
+                  <div className="text-2xl font-black text-white">{thoughtSignal}%</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Emotion</div>
+                  <div className="text-2xl font-black text-white">{emotionSignal}%</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Habit</div>
+                  <div className="text-2xl font-black text-white">{habitSignal}%</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl ring-1 ring-white/20">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="text-xs font-bold uppercase tracking-[0.3em] text-amber-400">Net Impact</div>
+                  <button 
+                    onClick={handleWebShare}
+                    className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  >
+                    <Share2 className="h-5 w-5 text-white/80" />
+                  </button>
+                </div>
+
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">Battery Shift</div>
+                    <div className="text-4xl font-black text-white flex items-center gap-3">
+                      {startingBattery}
+                      <span className="text-xl text-white/30">→</span>
+                      <span className={roundedBattery >= startingBattery ? 'text-emerald-400' : 'text-rose-400'}>
+                        {roundedBattery}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">Portfolio Value</div>
+                    <div className={`text-4xl font-black ${positive ? 'text-emerald-400' : 'text-rose-400'}`}>
+                      {positive ? "+" : "-"}₹{roundedNetValue.toLocaleString("en-IN")}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                      <span>W-Coefficient</span>
+                      <span className="text-white">{roundedW.toFixed(2)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
 
-      <div className={`rounded-[2rem] border p-6 shadow-2xl ${positive ? "border-red-200 bg-white" : "border-gray-300 bg-white"}`}>
-        <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] ${positive ? "bg-rose-50 text-red-700" : "bg-gray-100 text-gray-700"}`}>
-          {positive ? "Impact unlocked" : "Impact drag"}
+      <div className="flex flex-wrap items-center justify-between gap-6 px-4">
+        <div className="flex gap-3">
+          <Button 
+            variant="outline" 
+            className="h-12 border-white/10 bg-white/5 px-6 text-white hover:bg-white/10"
+            onClick={() => {
+              navigator.clipboard.writeText(`${shareText}\n${window.location.href}`);
+              alert("Link and results copied to clipboard!");
+            }}
+          >
+            <Copy className="mr-2 h-4 w-4" /> Copy Results
+          </Button>
+          <Button 
+            variant="outline" 
+            className="h-12 border-white/10 bg-white/5 px-6 text-white hover:bg-white/10"
+            onClick={handleWebShare}
+          >
+            <Share2 className="mr-2 h-4 w-4" /> Share
+          </Button>
         </div>
-        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3 text-sm text-gray-800 leading-relaxed">
-          <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5">
-            <div className="font-semibold text-gray-900 mb-2">Net Value Calculation</div>
-            <div>Baseline value (0.7 × time × rate) + wellbeing delta value - money spent = net impact.</div>
-          </div>
-          <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5">
-            <div className="font-semibold text-gray-900 mb-2">Time Breakdown</div>
-            <div>Pre-events, scrolling, movie, discussions, reviews — all add up to total hours invested.</div>
-          </div>
-          <div className="rounded-3xl border border-gray-100 bg-gray-50 p-5">
-            <div className="font-semibold text-gray-900 mb-2">Money Breakdown</div>
-            <div>Ticket, snacks, travel, parking — real costs subtracted from the wellbeing-adjusted value.</div>
-          </div>
-        </div>
-
-        <div className="mt-5 grid gap-3 md:grid-cols-3 text-xs font-semibold uppercase tracking-[0.22em] text-gray-600">
-          <div className="rounded-2xl bg-gray-50 px-4 py-3">Start 0.7</div>
-          <div className="rounded-2xl bg-gray-50 px-4 py-3">End {d.w.toFixed(2)}</div>
-          <div className="rounded-2xl bg-gray-50 px-4 py-3">Net ₹{(d.netValue >= 0 ? "+" : "") + Math.round(d.netValue).toLocaleString("en-IN")}</div>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href={`mailto:?subject=${encodeURIComponent(positive ? "Victory Screen" : "Defeat Screen")}&body=${encodeURIComponent(shareText)}`}>
-            <Button variant="outline"><Copy className="mr-2 h-4 w-4" />Copy to email</Button>
-          </a>
-          <a href={xShareUrl} target="_blank" rel="noreferrer"><Button variant="outline"><Share2 className="mr-2 h-4 w-4" />Share on X</Button></a>
-          <a href={whatsappShareUrl} target="_blank" rel="noreferrer"><Button variant="outline"><ArrowUpRight className="mr-2 h-4 w-4" />Share on WhatsApp</Button></a>
-          <Button variant="outline" onClick={onBack}>Adjust score</Button>
-          <Button className="bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 text-white" onClick={onReset}>Play again</Button>
+        
+        <div className="flex gap-3">
+          <Button 
+            variant="ghost" 
+            className="h-12 text-white/60 hover:text-white"
+            onClick={onBack}
+          >
+            Adjust Run
+          </Button>
+          <Button 
+            className="h-12 bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 px-8 font-bold text-white shadow-xl shadow-orange-500/20 hover:brightness-110" 
+            onClick={onReset}
+          >
+            Recalculate Experience
+          </Button>
         </div>
       </div>
     </div>
@@ -912,54 +983,28 @@ function StepManager() {
 }
 
 function HeroPanel({ state, battery }: { state: LedgerState; battery: number }) {
-  const w = computeW(state);
-  const batteryDelta = battery - 700;
-  const batteryState = batteryDelta > 8 ? "charging" : batteryDelta < -8 ? "draining" : "stable";
-
   return (
-    <motion.div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(251,191,36,0.22),transparent_30%),radial-gradient(circle_at_top_right,rgba(244,114,182,0.17),transparent_35%),linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92))] p-6 text-white shadow-[0_35px_100px_rgba(0,0,0,0.25)] md:p-8" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-      <div className="grid gap-6 xl:grid-cols-[1.15fr_0.95fr] xl:items-center">
-        <div className="space-y-5">
+    <motion.div 
+      className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(251,191,36,0.22),transparent_30%),linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.92))] p-6 text-white shadow-[0_35px_100px_rgba(0,0,0,0.25)] md:p-8" 
+      initial={{ opacity: 0, y: -20 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 0.6 }}
+    >
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/70 backdrop-blur-xl">
             <Theater className="h-3.5 w-3.5" />
-            Player one / individual run
+            Dhurandhar Impact
           </div>
-          <div className="space-y-3">
-            <h1 className="text-4xl font-black tracking-tight md:text-6xl">Impact at an Individual level</h1>
-            <p className="max-w-2xl text-base leading-relaxed text-white/72 md:text-lg">
-              Start at 700 / 1000. Your signed scene scores can pull the battery up or down in real time.
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2 max-w-xl">
-              <div className="rounded-[1.25rem] border border-white/10 bg-white/8 p-4 backdrop-blur-xl">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/50">Current score</div>
-                <div className="mt-1 text-2xl font-black tracking-tight">{battery}/1000</div>
-                <div className="text-sm text-white/60">{batteryDelta >= 0 ? "+" : ""}{batteryDelta} vs 700 baseline</div>
-              </div>
-              <div className="rounded-[1.25rem] border border-white/10 bg-white/8 p-4 backdrop-blur-xl">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/50">Wellbeing Score</div>
-                <div className="mt-1 text-2xl font-black tracking-tight">{w.toFixed(2)}</div>
-                <div className="text-sm text-white/60">normalized to 1.0 max</div>
-              </div>
-            </div>
-          </div>
+          <h1 className="text-4xl font-black tracking-tight md:text-5xl">Individual Well-being</h1>
         </div>
 
-        <div className="space-y-4">
-          <div className="grid gap-4 lg:grid-cols-[1fr_0.9fr]">
-            <div className="space-y-4">
-              <Battery level={battery} />
-              <FaceAvatar state={state} />
-            </div>
-            <div className="rounded-[1.5rem] border border-white/10 bg-white/8 p-5 text-white shadow-[0_20px_60px_rgba(0,0,0,0.16)] backdrop-blur-xl">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/55">
-                <BadgeInfo className="h-4 w-4" />
-                Run status
-              </div>
-              <div className="mt-4 space-y-3 text-sm text-white/72 leading-relaxed">
-                <div className="flex items-start gap-3"><Sparkles className="mt-0.5 h-4 w-4 text-amber-300" />The current run can move both above and below the 700 anchor.</div>
-                <div className="flex items-start gap-3"><Bolt className="mt-0.5 h-4 w-4 text-cyan-300" />Use the scene sliders like intensity dials: left drains, right restores.</div>
-              </div>
-            </div>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="min-w-[240px]">
+            <Battery level={battery} />
+          </div>
+          <div className="min-w-[240px]">
+            <FaceAvatar state={state} />
           </div>
         </div>
       </div>

@@ -10,6 +10,41 @@ import { Footer } from "@/components/Footer";
 import { dhurandharHomeData } from "@/data/dhurandhar";
 import { cn } from "@/lib/utils";
 
+const perspectivesNav = [
+  { id: "macro", name: "Macro", path: "/macro" },
+  { id: "micro", name: "Micro", path: "/micro" },
+  { id: "community", name: "Community", path: "/community" },
+  { id: "individual", name: "Individual", path: "/individual" },
+  { id: "faq", name: "FAQ", path: "/faq" },
+];
+
+function NavigationBar() {
+  return (
+    <motion.div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.3 }}>
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
+              <Landmark className="h-4 w-4 mr-2" />Home
+            </Button>
+          </Link>
+          <div className="h-4 w-px bg-gray-300" />
+          <div className="flex items-center gap-2">
+            {perspectivesNav.map((p) => (
+              <Link key={p.id} href={p.path}>
+                <Button variant="ghost" size="sm" className="text-xs px-3 py-1 text-gray-600 hover:text-gray-900">
+                  {p.name}
+                </Button>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="text-sm text-gray-500">Dhurandhar / Economics of a Movie</div>
+      </div>
+    </motion.div>
+  );
+}
+
 const perspectives = [
   {
     id: "macro",
@@ -48,6 +83,7 @@ export default function HomePage() {
 
   return (
   <div className="min-h-screen bg-white text-black px-3 py-4 lg:py-6 overflow-hidden">
+  <NavigationBar />
       {/* Background pattern - subtle */}
   <div className="fixed inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -57,7 +93,7 @@ export default function HomePage() {
         }} />
       </div>
 
-  <div className="mx-auto w-full max-w-none space-y-6 lg:space-y-8 relative z-10 px-0 lg:px-4 xl:px-6">
+  <div className="mx-auto w-full max-w-none space-y-6 lg:space-y-8 relative z-10 px-0 lg:px-4 xl:px-6 pt-16">
         {/* Hero Section */}
         <motion.div
           className="space-y-4 text-center"

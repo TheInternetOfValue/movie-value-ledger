@@ -234,13 +234,13 @@ function Footer() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-sm text-gray-500",
                         children: [
-                            "Built by ",
+                            "Buily by ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: "https://author.theinternetofvalue.xyz/",
+                                href: "https://www.linkedin.com/in/mosessampaul/",
                                 target: "_blank",
                                 rel: "noopener noreferrer",
                                 className: "hover:text-gray-700",
-                                children: "Moses Sampaul"
+                                children: "Moses Sam Paul"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Footer.tsx",
                                 lineNumber: 15,
@@ -491,19 +491,19 @@ const faqSections = [
         questions: [
             {
                 q: "What is the fundamental premise of this app?",
-                a: "This app treats movie experiences as economic and wellbeing events using [the Internet of Value](https://theinternetofvalue.xyz/) (IoV) protocol. It quantifies both monetary costs and wellbeing-adjusted value to determine if a movie experience creates net positive impact."
+                a: "This app treats a movie experience as both an economic event and a wellbeing event. It pairs time, money, and audience impact with the Internet of Value (IoV) wellbeing model so the result is easier to compare across macro, micro, community, and individual lenses."
             },
             {
                 q: "Why use wellbeing as a currency alongside money?",
-                a: "Traditional economics only counts monetary transactions, but wellbeing represents the human experience. The IoV protocol models wellbeing as a state updated by value capture, wellbeing protocols, and commons. Movies can enhance or drain wellbeing, which should factor into their true value."
+                a: "Money shows cost. Wellbeing shows lived impact. Using both gives a more complete picture of whether the film created value, drained value, or simply shifted value from one place to another."
             },
             {
                 q: "What's the baseline wellbeing assumption?",
-                a: "The app assumes a baseline wellbeing of 700/1000 (W=0.7) for normal life. This represents 'neutral' wellbeing - not ecstatic, but not suffering. Any movie that improves wellbeing above this creates positive delta value."
+                a: "The app starts from a 700/1000 wellbeing baseline, or W = 0.7. That is the neutral reference point used to compare the live run against normal life outside the movie."
             },
             {
                 q: "How does the app handle negative wellbeing impacts?",
-                a: "Using signed sliders: left side drains wellbeing (negative impact), right side restores it (positive impact). For example, 'sat for too long' (physiology drain) vs 'danced and enjoyed' (physiology boost)."
+                a: "Each slider is signed. Left means drain, right means restore. That lets the page capture both kinds of response without pretending every movie effect is positive."
             }
         ]
     },
@@ -517,27 +517,27 @@ const faqSections = [
         questions: [
             {
                 q: "Does a single movie really have its own GDP?",
-                a: "⚠️ LOGICAL FLAG: No, GDP measures an entire economy's output. A movie contributes to GDP but doesn't have its own. This is a conceptual metaphor - treating the movie's economic ripple effects as a 'mini-economy' for educational purposes."
+                a: "A movie does not have its own GDP in the strict national-accounting sense. The page uses GDP language as a public-facing shorthand for the economic ripple effect around the film: spending, earnings, circulation, and spillovers."
             },
             {
                 q: "Why show three GDP approaches (Expenditure, Income, Velocity)?",
-                a: "These are the three standard ways economists measure GDP. Expenditure shows demand-side spending, Income shows supply-side earnings distribution, Velocity shows money circulation speed. Applied to movies, it demonstrates how one film creates economic activity across multiple dimensions."
+                a: "They are three different ways to frame the same economic story. Expenditure shows what gets spent, income shows who receives it, and velocity shows how quickly money moves through the film ecosystem."
             },
             {
                 q: "What are realistic GDP contribution numbers for a Bollywood blockbuster?",
-                a: "A major Bollywood film might contribute ₹500-2000 Cr to Indian GDP through: ₹300-800 Cr theatrical revenue, ₹200-500 Cr merchandise/food, ₹100-300 Cr production wages, ₹50-200 Cr overseas earnings. The app's sliders allow exploration of these components."
+                a: "The exact number depends on scale, release pattern, and monetisation windows. The app keeps the page conversational and lets the supporting reference page carry the detailed assumptions."
             },
             {
                 q: "How does movie GDP relate to national economic indicators?",
-                a: "Movies contribute to GDP growth, employment, and exports. India's film industry employs ~6 million people and contributes ~1.3% to GDP. During economic slowdowns, entertainment spending often remains resilient as 'aspirational consumption'."
+                a: "The film economy touches jobs, consumption, taxes, exports, and local business activity. The macro page is designed to show those channels without overloading the public page with dense econometrics."
             },
             {
                 q: "What's the velocity concept applied to movies?",
-                a: "Money velocity measures how often currency circulates. For movies: same ₹100 ticket might pay actor wages → producer profits → crew salaries → local spending → repeat. Higher velocity means more economic activity from the same money supply."
+                a: "Velocity is a way of describing how far one rupee travels after a ticket, payment, or contract enters the movie system. If the same money moves through more hands, the circulation effect is stronger."
             },
             {
                 q: "Why are the income distribution percentages fixed (40% wages, 35% profits, etc.)?",
-                a: "These represent typical economic distribution in capitalist systems. In reality, these vary by industry and regulation. The app uses these as educational baselines to show how movie revenues flow through different economic actors."
+                a: "They are presentation baselines, not universal constants. The percentages help the page stay readable and show how revenue is split across roles, while the reference page holds the fuller context."
             }
         ]
     },
@@ -551,23 +551,23 @@ const faqSections = [
         questions: [
             {
                 q: "What are realistic cost breakdowns for Indian movies?",
-                a: "Typical Bollywood budget: 30-40% actors, 15-20% director/creative, 5-10% music, 15-20% below-the-line (crew/tech), 20-30% P&A (marketing), 5-10% financing. Total budgets range ₹50-500 Cr depending on scale."
+                a: "Film budgets usually split across talent, creative, production, marketing, and financing. The exact mix changes by scale and genre, so the page keeps the public summary compact and uses the reference page for the detailed breakdown."
             },
             {
                 q: "How accurate are the ROI calculations?",
-                a: "The basic ROI formula (profit/cost × 100) is correct, but real movie ROI is complex. Many films lose money initially but profit through OTT, international sales, and merchandise. The app shows simplified immediate ROI."
+                a: "They are intentionally simplified. The app is meant to make the logic visible rather than replace a full studio finance model."
             },
             {
                 q: "Why separate theatrical, overseas, and OTT revenue?",
-                a: "These represent different revenue windows with different economics: Theatrical (high upfront costs, shared with theaters), Overseas (currency exchange, cultural adaptation), OTT (subscription/streaming revenue, global reach)."
+                a: "Each window behaves differently. Theatrical, overseas, and OTT have different costs, timing, and upside, so separating them makes the micro story easier to understand."
             },
             {
                 q: "What do the income share sliders represent?",
-                a: "They show how total revenue gets distributed: Wages to cast/crew, Profits to producers/studios, Interest to lenders, Royalties to rights holders. In reality, this distribution varies widely by contract and bargaining power."
+                a: "They show how revenue is divided between cast and crew, producers, lenders, and rights holders. They are a simplified visual layer over a more detailed financial picture."
             },
             {
                 q: "How does movie financing work in practice?",
-                a: "Movies often use mixed financing: Producer equity, bank loans, private equity, pre-sales, and sometimes government subsidies. The financing cost in the app represents interest payments on borrowed capital."
+                a: "Most film projects use a mix of equity, loans, pre-sales, and rights deals. The app condenses that into a clear cost model so the public page stays readable."
             }
         ]
     },
@@ -581,27 +581,27 @@ const faqSections = [
         questions: [
             {
                 q: "How can you quantify 'cultural impact' numerically?",
-                a: "⚠️ LOGICAL FLAG: Cultural impact is inherently qualitative and subjective. The app attempts quantification through proxies: attention hours (social media buzz), identity scores (cultural belonging), and social value calculations. This is more art than science."
+                a: "By using proxies. Attention hours, identity resonance, and social circulation are not perfect measures, but they make the conversation visible and comparable across projects."
             },
             {
                 q: "What are 'audience hours' measuring?",
-                a: "Total time spent engaging with the movie across platforms: watching trailers, reading reviews, discussing with friends, sharing on social media. One viral movie might generate millions of audience hours vs. thousands for a flop."
+                a: "They measure the total time people spend with the film across trailers, discussion, reviews, clips, and social sharing. It is a useful way to show how a title travels beyond the theatre itself."
             },
             {
                 q: "How is the attention multiplier calculated?",
-                a: "Total audience hours ÷ labor hours invested. If 1000 labor hours create 1 million audience hours, multiplier = 1000x. This shows amplification effect - how much attention the movie generates per unit of creative effort."
+                a: "It compares audience time with the labour time that went into making and releasing the film. A higher multiplier means stronger amplification from the same creative effort."
             },
             {
                 q: "What do the identity sliders measure?",
-                a: "Cultural belonging across dimensions: Global (diaspora recognition), National (shared symbols), Regional (local language/place), Linguistic (dialect pride). High scores suggest the movie strengthens community identity."
+                a: "They represent how strongly the film lands across cultural layers such as national recognition, regional pride, language, and diaspora reach."
             },
             {
                 q: "Is the social value formula meaningful?",
-                a: "Social value = (audience hours ÷ 100,000 × 12) + (community score × 8). This is an arbitrary formula created for the app. In reality, social impact measurement is controversial and no standard formula exists."
+                a: "It is a deliberately simple model for the app, not a universal standard. Its job is to give the public page a clear, readable signal, while the reference page explains the assumptions."
             },
             {
                 q: "How does movie marketing create 'signal chains'?",
-                a: "Signal chain: Individual creation → Team production → Marketing pulse → Theatrical release → Cultural amplification. Each step builds on the previous, creating compounding attention and meaning."
+                a: "Marketing creates a signal chain by moving the film from production to awareness to conversation to cultural amplification. Each step builds on the last."
             }
         ]
     },
@@ -756,7 +756,7 @@ function FAQPage() {
                                         y: 0
                                     },
                                     transition: {
-                                        delay: sectionIndex * 0.1
+                                        delay: sectionIndex * 0.08
                                     },
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                                         className: `border-2 ${section.borderColor} ${section.bgColor}`,
@@ -764,86 +764,108 @@ function FAQPage() {
                                             className: "p-6 md:p-8",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center gap-3 mb-6",
+                                                    className: "mb-6 flex items-center gap-3",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: `p-2 rounded-lg ${section.color} bg-white shadow-sm`,
+                                                            className: `rounded-2xl bg-white/75 p-3 ${section.color}`,
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(IconComponent, {
                                                                 className: "h-6 w-6"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/faq/page.tsx",
-                                                                lineNumber: 331,
+                                                                lineNumber: 326,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/faq/page.tsx",
-                                                            lineNumber: 330,
+                                                            lineNumber: 325,
                                                             columnNumber: 25
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                                            className: "text-2xl font-bold text-gray-900",
-                                                            children: section.title
-                                                        }, void 0, false, {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                                    className: "text-2xl font-bold text-gray-900",
+                                                                    children: section.title
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/faq/page.tsx",
+                                                                    lineNumber: 329,
+                                                                    columnNumber: 27
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                    className: "text-sm text-gray-600",
+                                                                    children: "Clear answers, with the fuller reference kept on the route pages."
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/faq/page.tsx",
+                                                                    lineNumber: 330,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
                                                             fileName: "[project]/src/app/faq/page.tsx",
-                                                            lineNumber: 333,
+                                                            lineNumber: 328,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/faq/page.tsx",
-                                                    lineNumber: 329,
+                                                    lineNumber: 324,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "space-y-4",
                                                     children: section.questions.map((faq, faqIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "border-l-4 border-gray-200 pl-4",
+                                                            className: "rounded-2xl border border-white/70 bg-white/85 p-5 shadow-sm",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                    className: "font-semibold text-gray-900 mb-2 flex items-start gap-2",
+                                                                    className: "mb-2 flex items-start gap-2 font-semibold text-gray-900",
                                                                     children: [
-                                                                        faq.q.includes('⚠️ LOGICAL FLAG') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__["AlertTriangle"], {
-                                                                            className: "h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0"
+                                                                        faq.q.includes("⚠️") && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__["AlertTriangle"], {
+                                                                            className: "mt-0.5 h-5 w-5 flex-shrink-0 text-amber-500"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/faq/page.tsx",
-                                                                            lineNumber: 341,
-                                                                            columnNumber: 33
+                                                                            lineNumber: 338,
+                                                                            columnNumber: 56
                                                                         }, this),
-                                                                        faq.q
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            children: faq.q
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/src/app/faq/page.tsx",
+                                                                            lineNumber: 339,
+                                                                            columnNumber: 31
+                                                                        }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/faq/page.tsx",
-                                                                    lineNumber: 339,
+                                                                    lineNumber: 337,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                    className: "text-gray-700 leading-relaxed",
+                                                                    className: "leading-relaxed text-gray-700",
                                                                     children: faq.a
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/faq/page.tsx",
-                                                                    lineNumber: 345,
+                                                                    lineNumber: 341,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, faqIndex, true, {
                                                             fileName: "[project]/src/app/faq/page.tsx",
-                                                            lineNumber: 338,
+                                                            lineNumber: 336,
                                                             columnNumber: 27
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/faq/page.tsx",
-                                                    lineNumber: 336,
+                                                    lineNumber: 334,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/faq/page.tsx",
-                                            lineNumber: 328,
+                                            lineNumber: 323,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/faq/page.tsx",
-                                        lineNumber: 327,
+                                        lineNumber: 322,
                                         columnNumber: 19
                                     }, this)
                                 }, section.id, false, {
@@ -874,7 +896,7 @@ function FAQPage() {
                                     children: "Have more questions? The methodology combines economics, wellbeing science, and IoV protocol design."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/faq/page.tsx",
-                                    lineNumber: 362,
+                                    lineNumber: 358,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -888,12 +910,12 @@ function FAQPage() {
                                                 children: "About the Project"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/faq/page.tsx",
-                                                lineNumber: 367,
+                                                lineNumber: 363,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/faq/page.tsx",
-                                            lineNumber: 366,
+                                            lineNumber: 362,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -904,24 +926,24 @@ function FAQPage() {
                                                 children: "Technical Whitepaper"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/faq/page.tsx",
-                                                lineNumber: 372,
+                                                lineNumber: 368,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/faq/page.tsx",
-                                            lineNumber: 371,
+                                            lineNumber: 367,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/faq/page.tsx",
-                                    lineNumber: 365,
+                                    lineNumber: 361,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/faq/page.tsx",
-                            lineNumber: 356,
+                            lineNumber: 352,
                             columnNumber: 11
                         }, this)
                     ]
@@ -937,7 +959,7 @@ function FAQPage() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Footer"], {}, void 0, false, {
                 fileName: "[project]/src/app/faq/page.tsx",
-                lineNumber: 380,
+                lineNumber: 376,
                 columnNumber: 7
             }, this)
         ]

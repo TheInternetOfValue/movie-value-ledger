@@ -81,10 +81,10 @@ export default function CommunityPage() {
 	];
 
 	return (
-		<div className="min-h-screen bg-white text-black">
+		<div className="min-h-screen bg-white text-black overflow-x-hidden">
 			<NavigationBar currentPage="community" />
-			<div className="pt-20 px-4 py-8">
-				<div className="mx-auto max-w-5xl space-y-8">
+			<div className="pt-20 px-0 sm:px-4 py-8">
+				<div className="mx-auto w-full max-w-5xl space-y-8 px-0 sm:px-0">
 					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
 						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">Community level</div>
 						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Community Impact</h1>
