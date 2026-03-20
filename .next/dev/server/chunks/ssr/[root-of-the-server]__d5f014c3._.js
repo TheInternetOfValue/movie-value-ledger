@@ -11,7 +11,7 @@ __turbopack_context__.n(__turbopack_context__.i("[project]/src/app/layout.tsx [a
 }),
 "[project]/src/app/macro/page.tsx [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-const e = new Error("Could not parse module '[project]/src/app/macro/page.tsx'\n\nUnterminated regexp literal");
+const e = new Error("Could not parse module '[project]/src/app/macro/page.tsx'\n\nExpected '</', got 'jsx text'");
 e.code = 'MODULE_UNPARSABLE';
 throw e;
 }),

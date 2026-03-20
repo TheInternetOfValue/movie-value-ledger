@@ -1,0 +1,864 @@
+Yes. I’d push back hard.
+
+If someone showed me the earlier version where the **income account was created by taking the expenditure total and then slicing percentages off it until it matched**, I would not take it seriously as economics. I’d treat it as a presentation mockup, not an accounting model.
+
+That is **not** how real GDP is compiled.
+
+Real national accounts do this in three different ways:
+
+* **production/output approach**
+* **expenditure approach**
+* **income approach**
+
+They are built from **different source systems**, then reconciled. They do **not** start with one final number and reverse-engineer the others to match. In practice there is often a **statistical discrepancy** because the data sources do not line up perfectly.
+
+For your movie model, that means:
+
+* **Expenditure** should be estimated from demand and spending flows.
+* **Income** should be estimated independently from who got paid and who captured surplus.
+* **Velocity** is **not** a third GDP identity. It is a circulation lens. Useful, but not a formal accounting equal to the first two.
+
+So no, I would **not** agree with the earlier exact-equality construction. I’d laugh a little, then fix it.
+
+---
+
+# The correct way to think about your three lenses
+
+## 1) Expenditure lens
+
+This is the demand-side identity:
+
+[
+GDP_{movie}^{(E)} = C + I + G + (X - M)
+]
+
+For a film franchise:
+
+[
+C = C_{tickets} + C_{concessions} + C_{adjacent}
+]
+
+[
+I = I_{production} + I_{P&A} + I_{distribution}
+]
+
+[
+G = G_{rebates} + G_{subsidies} + G_{public\ support}
+]
+
+[
+X = X_{overseas\ theatrical} + X_{foreign\ rights}
+]
+
+[
+M = M_{imported\ equipment} + M_{foreign\ services} + M_{foreign\ labor}
+]
+
+This is the **main headline number**.
+
+---
+
+## 2) Income lens
+
+This should be built independently:
+
+[
+GDP_{movie}^{(Y)} = W + OS + MI + (T - S)
+]
+
+Where:
+
+* (W) = compensation of employees
+* (OS) = operating surplus
+* (MI) = mixed income / rents / finance-type income
+* (T - S) = taxes less subsidies on production/products
+
+For a movie-friendly decomposition:
+
+[
+GDP_{movie}^{(Y)} =
+W_{production}
+
+* W_{exhibition}
+* OS_{producers/distributors}
+* OS_{exhibitors/local\ services}
+* MI_{rights/finance/rent}
+* (T-S)
+  ]
+
+That is a real income-side structure.
+
+---
+
+## 3) Velocity / flow lens
+
+This is **not** a third GDP identity.
+
+At movie level, it is a **circulation / multiplier lens**:
+
+[
+V_{secondary} = J_{local} \times (k - 1)
+]
+
+Where:
+
+* (J_{local}) = local initial injection
+* (k) = local circulation multiplier
+
+This tells you:
+
+* how much local money got re-spent,
+* how sticky the movie’s economic impulse was,
+* how wide the downstream footprint became.
+
+It does **not** replace the expenditure or income identities.
+
+---
+
+# Step 1: Base data for Dhurandhar aggregate
+
+I’m going to use the uploaded anchor numbers for Part 1 and Part 2, but I am **not** going to let the file think for me. I’m using it only for anchor points: Part 1 around ₹1,350–1,355 crore worldwide, total cost roughly ₹250–280 crore, non-theatrical roughly ₹130–140 crore; Part 2 early gross roughly ₹159–160 crore, total cost roughly ₹200–280 crore, and non-theatrical roughly ₹245 crore. 
+
+## Chosen base assumptions
+
+### Part 1 anchors
+
+* Worldwide gross: **₹1,353 crore**
+* India gross: **₹1,058 crore**
+* Overseas gross: **₹295 crore**
+* Total cost incl. P&A: **₹265 crore**
+* Non-theatrical rights: **₹135 crore**
+
+### Part 2 anchors
+
+You asked to assume:
+
+[
+WW_{P2} = 1.5 \times WW_{P1}
+]
+
+So:
+
+[
+WW_{P2} = 1.5 \times 1353 = 2029.5
+]
+
+Now here is the first place I’m pushing back on lazy modelling:
+
+Using the **opening-week overseas share** for Part 2 to project the final split is dumb. Early overseas often lags or reports slower. So I am **not** using the early 22/160 mix blindly.
+
+Instead I choose a **base overseas share for Part 2 = 18%** of worldwide gross.
+That is between:
+
+* Part 1’s overseas share of about 22%
+* Part 2’s noisy early lower share
+
+So:
+
+[
+Overseas_{P2} = 2029.5 \times 0.18 = 365.31
+]
+
+[
+IndiaGross_{P2} = 2029.5 - 365.31 = 1664.19
+]
+
+For all-in cost:
+
+* Total cost incl. P&A: **₹240 crore**
+* Non-theatrical rights: **₹245 crore**
+
+---
+
+# Step 2: Aggregate franchise totals
+
+| Variable              |  Part 1 |  Part 2 |   Aggregate |
+| --------------------- | ------: | ------: | ----------: |
+| Worldwide gross       | 1353.00 | 2029.50 | **3382.50** |
+| India gross           | 1058.00 | 1664.19 | **2722.19** |
+| Overseas gross        |  295.00 |  365.31 |  **660.31** |
+| Total cost incl. P&A  |  265.00 |  240.00 |  **505.00** |
+| Non-theatrical rights |  135.00 |  245.00 |  **380.00** |
+
+To convert India gross to India net, use Part 1 and early Part 2 observed net/gross behavior, which is both around the mid-80s. I use:
+
+[
+\text{India net ratio} = 0.845
+]
+
+[
+IndiaNet_{agg} = 2722.19 \times 0.845 = 2300.25
+]
+
+So:
+
+* **Aggregate India net = ₹2,300.25 crore**
+
+---
+
+# Step 3: Expenditure account, done properly
+
+## Formula
+
+[
+GDP_{movie}^{(E)} = C + I + G + (X - M)
+]
+
+## 3A. Consumption (C)
+
+### Tickets
+
+For expenditure at market prices, use purchaser spend:
+
+[
+C_{tickets} = IndiaGross_{agg} = 2722.19
+]
+
+### Concessions
+
+Assume theatre concessions and related in-cinema spend are:
+
+[
+r_{conc} = 27% \text{ of India gross}
+]
+
+[
+C_{concessions} = 2722.19 \times 0.27 = 734.99
+]
+
+### Adjacent audience spend
+
+Nearby food, parking, local transport, fan events, small merch impulse. Use:
+
+[
+r_{adj} = 4% \text{ of India gross}
+]
+
+[
+C_{adjacent} = 2722.19 \times 0.04 = 108.89
+]
+
+So total consumption:
+
+[
+C = 2722.19 + 734.99 + 108.89 = 3566.07
+]
+
+---
+
+## 3B. Investment (I)
+
+Use all-in franchise cost:
+
+[
+I = 505.00
+]
+
+Break it:
+
+[
+I_{production} = 78% \times 505 = 393.90
+]
+
+[
+I_{P&A} = 18% \times 505 = 90.90
+]
+
+[
+I_{distribution} = 4% \times 505 = 20.20
+]
+
+Check:
+
+[
+393.90 + 90.90 + 20.20 = 505.00
+]
+
+---
+
+## 3C. Government (G)
+
+You were right. Zeroing this out invites a critique.
+
+For a large domestic franchise shot across jurisdictions, even if public data is patchy, it is reasonable to assume some combination of:
+
+* state filming concessions,
+* location rebates,
+* fee waivers,
+* tourism-linked facilitation,
+* administrative support.
+
+Use a **conservative guesstimate**:
+
+[
+G = 1.5% \times I
+]
+
+[
+G = 0.015 \times 505 = 7.58
+]
+
+So:
+
+* **Government-linked support = ₹7.58 crore**
+
+---
+
+## 3D. Exports (X)
+
+### Overseas theatrical
+
+[
+X_{overseas\ theatrical} = 660.31
+]
+
+### Foreign share of rights
+
+Not all rights are export revenue. Some are domestic. Assume:
+
+[
+r_{foreign\ rights} = 20%
+]
+
+[
+X_{foreign\ rights} = 380 \times 0.20 = 76.00
+]
+
+So:
+
+[
+X = 660.31 + 76.00 = 736.31
+]
+
+---
+
+## 3E. Imports (M)
+
+Again, this must be explicit.
+
+Assume:
+
+* imported production inputs = 8% of production spend
+* imported marketing/distribution services = 10% of P&A + distribution spend
+
+### Production imports
+
+[
+M_{prod} = 0.08 \times 393.90 = 31.51
+]
+
+### Marketing/distribution imports
+
+[
+M_{mkt/dist} = 0.10 \times (90.90 + 20.20) = 11.11
+]
+
+So total imports:
+
+[
+M = 31.51 + 11.11 = 42.62
+]
+
+---
+
+## 3F. Final expenditure result
+
+[
+GDP_{movie}^{(E)} = 3566.07 + 505.00 + 7.58 + (736.31 - 42.62)
+]
+
+[
+GDP_{movie}^{(E)} = 3566.07 + 505.00 + 7.58 + 693.69
+]
+
+[
+GDP_{movie}^{(E)} = 4772.34
+]
+
+## Expenditure headline
+
+[
+\boxed{GDP_{movie}^{(E)} = ₹4,772.34 \text{ crore}}
+]
+
+That is your **direct GDP-style economic footprint**.
+
+---
+
+# Step 4: Income account, independently estimated
+
+Now we do it **without** taking ₹4,772 and slicing it like a birthday cake.
+
+## Formula
+
+[
+GDP_{movie}^{(Y)} = W + OS + MI + (T-S)
+]
+
+I’ll estimate each block from the franchise structure, not from the final expenditure result.
+
+---
+
+## 4A. Compensation of employees (W)
+
+This includes:
+
+* cast
+* crew
+* post-production staff
+* marketing labour
+* exhibition staff attributable to the run
+* related local service labour
+
+### Production-side labour
+
+Assume labour share of all-in franchise cost:
+
+[
+W_{production} = 42% \times 505 = 212.10
+]
+
+### Exhibition + concession + local service labour
+
+This should be estimated from the downstream consumer activity, not from budget.
+
+Assume labour share on:
+
+* concessions
+* adjacent spend
+* exhibitor-side theatre operations attributable to the run
+
+Use:
+
+* 14% of ticket gross as exhibitor/service labour attributable to the film
+* 18% of concessions
+* 22% of adjacent spend
+
+So:
+
+[
+W_{tickets,service} = 0.14 \times 2722.19 = 381.11
+]
+
+[
+W_{conc} = 0.18 \times 734.99 = 132.30
+]
+
+[
+W_{adj} = 0.22 \times 108.89 = 23.96
+]
+
+Thus total labour compensation:
+
+[
+W = 212.10 + 381.11 + 132.30 + 23.96
+]
+
+[
+W = 749.47
+]
+
+---
+
+## 4B. Taxes less subsidies ((T-S))
+
+This should also be estimated independently.
+
+### Ticket-side net product tax
+
+Use effective tax rate on tickets:
+
+[
+\tau_{tickets} = 12%
+]
+
+[
+T_{tickets} = 0.12 \times 2722.19 = 326.66
+]
+
+### Concession taxes
+
+[
+\tau_{conc} = 18%
+]
+
+[
+T_{conc} = 0.18 \times 734.99 = 132.30
+]
+
+### Other fees / permits
+
+Assume:
+
+[
+T_{other} = 6.00
+]
+
+### Less subsidy
+
+[
+S = G = 7.58
+]
+
+So:
+
+[
+(T-S) = 326.66 + 132.30 + 6.00 - 7.58 = 457.38
+]
+
+---
+
+## 4C. Mixed income / rents / finance (MI)
+
+This includes:
+
+* equipment rentals
+* location rents
+* financing margin
+* royalty-linked smaller rights flows
+* lending / leasing income
+
+Estimate from cost structure and rights flows.
+
+### Rent + finance on cost side
+
+[
+MI_{costside} = 12% \times 505 = 60.60
+]
+
+### Rights-linked mixed income
+
+Assume 25% of total rights package accrues as royalty / finance / licensing income rather than corporate surplus:
+
+[
+MI_{rights} = 0.25 \times 380 = 95.00
+]
+
+So:
+
+[
+MI = 60.60 + 95.00 = 155.60
+]
+
+---
+
+## 4D. Operating surplus (OS)
+
+Now estimate from actual channels, independently.
+
+### Producer/distributor surplus
+
+Start with franchise cash-in side:
+
+* India net = 2300.25
+* assume producer/distributor share of India net:
+
+[
+r_{pd,India} = 50.5%
+]
+
+[
+PD_{India} = 0.505 \times 2300.25 = 1161.63
+]
+
+* overseas realization rate:
+
+[
+r_{pd,Overseas} = 42%
+]
+
+[
+PD_{Overseas} = 0.42 \times 660.31 = 277.33
+]
+
+* rights inflow:
+  [
+  PD_{Rights} = 380.00
+  ]
+
+So total producer/distributor inflow:
+
+[
+PD_{gross} = 1161.63 + 277.33 + 380.00 = 1818.96
+]
+
+Now strip out production labour and cost-side mixed income already counted:
+
+[
+OS_{prod/dist} = 1818.96 - 212.10 - 60.60 = 1546.26
+]
+
+### Exhibitor/local-service surplus
+
+This should come from ticket-side exhibitor share plus concession and adjacent margin.
+
+India-side exhibitor share:
+
+[
+r_{exh} = 49.5%
+]
+
+[
+ExhibitorShare = 0.495 \times 2300.25 = 1138.62
+]
+
+Now remove labour already counted on that side:
+
+[
+OS_{exhibition/local} =
+1138.62 + 734.99 + 108.89 - 381.11 - 132.30 - 23.96
+]
+
+[
+OS_{exhibition/local} = 1445.13
+]
+
+So total operating surplus:
+
+[
+OS = 1546.26 + 1445.13 = 2991.39
+]
+
+---
+
+## 4E. Final income result
+
+[
+GDP_{movie}^{(Y)} = W + OS + MI + (T-S)
+]
+
+[
+GDP_{movie}^{(Y)} = 749.47 + 2991.39 + 155.60 + 457.38
+]
+
+[
+GDP_{movie}^{(Y)} = 4353.84
+]
+
+## Income headline
+
+[
+\boxed{GDP_{movie}^{(Y)} = ₹4,353.84 \text{ crore}}
+]
+
+That is **independently estimated**.
+
+And notice what happened: it does **not** exactly match expenditure. Good. That is actually more believable.
+
+---
+
+# Step 5: What the gap means
+
+We now have:
+
+[
+GDP_{movie}^{(E)} = 4772.34
+]
+
+[
+GDP_{movie}^{(Y)} = 4353.84
+]
+
+Difference:
+
+[
+\Delta = 4772.34 - 4353.84 = 418.50
+]
+
+Gap as % of expenditure estimate:
+
+[
+\frac{418.50}{4772.34} = 8.77%
+]
+
+That is your **statistical discrepancy / model discrepancy**.
+
+And honestly? For a public-data reconstruction of a movie franchise, an 8% to 10% gap is not embarrassing. It’s actually sane.
+
+The right final reporting move is:
+
+* use **Expenditure** as the primary headline
+* show **Income** as the reconciliation check
+* show a **discrepancy band**
+* say why it exists
+
+---
+
+# Step 6: Velocity lens, properly separated
+
+Again:
+
+[
+V_{secondary} = J_{local} \times (k - 1)
+]
+
+## Initial local injection
+
+Use local spend generated by the production impulse:
+
+[
+J_{local} = I + G - M
+]
+
+[
+J_{local} = 505.00 + 7.58 - 42.62 = 469.96
+]
+
+## Multiplier
+
+Use:
+
+[
+k = 1.68
+]
+
+Then:
+
+[
+V_{secondary} = 469.96 \times (1.68 - 1)
+]
+
+[
+V_{secondary} = 469.96 \times 0.68 = 319.57
+]
+
+### Total local circulation
+
+[
+V_{total} = 469.96 \times 1.68 = 789.53
+]
+
+## Velocity headline
+
+[
+\boxed{V_{secondary} = ₹319.57 \text{ crore}}
+]
+
+That is a **secondary spillover estimate**, not GDP itself.
+
+---
+
+# Step 7: Final report table
+
+## A. Variables and assumptions
+
+| Variable              | Meaning                                            |                Base assumption |
+| --------------------- | -------------------------------------------------- | -----------------------------: |
+| (WW_{P1})             | Part 1 worldwide gross                             |                        1353.00 |
+| (WW_{P2})             | Part 2 worldwide gross                             | (1.5 \times WW_{P1}) = 2029.50 |
+| (s_{ov,P2})           | Part 2 overseas share                              |                            18% |
+| (IndiaNetRatio)       | India net / gross                                  |                          84.5% |
+| (r_{conc})            | Concessions as % of India gross                    |                            27% |
+| (r_{adj})             | Adjacent spend as % of India gross                 |                             4% |
+| (G/I)                 | Govt support as % of investment                    |                           1.5% |
+| (r_{foreign\ rights}) | Foreign share of rights                            |                            20% |
+| (m_{prod})            | Imports as % of production                         |                             8% |
+| (m_{mkt})             | Imports as % of P&A + distribution                 |                            10% |
+| (r_{pd,India})        | Producer/distributor share of India net            |                          50.5% |
+| (r_{pd,Overseas})     | Producer/distributor realization of overseas gross |                            42% |
+| (k)                   | Local circulation multiplier                       |                           1.68 |
+
+---
+
+## B. Expenditure account
+
+| Component                 | Formula                                   |       Value |
+| ------------------------- | ----------------------------------------- | ----------: |
+| Tickets                   | (C_{tickets})                             |     2722.19 |
+| Concessions               | (0.27 \times 2722.19)                     |      734.99 |
+| Adjacent spend            | (0.04 \times 2722.19)                     |      108.89 |
+| **Consumption (C)**       | sum above                                 | **3566.07** |
+| Investment (I)            | all-in cost                               |  **505.00** |
+| Government (G)            | (0.015 \times 505)                        |    **7.58** |
+| Exports (X)               | (660.31 + 0.20 \times 380)                |  **736.31** |
+| Imports (M)               | (0.08 \times 393.90 + 0.10 \times 111.10) |   **42.62** |
+| **Expenditure GDP-style** | (C + I + G + (X-M))                       | **4772.34** |
+
+---
+
+## C. Income account
+
+| Component                      | Formula                                               |       Value |
+| ------------------------------ | ----------------------------------------------------- | ----------: |
+| Production labour              | (0.42 \times 505)                                     |      212.10 |
+| Ticket/service labour          | (0.14 \times 2722.19)                                 |      381.11 |
+| Concession labour              | (0.18 \times 734.99)                                  |      132.30 |
+| Adjacent labour                | (0.22 \times 108.89)                                  |       23.96 |
+| **Compensation (W)**           | sum above                                             |  **749.47** |
+| Taxes less subsidies           | (0.12 \times 2722.19 + 0.18 \times 734.99 + 6 - 7.58) |  **457.38** |
+| Mixed income / rents / finance | (0.12 \times 505 + 0.25 \times 380)                   |  **155.60** |
+| Producer/distributor surplus   | (1818.96 - 212.10 - 60.60)                            |     1546.26 |
+| Exhibitor/local surplus        | (1138.62 + 734.99 + 108.89 - 381.11 - 132.30 - 23.96) |     1445.13 |
+| **Operating surplus (OS)**     | sum above                                             | **2991.39** |
+| **Income GDP-style**           | (W + OS + MI + (T-S))                                 | **4353.84** |
+
+---
+
+## D. Velocity account
+
+| Component               | Formula                    |      Value |
+| ----------------------- | -------------------------- | ---------: |
+| Initial local injection | (I + G - M)                |     469.96 |
+| Multiplier              | (k)                        |       1.68 |
+| Secondary spillover     | (469.96 \times (1.68 - 1)) | **319.57** |
+| Total local circulation | (469.96 \times 1.68)       | **789.53** |
+
+---
+
+# Step 8: What I would actually say as an economist
+
+Here’s the blunt version.
+
+## What I agree with
+
+* Your instinct that **expenditure and income should broadly reconcile** is correct.
+* Your instinct that leaving variables blank or zero invites attack is correct.
+* Your instinct that **velocity is not the same kind of identity** is also important. Most people mush it into the rest and make a mess.
+
+## What I would criticize
+
+* Using **early Part 2 overseas share** to project the full run without adjustment.
+* Using **exact equality by construction** between expenditure and income.
+* Treating the **rights package** carelessly between domestic income and export income.
+* Failing to show a **discrepancy line**.
+
+## What I would accept
+
+If you presented this as:
+
+> “Expenditure-based direct footprint: ₹4,772 crore.
+> Independently estimated income-side footprint: ₹4,354 crore.
+> Discrepancy: ₹419 crore, or 8.8%, due to incomplete public information on wage distribution, producer realization, tax treatment, and rights geography.
+> Secondary local spillover: ₹320 crore.”
+
+…that would sound like someone doing serious reconstruction under uncertainty, not someone laundering vibes through LaTeX.
+
+---
+
+# Final headline numbers
+
+**Direct expenditure-based footprint**
+[
+\boxed{₹4,772 \text{ crore}}
+]
+
+**Independent income-side estimate**
+[
+\boxed{₹4,354 \text{ crore}}
+]
+
+**Secondary spillover**
+[
+\boxed{₹320 \text{ crore}}
+]
+
+**Expanded footprint if you choose to add secondary spillover to the expenditure headline**
+[
+4772 + 320 = \boxed{₹5,092 \text{ crore}}
+]
+
+Public-facing rounded version:
+
+* **Direct:** **₹4.8K crore**
+* **Expanded:** **₹5.1K crore**
+

@@ -102,9 +102,19 @@ This measurement gap represents the core problem the Movie-Dhurandhar-TimeValue 
 
 ### GDP as Storytelling: Three Measurement Approaches
 
-The project treats movies as "mini-economies" to demonstrate macroeconomic principles. While a single film doesn't have its own GDP, the economic ripple effects can be analyzed through the three standard GDP measurement frameworks.
+The project treats movies as "mini-economies" to demonstrate macroeconomic principles. A single film does not literally have its own GDP in the national-accounting sense, so this section uses GDP language as an explanatory model for tracing film-related value flow.
+
+There are three useful macro views:
+
+1. **Expenditure view** — who spent money?
+2. **Income view** — who earned the money?
+3. **Flow/velocity view** — how fast value moved through the system and how many times it circulated.
+
+These are not three different truths; they are three lenses on the same economic event. For this project, they help explain how one film can affect theatres, workers, distributors, vendors, government revenue, and the wider economy.
 
 #### 1. Expenditure Approach: C + I + G + (X - M)
+
+This view answers: **what was spent, and by whom?** It estimates the total demand created by the movie ecosystem.
 
 **Consumer Spending (C)**: Direct ticket purchases and related expenditures
 - Theater tickets: Primary revenue stream
@@ -130,6 +140,12 @@ The project treats movies as "mini-economies" to demonstrate macroeconomic princ
 - Import of foreign films and technology
 - Cultural export value
 
+**How to read it in this repo**:
+- Ticketing and concessions are treated as consumption demand.
+- Production and marketing are treated as investment because they create the film output.
+- Subsidies and incentives are treated as government demand.
+- Overseas or import-linked flows are treated as external trade adjustments.
+
 **Real-World Example**: A major Bollywood release like "Dhoom 4" (2026)
 - C: ₹800 Cr theatrical revenue + ₹200 Cr concessions
 - I: ₹150 Cr production budget + ₹50 Cr marketing
@@ -138,6 +154,8 @@ The project treats movies as "mini-economies" to demonstrate macroeconomic princ
 - **Total GDP Contribution**: ₹1,290 Cr
 
 #### 2. Income Approach: Wages + Profits + Interest + Rents
+
+This view answers: **who captured the money once the film activity happened?** It reframes the same movie economy as a distribution of earnings.
 
 **Wage Distribution**: Compensation to creative and technical labor
 - Actor salaries: 20-30% of budget
@@ -162,7 +180,15 @@ The project treats movies as "mini-economies" to demonstrate macroeconomic princ
 - Streaming royalties: Revenue sharing
 - Merchandise licensing
 
+**How to read it in this repo**:
+- Wages show the labour side of value creation.
+- Profits show capital returns and risk compensation.
+- Interest shows the cost of financing.
+- Rents and royalties show continuing monetization of IP after release.
+
 #### 3. Velocity Approach: MV = PQ
+
+This view answers: **how quickly did money and value move through the movie system?** It is a simplified flow model, not a literal claim that the film market equals the whole money supply of an economy.
 
 **Money Supply (M)**: Capital circulating in film economy
 - Production budgets as initial injection
@@ -184,6 +210,21 @@ The project treats movies as "mini-economies" to demonstrate macroeconomic princ
 - Tickets sold
 - Concessions purchased
 - Secondary market transactions
+
+**How to read it in this repo**:
+- A faster circulation rate suggests stronger short-term economic activation.
+- More passes through the chain suggest broader multiplier effects.
+- This is a qualitative or heuristic view unless explicitly backed by external data.
+
+### Why the project groups these as "all 3 accounts"
+
+When this documentation refers to the "three accounts" or "three GDP accounts," it means these three complementary macro accounting lenses:
+
+- **Expenditure account**: spending side of the movie economy
+- **Income account**: earnings side of the movie economy
+- **Flow account**: circulation/velocity side of the movie economy
+
+Together, they provide a rounded explanation of the movie's macroeconomic footprint. In a strict national accounts system, expenditure and income are the standard GDP identities, while the flow lens is a supporting interpretation used to explain speed, circulation, and secondary effects.
 
 ### Economic Multipliers & Ripple Effects
 
@@ -897,6 +938,30 @@ Net Value = Wellbeing Delta - Monetary Cost
 ---
 
 ## Methodological Framework & Assumptions
+
+### Assumptions and Limitations
+
+This project is intentionally explanatory and model-driven. It is useful for comparison and narrative clarity, but it is not a replacement for official statistical classification or audited financial accounts.
+
+**Key assumptions**
+- A movie can be treated as a bounded economic event with measurable inputs and ripple effects.
+- Ticketing, concessions, production spend, and distribution spend can be grouped into simplified macro buckets.
+- Wellbeing can be normalized on a 0–1 scale for comparison.
+- The baseline wellbeing value used in this repo may be presented as `700/1000` in some screens and as `W = 1.0` in canonical documentation, depending on the layer being described.
+- Economic, wellbeing, and community values can be compared on the same conceptual axis after normalization.
+
+**Known limitations**
+- Real GDP is only measured for geographic economies and official accounting periods, not for a single film.
+- The example numbers in this document are illustrative unless a source is explicitly cited.
+- Multipliers, wellbeing scores, and value estimates are heuristic and should not be treated as audited market data.
+- Correlation between movie attendance and wellbeing does not automatically prove causation.
+- The velocity-style account is a simplified teaching lens, not a formal replacement for GDP accounting.
+- Cultural, emotional, and community effects are real but difficult to measure precisely, so they may be under- or over-estimated.
+
+**Interpretation rule**
+- Use this document to understand the model's logic.
+- Use official statistics, financial statements, or survey data when you need external validation.
+- Treat all quantitative examples as representative unless a data source is named.
 
 ### Core Assumptions
 

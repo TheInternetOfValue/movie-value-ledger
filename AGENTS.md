@@ -150,5 +150,12 @@ Movie-Dhurandhar-TimeValue is a Next.js application implementing a cinematic, ga
 ## Boundary Rules
 - Keep AGENTS.md stable and short (commandments + operating rules)
 - Evolve project memory in docs/ or session logs
-- Align with IoV spec repo for protocol decisions</content>
-<parameter name="filePath">/Users/mosessampaul/Documents/TheIOV/Individual Repos/Movie-Dhurandhar-TimeValue/AGENTS.md
+- Align with IoV spec repo for protocol decisions
+
+## Macro Page Design Rule
+- Keep `/macro` and related macro views full-width, single-screen, and no-scroll when possible.
+- Match the cinematic landing-page style: dark background, amber highlights, clean typography, and strong visual hierarchy.
+- Avoid repeating the same number or claim more than once on the same page.
+- On public macro views, show the headline numbers, formulas, and short variable explanations only.
+- Move long derivations, dense math, and reference notes into a separate reference page or doc, and link to it when needed.
+- Use neutral product language. Do not describe a doc "insisting on" anything; treat it as a reference source.

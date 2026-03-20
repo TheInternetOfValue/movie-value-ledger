@@ -71,6 +71,12 @@
       "namedRegex": "^/macro(?:/)?$"
     },
     {
+      "page": "/macro_dhurandhar",
+      "regex": "^/macro_dhurandhar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/macro_dhurandhar(?:/)?$"
+    },
+    {
       "page": "/micro",
       "regex": "^/micro(?:/)?$",
       "routeKeys": {},
