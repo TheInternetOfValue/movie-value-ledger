@@ -131,9 +131,9 @@ export default function MicroPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#f7f4ee] text-slate-900">
+		<div className="min-h-screen bg-[#f7f4ee] text-slate-900 flex flex-col">
 			<NavigationBar currentPage="micro" />
-			<div className="pt-20 px-3 md:px-4 py-3">
+			<div className="pt-20 px-3 md:px-4 py-3 flex-grow">
 				<div className="w-full space-y-4">
 					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
 						<div className="text-sm uppercase tracking-[0.3em] text-orange-500 font-semibold">Micro level</div>

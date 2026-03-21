@@ -1141,9 +1141,9 @@ function HeroPanel({ state, battery }: { state: LedgerState; battery: number }) 
 
 export default function IndividualPage() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.16),transparent_30%),linear-gradient(135deg,#020617 0%,#111827 45%,#0f172a 100%)]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.16),transparent_30%),linear-gradient(135deg,#020617 0%,#111827 45%,#0f172a 100%)] flex flex-col">
       <NavigationBar currentPage="individual" />
-      <main className="px-4 pb-16 pt-24 md:px-6">
+      <main className="px-4 pb-16 pt-24 md:px-6 flex-grow">
         <div className="mx-auto max-w-7xl">
           <StepManager />
         </div>

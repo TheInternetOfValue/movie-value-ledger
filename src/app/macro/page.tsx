@@ -124,9 +124,9 @@ export default function MacroPage() {
 	const goNext = () => setLens(lensOrder[Math.min(lensOrder.length - 1, position + 1)]);
 
 	return (
-		<div className="min-h-screen bg-[#f7f4ee] text-slate-900 overflow-hidden">
+		<div className="min-h-screen bg-[#f7f4ee] text-slate-900 flex flex-col">
 			<NavigationBar currentPage="macro" />
-			<div className="pt-20 px-3 md:px-4 py-3">
+			<div className="pt-20 px-3 md:px-4 py-3 flex-grow">
 				<div className="w-full space-y-4">
 					<motion.div className="w-full rounded-[2.5rem] border border-slate-200 bg-white p-6 md:p-8 shadow-sm" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}>
 						<div className="flex flex-col gap-6">
