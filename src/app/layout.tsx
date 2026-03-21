@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { WellbeingProvider } from "@/lib/wellbeing-context";
+import { WellbeingVignette } from "@/components/wellbeing-vignette";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -74,8 +76,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body>{children}</body>
+    <html lang="en" className={cn("font-sans dark", geist.variable)}>
+      <body className="antialiased dossier-bg min-h-screen text-slate-200 selection:bg-amber-500/30 overflow-x-hidden">
+        <WellbeingProvider>
+          {children}
+          <WellbeingVignette />
+        </WellbeingProvider>
+      </body>
     </html>
   );
 }

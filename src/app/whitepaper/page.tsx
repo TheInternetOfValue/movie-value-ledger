@@ -1,287 +1,254 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import ReactMarkdown from "react-markdown";
+import { motion, AnimatePresence } from "framer-motion";
+import { NavigationBar } from "@/components/NavigationBar";
+import { 
+  BookOpen, 
+  FileText, 
+  ArrowRight, 
+  Layers, 
+  User, 
+  Briefcase, 
+  Globe, 
+  Users,
+  Target,
+  Zap,
+  ChevronRight,
+  ShieldCheck,
+  Search
+} from "lucide-react";
+import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Home, ChevronLeft, ChevronRight, BookOpen, FileText, ArrowRight } from "lucide-react";
-
-const paper = `# **The Movie Value Ledger**
-
-### *A movie-first front end for [the Internet of Value](https://theinternetofvalue.xyz/)*
-
----
-
-## **Abstract**
-
-Modern economic systems are precise at measuring what is easy, and weak at measuring what people actually live through.
-
-They count price, revenue, and volume.
-They rarely capture what a movie does to the body, mood, mind, habits, or future time.
-
-This whitepaper positions the Movie Value Ledger as a **front-end translation layer** for [the Internet of Value](https://theinternetofvalue.xyz/). The app uses the movie-going experience to make the underlying IOV worldview easier to feel, understand, and explore.
-
-The core idea stays simple:
-
-\[
-VC = W \times Vcom
-\]
-
-The product adds a movie-first interface around that truth. It lets people answer relatable questions after a film, while the backend remains grounded in canonical IOV variables and layers.
-
-In the live product, \`W\` is normalized: \`1.0\` is the neutral baseline. Any 700-style framing is legacy presentation language, not the internal model baseline.
-
----
-
-## **1. Why movies**
-
-Movies are a useful starting point because the experience is bounded, emotional, social, and easy to remember.
-
-One film can change how you feel, how you think, what you crave, and what you do next.
-That makes cinema a strong public-facing entry point for [the Internet of Value](https://theinternetofvalue.xyz/).
-
-The aim is not to replace the spec.
-The aim is to make the spec intuitive by wrapping it in a familiar cultural moment.
-
-In India especially, a major release can already move conversation, identity, attention, and opinion at scale. That makes the movie theatre a natural place to show how value actually flows through human life.
-
----
-
-## **2. What the front end is doing**
-
-The app is not trying to sound academic. It is trying to translate the backend into a fun, relatable movie-led experience.
-
-So the front end should ask questions people can actually answer after a screening:
-
-- Did the theatre noise leave your ears ringing?
-- Did your eyes need time to adjust after the dark halls?
-- Did the movie make you want junk food, tea, cigarettes, or a walk?
-- Did you sit tense, still, restless, or energized?
-- Did the film change your mood after the credits?
-- Did it break an old opinion or shift how you think about a person, event, or issue?
-
-Those questions are the presentation layer.
-They map back to the canonical wellbeing and identity structures underneath.
-
----
-
-## **3. System architecture**
-
-The app is organized into four visible lenses:
-
-- **Individual** — personal time, well-being, habit, and performance
-- **Micro** — film as a business investment
-- **Macro** — film as an economic event
-- **Community** — film as attention, identity, and collective feeling
-
-The important point is that the UI can be conversational while the backend remains canonical.
-The user sees plain language.
-The system stores spec-aligned meaning.
-
----
-
-## **4. The individual layer**
-
-The individual layer is where the movie’s effect becomes personal.
-
-The questions should sound like real life, not lab language. The app should check whether the viewer’s body, mood, thinking, habits, and next actions changed after the film.
-
-Model note: the wellbeing readout should stay normalized around \`1.0\` throughout the UI and calculations.
-
-### Recommended question groups
-
-**Physiology**
-- Did the sound design leave your ears ringing?
-- Did your eyes take time to adjust after the dark theatre?
-- Did you sit still, fidget, feel restless, or want to move?
-- Did the film change your breathing pace during tense scenes?
-- Did you want junk food, tea, a cigarette, or a walk afterward?
-
-**Emotion / Feeling**
-- What stayed with you after the credits?
-- Did the movie leave you moved, angry, calm, unsettled, hopeful, or heavy?
-- Did the feeling fade quickly or linger through the day?
-
-**Thought**
-- Did the film break an old opinion?
-- Did it change how you think about India, Pakistan, violence, power, family, or justice?
-- Did it make you trust or doubt a trailer, tweet, review, or celebrity take more than before?
-- Did it shift a decision you were already about to make?
-
-**Habit**
-- Did the movie change what you wanted to do next?
-- Did it make you want to post, talk, share, rewatch, or avoid something?
-- Did it shift your evening routine?
-
-**Performance**
-- Did it affect your focus?
-- Did it energize or drain your work, study, or creative output?
-- Did the rest of your day feel easier or harder?
-
----
-
-## **5. The micro layer**
-
-From the perspective of the firm, a film is a structured deployment of capital under uncertainty.
-
-Costs accumulate across multiple phases: development, production, post-production, and marketing. These are not evenly distributed over time, nor are they easily reversible. Capital is locked into the project long before any revenue signal is observed.
-
-Revenue, in contrast, is highly concentrated. A significant portion of total returns is realized within a narrow temporal window, often during the opening weekend. This creates an asymmetric cash flow profile: prolonged outflows followed by a potentially sharp inflow.
-
-Let total cost be ( C ) and total revenue be ( R ). Profit is trivially ( \Pi = R - C ). What is less trivial is the risk exposure:
-
-[
-	ext{Exposure Ratio} = \frac{C}{\text{Total Capital Base of the Firm}}
-]
-
-A single large-budget film can represent a significant fraction of a firm’s deployable capital. In that sense, films are not just projects; they are **capital concentration events** with nonlinear payoff distributions.
-
-The Movie Value Ledger does not replace traditional financial analysis. It complements it by linking financial outcomes to downstream effects in well-being and attention.
-
----
-
-## **6. The macro layer**
-
-At the macro level, films behave as temporary but dense clusters of economic activity.
-
-Within the standard expenditure framework:
-
-[
-GDP = C + I + G + (X - M)
-]
-
-films contribute across multiple components. Consumer spending includes ticket purchases and related expenditures. Investment includes production budgets and infrastructure. Government participation may appear through subsidies and regulatory support. Exports arise from international distribution, while imports capture foreign technology and services.
-
-However, GDP does not distinguish between value that enhances future productive capacity and value that degrades it. A film that generates high revenue but leaves a population cognitively fatigued is indistinguishable, in GDP terms, from one that enhances motivation and clarity.
-
-The Movie Value Ledger adds the missing human-state lens: what the experience did to people before, during, and after the transaction.
-
----
-
-## **7. The community layer**
-
-The community layer looks at how a film spreads across people and groups.
-
-That includes:
-
-- shared excitement
-- fan reaction
-- hashtag momentum
-- language and region-based identity
-- collective pride
-- cultural tension
-
-This is where the movie becomes more than a ticket. It becomes a public event.
-
----
-
-## **8. Integration**
-
-Each layer captures a different part of the same event.
-
-The user pays.
-The body reacts.
-The mind changes.
-The crowd responds.
-The firm earns or loses.
-The economy records activity.
-
-The ledger does not flatten these into one number. It keeps the layers visible while preserving the canonical mapping underneath.
-
----
-
-## **9. From prototype to system**
-
-The current app already behaves like this idea:
-
-- the home page introduces the movie-value framing
-- the individual route turns experience into personal questions
-- the macro and micro routes connect cinema to economics and business
-- the community route captures collective attention and identity
-
-The goal is not technical density.
-The goal is clarity, relatability, and cultural resonance.
-
----
-
-## **10. Beyond movies**
-
-Cinema is the entry point because it is easy to understand, emotionally loaded, and culturally powerful.
-
-The same structure can later extend to education, social media, work, or any bounded experience.
-
-The repeating idea stays the same:
-
-measure not only what happened, but what changed because it happened.
-
----
-
-## **Conclusion**
-
-The Movie Value Ledger is not trying to replace [the Internet of Value](https://theinternetofvalue.xyz/).
-It is trying to make it visible through a movie experience people already care about.
-
-That means the front end stays fun and relatable.
-The backend stays canonical.
-The mapping between the two must remain clean.
-
-The final question is still the right one:
-
-What did this movie do to the value of your next hour?
-
-Until that is measured, everything else is only half the story.`;
+import { cn } from "@/lib/utils";
+
+const sections = [
+  {
+    id: "abstract",
+    title: "Abstract",
+    icon: <Target className="h-4 w-4" />,
+    content: `Modern economic systems are precise at measuring what is easy, and weak at measuring what people actually live through. They count price, revenue, and volume. They rarely capture what a movie does to the body, mood, mind, habits, or future time.`
+  },
+  {
+    id: "individual",
+    title: "Individual Layer",
+    icon: <User className="h-4 w-4" />,
+    stats: { nodes: 6, focus: "Subjective ROI" },
+    content: `The individual layer is where the movie’s effect becomes personal. The questions check whether the viewer’s body, mood, thinking, habits, and next actions changed after the film.`
+  },
+  {
+    id: "micro",
+    title: "Micro Layer",
+    icon: <Briefcase className="h-4 w-4" />,
+    stats: { metric: "Capital Risk", focus: "Firm Solvency" },
+    content: `From the perspective of the firm, a film is a structured deployment of capital under uncertainty. A single large-budget film can represent a significant fraction of a firm’s deployable capital.`
+  },
+  {
+    id: "macro",
+    title: "Macro Layer",
+    icon: <Globe className="h-4 w-4" />,
+    stats: { formula: "GDP(E)", focus: "National Footprint" },
+    content: `At the macro level, films behave as temporary but dense clusters of economic activity. GDP = C + I + G + (X - M).`
+  },
+  {
+    id: "community",
+    title: "Community Layer",
+    icon: <Users className="h-4 w-4" />,
+    stats: { metric: "Attention", focus: "Collective Identity" },
+    content: `The community layer looks at shared excitement, fan reaction, hashtag momentum, and language-based identity.`
+  }
+];
 
 export default function WhitepaperPage() {
-	return (
-		<div className="min-h-screen bg-white text-black">
-			<div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-				<div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-					<div className="flex items-center gap-4">
-						<Link href="/">
-							<Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900"><Home className="h-4 w-4 mr-2" />Home</Button>
-						</Link>
-						<div className="h-4 w-px bg-gray-300" />
-						<div className="text-sm text-gray-500">Whitepaper</div>
-					</div>
-					<div className="flex items-center gap-2">
-						<Link href="/about">
-							<Button variant="outline" size="sm" className="text-gray-600 border-gray-300"><ChevronLeft className="h-4 w-4 mr-1" />About</Button>
-						</Link>
-						<Link href="/community">
-							<Button variant="outline" size="sm" className="text-gray-600 border-gray-300">Community<ChevronRight className="h-4 w-4 ml-1" /></Button>
-						</Link>
-					</div>
-				</div>
-			</div>
+  const [activeTab, setActiveTab] = useState("abstract");
+  const [scrolled, setScrolled] = useState(false);
 
-			<div className="pt-20 px-4 py-8">
-				<div className="mx-auto max-w-5xl space-y-8">
-					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">Whitepaper</div>
-						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">The Movie Value Ledger</h1>
-						<p className="mx-auto max-w-4xl text-base text-gray-700 md:text-lg leading-relaxed">A movie-first front end for [the Internet of Value](https://theinternetofvalue.xyz/).</p>
-					</motion.div>
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-					<section className="rounded-3xl border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><BookOpen className="h-4 w-4" />Quick read</div>
-						<div className="rounded-2xl bg-gray-50 border border-gray-200 p-5 shadow-sm">
-							<div className="prose prose-gray max-w-none prose-headings:scroll-mt-24 prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900">
-								<ReactMarkdown>{paper}</ReactMarkdown>
-							</div>
-						</div>
-					</section>
+  return (
+    <main className="min-h-screen bg-black text-white selection:bg-amber-500/30">
+      <NavigationBar currentPage="about" />
+      
+      {/* Background Ambience */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full" />
+      </div>
 
-					<section className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><ArrowRight className="h-4 w-4" />What to remember</div>
-						<div className="rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 p-5 text-white shadow-lg">
-							<div className="text-xs uppercase tracking-[0.3em] text-amber-300 font-semibold mb-2">Closing note</div>
-							<div className="text-lg font-semibold mb-2">Story first, truth intact.</div>
-							<div className="text-sm text-gray-200 leading-relaxed">The whitepaper is not here to replace the spec documents. It is here to make the public story easy to follow while keeping the canonical structure visible.</div>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
-	);
+      <div className="max-w-7xl mx-auto px-6 pt-32 pb-40 relative z-10">
+        <header className="mb-24 space-y-8">
+          <div className="flex items-center gap-3">
+            <div className="h-1 w-12 bg-amber-500" />
+            <div className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-500">Protocol Specification</div>
+          </div>
+          <h1 className="text-6xl md:text-9xl font-black tracking-tighter uppercase leading-[0.8]">
+            The White<br/><span className="text-white/10 outline-text">paper</span>
+          </h1>
+          <p className="text-2xl text-white/40 font-medium max-w-2xl leading-tight border-l-2 border-white/10 pl-8">
+            A movie-first front end for the Internet of Value (IoV). Translating cinematic experience into human capital.
+          </p>
+        </header>
+
+        <div className="grid lg:grid-cols-[350px_1fr] gap-20">
+          {/* Interactive TOC Sidebar */}
+          <aside>
+            <div className="sticky top-32 space-y-12">
+              <div className="space-y-4">
+                <div className="text-[10px] font-black text-white/20 uppercase tracking-widest px-4">System Nodes</div>
+                <div className="flex flex-col gap-2">
+                  {sections.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setActiveTab(s.id)}
+                      className={cn(
+                        "group flex items-center gap-4 p-4 rounded-2xl transition-all text-left border",
+                        activeTab === s.id 
+                          ? "bg-white/10 border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.05)]" 
+                          : "bg-transparent border-transparent hover:bg-white/5"
+                      )}
+                    >
+                      <div className={cn(
+                        "h-10 w-10 rounded-xl flex items-center justify-center transition-all",
+                        activeTab === s.id ? "bg-amber-500 text-black scale-110" : "bg-white/5 text-white/40 group-hover:text-white"
+                      )}>
+                        {s.icon}
+                      </div>
+                      <div className="flex-grow">
+                        <div className={cn(
+                          "text-xs font-black uppercase tracking-widest",
+                          activeTab === s.id ? "text-white" : "text-white/40 group-hover:text-white"
+                        )}>{s.title}</div>
+                        {activeTab === s.id && (
+                          <motion.div layoutId="dot" className="h-1 w-1 bg-amber-500 rounded-full mt-1" />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="dossier-card p-8 bg-amber-500/5 border-amber-500/10 space-y-4">
+                <div className="flex items-center gap-2 text-amber-500">
+                  <ShieldCheck className="h-4 w-4" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Protocol Verified</span>
+                </div>
+                <p className="text-[11px] text-white/40 italic leading-relaxed uppercase font-mono">
+                  Base Equation: VC = W × Vcom<br/>
+                  Internal Model Baseline: 1.0 (Normalized)
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          {/* Dynamic Content Area */}
+          <div className="min-h-[600px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-12"
+              >
+                {/* Active Section Headline */}
+                <div className="space-y-6">
+                  <div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em]">
+                    Segment::{activeTab.toUpperCase()}
+                  </div>
+                  <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
+                    {sections.find(s => s.id === activeTab)?.title}
+                  </h2>
+                </div>
+
+                {/* Section Specific Layouts */}
+                <div className="prose prose-invert prose-amber max-w-none">
+                  <p className="text-2xl text-white/70 font-medium leading-relaxed mb-12">
+                    {sections.find(s => s.id === activeTab)?.content}
+                  </p>
+                  
+                  {activeTab === "abstract" && (
+                    <div className="grid md:grid-cols-2 gap-8 pt-8">
+                       <ImpactNode title="Front-End Layer" desc="Movie-first interface optimized for relatable subjective data entry." />
+                       <ImpactNode title="Protocol Layer" desc="Grounded in canonical IoV variables (W, Vcom, Identity)." />
+                    </div>
+                  )}
+
+                  {activeTab === "individual" && (
+                    <div className="space-y-12">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {["Physiology", "Emotion", "Thought", "Habit", "Performance"].map(node => (
+                          <div key={node} className="dossier-card p-6 bg-white/5 border-white/10 text-center">
+                            <div className="text-[10px] font-black uppercase tracking-widest text-amber-500 mb-2">{node}</div>
+                            <div className="text-[9px] text-white/30 uppercase font-mono tracking-tighter">Diagnostic Sensor</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="bg-amber-500/5 p-8 border-l-4 border-amber-500 rounded-r-3xl italic text-white/60 text-lg">
+                        "The app is not trying to sound academic. It is trying to translate the backend into a fun, relatable movie-led experience."
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "micro" && (
+                    <div className="space-y-10">
+                       <div className="dossier-card p-10 bg-white/[0.02] border-white/5 overflow-hidden relative">
+                          <div className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-6">Risk Exposure Model</div>
+                          <div className="text-5xl font-black text-amber-500 dossier-number mb-4">∏ = R - C</div>
+                          <p className="text-sm text-white/40 uppercase font-mono leading-relaxed">
+                            Films are capital concentration events with nonlinear payoff distributions. The ledger links these returns to downsteam well-being.
+                          </p>
+                       </div>
+                    </div>
+                  )}
+
+                  {activeTab === "macro" && (
+                    <div className="space-y-8">
+                       <div className="dossier-card p-10 bg-white/[0.02] border-white/5">
+                          <div className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-6">Identity Framework</div>
+                          <div className="text-4xl font-black text-white mb-6 uppercase tracking-tighter">GDP = C + I + G + (X - M)</div>
+                          <div className="grid grid-cols-2 gap-4 text-[10px] font-black uppercase tracking-widest">
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/5">C :: Consumption</div>
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/5">I :: Investment</div>
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/5">G :: Government</div>
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/5">X-M :: Net Exports</div>
+                          </div>
+                       </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Navigation Button */}
+                <div className="pt-20 border-t border-white/5 flex items-center justify-between">
+                   <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">Next Protocol Phase</div>
+                   <Button 
+                    onClick={() => setActiveTab(sections[(sections.findIndex(s => s.id === activeTab) + 1) % sections.length].id)}
+                    className="h-16 px-10 bg-white text-black hover:bg-amber-500 font-black uppercase tracking-[0.4em] text-[10px] transition-all rounded-xl group"
+                   >
+                     Continue Reading <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                   </Button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </main>
+  );
+}
+
+function ImpactNode({ title, desc }: any) {
+  return (
+    <div className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all group">
+      <div className="h-2 w-2 rounded-full bg-amber-500 mb-6 group-hover:shadow-[0_0_10px_rgba(245,158,11,0.5)] transition-all" />
+      <div className="text-xs font-black uppercase tracking-widest text-white mb-2">{title}</div>
+      <div className="text-[11px] text-white/40 uppercase font-mono leading-relaxed">{desc}</div>
+    </div>
+  );
 }

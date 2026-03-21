@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ChevronRight, Database, FileText, Info, LayoutDashboard, TrendingUp } from "lucide-react";
 
 const sections = [
 	{
@@ -139,78 +142,145 @@ const sections = [
 
 export default function DhurandharMacroDataPage() {
 	return (
-			<div className="min-h-screen bg-[#f7f4ee] px-4 py-10 text-slate-900 overflow-hidden">
-			<div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-				<div className="space-y-3 text-center">
-					<div className="text-xs font-semibold uppercase tracking-[0.45em] text-orange-500">Reference only</div>
-					<h1 className="text-3xl md:text-5xl font-bold tracking-tight">Dhurandhar Macro Data</h1>
-					<p className="mx-auto max-w-3xl text-sm md:text-base text-slate-600">This page contains the full readable macro note behind the public `/macro` view.</p>
-				</div>
-
-				<div className="rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-					<div className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Table of contents</div>
-					<div className="mt-4 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
-						{sections.map((section) => (
-							<a key={section.id} href={`#${section.id}`} className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-orange-300 hover:text-orange-600">
-								{section.title}
-							</a>
-						))}
+		<main className="min-h-screen bg-black text-white selection:bg-amber-500/30">
+			<div className="fixed inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,158,11,0.05),transparent_50%)] pointer-events-none" />
+			
+			<div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
+				{/* Cinematic Header */}
+				<header className="mb-20 space-y-6">
+					<div className="flex items-center gap-3">
+						<div className="h-1 w-12 bg-amber-500" />
+						<div className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-500">Macro Ledger Reference</div>
 					</div>
-				</div>
+					
+					<h1 className="text-6xl md:text-9xl font-black tracking-tighter uppercase leading-[0.8] mb-8">
+						Macro <br/><span className="text-white/10 outline-text">Data Stack</span>
+					</h1>
 
-				<div className="w-full rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 shadow-sm text-left space-y-8">
-					{sections.map((section) => (
-						<section key={section.id} id={section.id} className="space-y-4 scroll-mt-24">
-							<h2 className="text-xl md:text-2xl font-bold text-slate-900">{section.title}</h2>
-							<div className="space-y-2 text-sm md:text-base leading-relaxed text-slate-700">
-								{section.body.map((paragraph) => (
-									<p key={paragraph}>{paragraph}</p>
-								))}
+					<div className="max-w-2xl border-l-2 border-amber-500/30 pl-8 py-2">
+						<p className="text-lg text-white/40 font-medium uppercase tracking-tight leading-relaxed">
+							Full-spectrum reconciliation of the Dhurandhar economic footprint. Sourced from production expenditure, theatrical realization, and secondary circulation flow.
+						</p>
+					</div>
+				</header>
+
+				<div className="grid lg:grid-cols-[300px_1fr] gap-16">
+					{/* Sticky Sidebar Nav */}
+					<aside className="hidden lg:block">
+						<div className="sticky top-24 space-y-8">
+							<div className="space-y-2">
+								<div className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-4">Registry Sections</div>
+								<div className="flex flex-col gap-1">
+									{sections.map((s) => (
+										<a 
+											key={s.id} 
+											href={`#${s.id}`} 
+											className="group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+										>
+											<span className="text-[11px] font-black uppercase tracking-widest text-white/40 group-hover:text-white transition-colors">{s.title}</span>
+											<ChevronRight className="h-3 w-3 text-white/10 group-hover:text-amber-500 transition-colors" />
+										</a>
+									))}
+								</div>
 							</div>
-							{section.math && (
-								<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-									<div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Visible math</div>
-									<div className="mt-3 space-y-2 font-mono text-sm text-slate-800">
-										{section.math.map((line) => (
-											<div key={line}>{line}</div>
+							
+							<div className="pt-8 border-t border-white/5">
+								<Link href="/macro">
+									<Button className="w-full h-14 bg-white text-black hover:bg-amber-500 font-black uppercase tracking-[0.3em] text-[10px] transition-all rounded-xl">
+										<LayoutDashboard className="mr-2 h-4 w-4" /> Exit Registry
+									</Button>
+								</Link>
+							</div>
+						</div>
+					</aside>
+
+					{/* Main Content Feed */}
+					<div className="space-y-32">
+						{sections.map((section) => (
+							<section key={section.id} id={section.id} className="scroll-mt-32 space-y-12">
+								<div className="space-y-4">
+									<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em]">Block::{section.id}</div>
+									<h2 className="text-4xl font-black text-white uppercase tracking-tighter">{section.title}</h2>
+								</div>
+
+								<div className="grid gap-8">
+									<div className="space-y-4">
+										{section.body.map((p, idx) => (
+											<p key={idx} className="text-xl text-white/60 font-medium leading-relaxed max-w-3xl">
+												{p}
+											</p>
 										))}
 									</div>
-								</div>
-							)}
-							{section.table && (
-								<div className="overflow-hidden rounded-2xl border border-slate-200">
-									<table className="w-full border-collapse text-sm">
-										<thead className="bg-slate-100 text-slate-600">
-											<tr>
-												<th className="border-b border-slate-200 px-4 py-3 text-left font-semibold">Symbol</th>
-												<th className="border-b border-slate-200 px-4 py-3 text-left font-semibold">Meaning</th>
-												<th className="border-b border-slate-200 px-4 py-3 text-left font-semibold">Value</th>
-												<th className="border-b border-slate-200 px-4 py-3 text-left font-semibold">Notes</th>
-											</tr>
-										</thead>
-										<tbody>
-											{section.table.map((row) => (
-												<tr key={row[0]} className="odd:bg-white even:bg-slate-50">
-													<td className="border-b border-slate-200 px-4 py-3 font-semibold text-slate-900">{row[0]}</td>
-													<td className="border-b border-slate-200 px-4 py-3 text-slate-700">{row[1]}</td>
-													<td className="border-b border-slate-200 px-4 py-3 text-slate-900">{row[2]}</td>
-													<td className="border-b border-slate-200 px-4 py-3 text-slate-600">{row[3]}</td>
-												</tr>
-											))}
-										</tbody>
-									</table>
-								</div>
-							)}
-						</section>
-					))}
-				</div>
 
-				<div className="flex flex-wrap items-center justify-center gap-3">
-					<Link href="/macro">
-						<Button className="rounded-full bg-orange-500 px-6 text-white hover:bg-orange-600">Back to macro</Button>
-					</Link>
+									{section.math && (
+										<div className="dossier-card bg-white/[0.02] border-white/5 p-8 relative overflow-hidden group">
+											<div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+												<TrendingUp size={80} />
+											</div>
+											<div className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-6 border-b border-white/5 pb-4">Variable Logic</div>
+											<div className="space-y-3 font-mono text-sm text-amber-500/80">
+												{section.math.map((line, idx) => (
+													<div key={idx} className="flex gap-4">
+														<span className="text-white/10">{idx + 1}.</span>
+														{line}
+													</div>
+												))}
+											</div>
+										</div>
+									)}
+
+									{section.table && (
+										<div className="dossier-card bg-black/40 border-white/5 overflow-hidden">
+											<div className="overflow-x-auto">
+												<table className="w-full text-left border-collapse">
+													<thead>
+														<tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-white/30 border-b border-white/10">
+															<th className="py-5 px-8">ID</th>
+															<th className="py-5 px-8">Definition</th>
+															<th className="py-5 px-8">Impact</th>
+															<th className="py-5 px-8">Note</th>
+														</tr>
+													</thead>
+													<tbody className="divide-y divide-white/5">
+														{section.table.map((row) => (
+															<tr key={row[0]} className="group hover:bg-white/[0.02] transition-all">
+																<td className="py-6 px-8 text-sm font-black text-amber-500 border-r border-white/5">{row[0]}</td>
+																<td className="py-6 px-8 text-sm font-black text-white/90">{row[1]}</td>
+																<td className="py-6 px-8 text-xl font-black text-white dossier-number tracking-tighter">{row[2]}</td>
+																<td className="py-6 px-8 text-[11px] text-white/30 font-medium italic group-hover:text-white/60 transition-colors">{row[3]}</td>
+															</tr>
+														))}
+													</tbody>
+												</table>
+											</div>
+										</div>
+									)}
+								</div>
+							</section>
+						))}
+
+						{/* Final Footer Links */}
+						<footer className="pt-20 border-t border-white/5 flex flex-col items-center gap-8">
+							<div className="text-center space-y-2">
+								<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">Audit Registry Internal</div>
+								<p className="text-sm text-white/40">Verified via the Internet of Value Protocol v1.4</p>
+							</div>
+							<div className="flex gap-4">
+								<Link href="/macro">
+									<Button variant="outline" className="border-white/10 text-white/60 hover:bg-white/5 hover:text-white uppercase tracking-widest text-[10px] h-12 px-8 rounded-xl">
+										Back to Dashboard
+									</Button>
+								</Link>
+								<Link href="/whitepaper">
+									<Button className="bg-white text-black hover:bg-amber-500 uppercase tracking-widest text-[10px] h-12 px-8 rounded-xl">
+										View Protocol
+									</Button>
+								</Link>
+							</div>
+						</footer>
+					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 }

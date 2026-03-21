@@ -4,41 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Home, ChevronLeft, ChevronRight, Users, Heart, Globe, MessageCircle, Star, Eye, Sparkles, Megaphone, Shield, Languages, Layers, Flame, RadioTower, Clapperboard, Megaphone as Loudspeaker, Camera, PlayCircle } from "lucide-react";
+import { Users, Globe, MessageCircle, Sparkles, Shield, Languages, Layers, Eye, Clapperboard, RadioTower, PlayCircle, Megaphone as Loudspeaker, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { NavigationBar } from "@/components/NavigationBar";
 import { Footer } from "@/components/Footer";
-
-const perspectives = [
-	{ id: "macro", name: "Macro", path: "/macro" },
-	{ id: "micro", name: "Micro", path: "/micro" },
-	{ id: "community", name: "Community", path: "/community" },
-	{ id: "individual", name: "Individual", path: "/individual" },
-	{ id: "faq", name: "FAQ", path: "/faq" },
-];
-
-function NavigationBar({ currentPage }: { currentPage: string }) {
-	const currentIndex = perspectives.findIndex((p) => p.id === currentPage);
-	const prevPage = currentIndex > 0 ? perspectives[currentIndex - 1] : null;
-	const nextPage = currentIndex < perspectives.length - 1 ? perspectives[currentIndex + 1] : null;
-
-	return (
-		<motion.div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.3 }}>
-			<div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-				<div className="flex items-center gap-4">
-					<Link href="/"><Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900"><Home className="h-4 w-4 mr-2" />Home</Button></Link>
-					<div className="h-4 w-px bg-gray-300" />
-					<div className="flex items-center gap-2">
-						{perspectives.map((p) => (<Link key={p.id} href={p.path}><Button variant={p.id === currentPage ? "default" : "ghost"} size="sm" className={`text-xs px-3 py-1 ${p.id === currentPage ? "bg-amber-500 hover:bg-amber-600 text-white" : "text-gray-600 hover:text-gray-900"}`}>{p.name}</Button></Link>))}
-					</div>
-				</div>
-				<div className="flex items-center gap-2">
-					{prevPage && <Link href={prevPage.path}><Button variant="outline" size="sm" className="text-gray-600 border-gray-300"><ChevronLeft className="h-4 w-4 mr-1" />{prevPage.name}</Button></Link>}
-					{nextPage && <Link href={nextPage.path}><Button variant="outline" size="sm" className="text-gray-600 border-gray-300">{nextPage.name}<ChevronRight className="h-4 w-4 ml-1" /></Button></Link>}
-				</div>
-			</div>
-		</motion.div>
-	);
-}
+import { cn } from "@/lib/utils";
 
 export default function CommunityPage() {
 	const [laborHours, setLaborHours] = React.useState([50000]);
@@ -81,207 +51,228 @@ export default function CommunityPage() {
 	];
 
 	return (
-		<div className="min-h-screen bg-white text-black overflow-x-hidden flex flex-col">
+		<>
 			<NavigationBar currentPage="community" />
-			<div className="pt-20 px-0 sm:px-4 py-8 flex-grow">
-				<div className="mx-auto w-full max-w-5xl space-y-8 px-0 sm:px-0">
-					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">Community level</div>
-						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Community Impact</h1>
-						<p className="mx-auto max-w-4xl text-base text-gray-700 md:text-lg leading-relaxed">How a movie turns into shared feeling, shared talk, and shared identity.</p>
-					</motion.div>
+			
+			{/* Cinematic Highlight */}
+			<div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.1)_0%,transparent_50%)]" />
 
-					<motion.div className="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-						<div className="p-6 md:p-8 border-b border-gray-100 bg-gradient-to-br from-white to-gray-50">
-							<div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-								<div>
-									<div className="text-xs uppercase tracking-[0.35em] text-amber-500 font-semibold mb-2">Open community</div>
-									<h2 className="text-2xl md:text-3xl font-bold text-gray-900">Three surfaces for community meaning</h2>
-									<p className="mt-2 max-w-3xl text-gray-600">Each surface isolates a different layer: who creates, who gathers, and how that becomes shared identity.</p>
+			<main className="flex-grow w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24 relative z-10 space-y-16">
+				<motion.div 
+					className="space-y-8"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+				>
+					<div className="flex items-center gap-4 text-amber-500/60 uppercase tracking-[0.4em] text-[10px] font-black">
+						<Users className="h-4 w-4" />
+						Collective Scale / Social Fabric
+					</div>
+					<h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase max-w-4xl opacity-90 drop-shadow-2xl">
+						Shared <br/><span className="text-white/20 outline-text">Community Impact</span>
+					</h1>
+				</motion.div>
+
+				<div className="grid lg:grid-cols-12 gap-10">
+					{/* Progress Sidebar */}
+					<div className="lg:col-span-3 space-y-6">
+						<div className="dossier-card p-8 space-y-8 border-amber-500/10">
+							<div className="space-y-1">
+								<span className="text-[10px] font-black text-white/20 tracking-[0.4em] uppercase block">Analysis Stage</span>
+								<div className="text-2xl font-black text-white uppercase tracking-tighter">{stepLabels[step]}</div>
+							</div>
+
+							<div className="space-y-3">
+								{stepLabels.map((label, index) => (
+									<div key={label} className={cn(
+										"flex items-center gap-4 p-4 rounded-xl border transition-all cursor-pointer",
+										index === step ? "bg-amber-500/10 border-amber-500/40" : index < step ? "bg-white/5 border-white/10 opacity-60" : "bg-transparent border-white/5 opacity-30"
+									)} onClick={() => setStep(index)}>
+										<div className={cn(
+											"h-8 w-8 rounded-full flex items-center justify-center text-xs font-black",
+											index === step ? "bg-amber-500 text-black" : "bg-white/10 text-white"
+										)}>{index + 1}</div>
+										<span className="text-[10px] font-black uppercase tracking-widest">{label}</span>
+									</div>
+								))}
+							</div>
+
+							<div className="pt-8 border-t border-white/5 space-y-4">
+								<div className="space-y-1">
+									<span className="text-[9px] font-black text-white/20 tracking-[0.3em] uppercase block">Community Score</span>
+									<div className="text-4xl font-black text-amber-500 dossier-number">{communityScore}</div>
 								</div>
-								<div className="text-sm text-gray-500">Live view</div>
+								<div className="space-y-1">
+									<span className="text-[9px] font-black text-white/20 tracking-[0.3em] uppercase block">Social Value Est.</span>
+									<div className="text-4xl font-black text-white dossier-number">{socialValue}</div>
+								</div>
 							</div>
 						</div>
 
-						<div className="space-y-8 p-6 md:p-8">
-							<div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-								<div className="rounded-3xl border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-white p-5 md:p-6 shadow-sm">
-									<div className="text-xs uppercase tracking-[0.35em] text-amber-500 font-semibold mb-3">Community reel</div>
-									<div className="space-y-3">
-										<div className="text-lg font-semibold text-gray-900">{stepLabels[step]}</div>
-										<div className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-											{step === 0 && "Who creates the shared pulse?"}
-											{step === 1 && "What identities does the film gather?"}
-											{step === 2 && "How does attention become cultural memory?"}
-										</div>
-										<p className="text-sm md:text-base text-gray-700 leading-relaxed">
-											{step === 0 && "Start with labor and attention asymmetry. This is the entry point: the visible work versus the invisible audience energy it creates."}
-											{step === 1 && "Then look at how the movie gathers identity across global, national, regional, and language layers."}
-											{step === 2 && "Finally, see how those signals become memory, belonging, and a broader communal effect."}
-										</p>
-									</div>
+						<div className="dossier-card p-6 bg-amber-500/5 border-amber-500/10">
+							<p className="text-[10px] text-amber-500/60 font-mono uppercase leading-relaxed tracking-tight">
+								This model quantifies the transition of private creative labor into public cultural memory.
+							</p>
+						</div>
+					</div>
+
+					{/* Content Area */}
+					<div className="lg:col-span-9 space-y-8">
+						<motion.div 
+							key={step}
+							className="dossier-card p-10 md:p-14 space-y-12"
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+						>
+							<div className="flex items-center justify-between border-b border-white/5 pb-8">
+								<div className="space-y-2">
+									<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em]">Surface 0{step + 1}</div>
+									<h2 className="text-4xl font-black text-white uppercase tracking-tighter">
+										{step === 0 && "Attention Asymmetry"}
+										{step === 1 && "Identity Gathering"}
+										{step === 2 && "Signal Amplification"}
+									</h2>
 								</div>
-								<div className="rounded-3xl border border-gray-200 bg-white p-5 md:p-6 shadow-sm">
-									<div className="text-xs uppercase tracking-[0.35em] text-gray-400 font-semibold mb-3">Flow map</div>
-									<div className="space-y-3">
-										{stepLabels.map((label, index) => {
-											const active = index === step;
-											const done = index < step;
-											return (
-												<div key={label} className={`flex items-center gap-3 rounded-2xl border px-4 py-3 transition-all duration-300 ${active ? "border-amber-200 bg-amber-50" : done ? "border-gray-200 bg-gray-50" : "border-dashed border-gray-200 bg-white"}`}>
-													<div className={`h-8 w-8 rounded-full flex items-center justify-center text-sm font-semibold ${active ? "bg-amber-500 text-white" : done ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-500"}`}>{index + 1}</div>
-													<div>
-														<div className="font-semibold text-gray-900">{label}</div>
-														<div className="text-xs text-gray-500">{active ? "Open now" : done ? "Complete" : "Coming next"}</div>
-													</div>
-												</div>
-											);
-										})}
-									</div>
+								<div className="hidden md:block">
+									<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] text-right mb-2">Perspective</div>
+									<div className="text-xs font-mono text-white/40 uppercase tracking-widest">Live Systemic Entry</div>
 								</div>
 							</div>
 
 							{step === 0 && (
-							<section className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm space-y-5">
-								<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold"><Megaphone className="h-4 w-4" />Surface 1 · Attention asymmetry</div>
-								<div className="grid gap-4 md:grid-cols-[1.05fr_0.95fr]">
-									<div>
-										<p className="text-sm text-gray-600 mb-4">Paid labor is visible; audience attention is often unpaid. This is the imbalance community turns into cultural value.</p>
-										<div className="space-y-3">
-											<div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
-												<div className="text-xs uppercase tracking-[0.25em] text-amber-500 font-semibold mb-2">Paid labor</div>
-												<div className="text-3xl font-bold text-gray-900">{laborHours[0].toLocaleString()} hrs</div>
-												<div className="text-sm text-gray-600 mt-1">The work that creates the movie and supports the community around it.</div>
+								<div className="space-y-12">
+									<div className="grid md:grid-cols-2 gap-12">
+										<div className="space-y-8">
+											<div className="space-y-4">
+												<span className="text-[10px] font-black text-white/20 tracking-[0.4em] uppercase block">Paid Creative Labor</span>
+												<div className="p-8 bg-white/5 rounded-3xl border border-white/5 space-y-4">
+													<div className="text-4xl font-black text-white dossier-number">{laborHours[0].toLocaleString()} <span className="text-sm opacity-30">HRS</span></div>
+													<Slider value={laborHours} onValueChange={setLaborHours} max={200000} step={100} className="py-4" />
+													<p className="text-[10px] text-white/30 font-mono uppercase">Direct production man-hours</p>
+												</div>
 											</div>
-											<div className="rounded-2xl bg-white border border-gray-200 p-4">
-												<div className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold mb-2">Audience attention</div>
-												<div className="text-3xl font-bold text-gray-900">{totalAudienceHours.toLocaleString()} hrs</div>
-												<div className="text-sm text-gray-600 mt-1">Buzz, hype, release reach, and reviews combined.</div>
+											<div className="space-y-4">
+												<span className="text-[10px] font-black text-white/20 tracking-[0.4em] uppercase block">Invisible Audience Attention</span>
+												<div className="p-8 bg-amber-500/5 rounded-3xl border border-amber-500/10 space-y-4">
+													<div className="text-4xl font-black text-amber-500 dossier-number">{totalAudienceHours.toLocaleString()} <span className="text-sm opacity-30">HRS</span></div>
+													<div className="flex gap-2 h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+														<div className="h-full bg-amber-500" style={{ width: '60%' }} />
+													</div>
+													<p className="text-[10px] text-white/30 font-mono uppercase">Cumulative engagement (Buzz + Review)</p>
+												</div>
 											</div>
-											<div className="rounded-2xl bg-gray-50 border border-gray-200 p-4">
-												<div className="flex items-center gap-2 mb-2"><Heart className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Wage pool</span></div>
-												<div className="text-2xl font-bold text-gray-900">₹{wagePool[0]} Cr</div>
-												<div className="text-sm text-gray-600 mt-1">How the social cost of creation is held together.</div>
+										</div>
+
+										<div className="space-y-10">
+											<div className="p-10 bg-white/[0.02] rounded-[2.5rem] border border-white/5 space-y-6">
+												<span className="text-[11px] font-black text-white uppercase tracking-[0.5em] block border-b border-white/5 pb-4">Multiplication Force</span>
+												<div className="flex items-end gap-4">
+													<div className="text-[64px] font-black text-white leading-none dossier-number">{attentionMultiplier.toFixed(1)}<span className="text-2xl text-white/20 ml-2">x</span></div>
+													<p className="text-[11px] text-white/40 font-mono uppercase mb-2 leading-relaxed">
+														For every hour of production, the community generates {attentionMultiplier.toFixed(1)} hours of shared focus.
+													</p>
+												</div>
+											</div>
+											<div className="grid gap-4">
+												{signalChain.map((item, idx) => (
+													<div key={idx} className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5 group hover:border-amber-500/20 transition-all">
+														<div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 group-hover:text-amber-500 transition-colors">
+															<item.icon className="h-5 w-5" />
+														</div>
+														<div className="space-y-0.5">
+															<div className="text-[10px] font-black text-white uppercase tracking-widest">{item.label}</div>
+															<div className="text-[9px] text-white/20 font-mono uppercase">{item.note}</div>
+														</div>
+													</div>
+												))}
 											</div>
 										</div>
 									</div>
-									<div className="space-y-4">
-										<motion.div className="rounded-2xl bg-gray-50 border border-gray-200 p-4" whileHover={{ scale: 1.01 }}><div className="flex items-center gap-2 mb-2"><MessageCircle className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Buzz</span></div><Slider value={buzzHours} onValueChange={setBuzzHours} max={500000} min={50000} step={25000} className="w-full" /><div className="text-xl font-bold text-gray-900">{buzzHours[0].toLocaleString()} hrs</div></motion.div>
-										<motion.div className="rounded-2xl bg-gray-50 border border-gray-200 p-4" whileHover={{ scale: 1.01 }}><div className="flex items-center gap-2 mb-2"><Star className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Hype</span></div><Slider value={hypeHours} onValueChange={setHypeHours} max={2000000} min={100000} step={50000} className="w-full" /><div className="text-xl font-bold text-gray-900">{hypeHours[0].toLocaleString()} hrs</div></motion.div>
-									</div>
 								</div>
-								<div className="flex justify-end">
-									<Button onClick={() => setStep(1)} className="px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300">Next: Identity</Button>
-								</div>
-							</section>
 							)}
 
 							{step === 1 && (
-							<section className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm space-y-5">
-								<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold"><Layers className="h-4 w-4" />Surface 2 · Identity layers</div>
-								<div className="grid gap-4 md:grid-cols-2">
-									{identityCards.map((card) => {
-										const Icon = card.icon;
-										const updater = card.title === "Global Identity" ? setGlobalReach : card.title === "National Identity" ? setNationalIdentity : card.title === "State / Regional Identity" ? setStateIdentity : setLanguageIdentity;
-										return (
-											<motion.div key={card.title} className="rounded-2xl bg-gray-50 border border-gray-200 p-4" whileHover={{ scale: 1.01 }}>
-												<div className="flex items-center gap-2 mb-2"><Icon className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">{card.title}</span></div>
-												<Slider value={card.value} onValueChange={updater} max={card.max} min={0} step={5} className="w-full" />
-												<div className="text-2xl font-bold text-gray-900">{card.value[0]}%</div>
-												<p className="text-xs text-gray-500 mt-1">{card.note}</p>
-											</motion.div>
-										);
-									})}
+								<div className="grid md:grid-cols-2 gap-8">
+									{identityCards.map((card, idx) => (
+										<div key={idx} className="p-10 bg-white/[0.02] rounded-[2.5rem] border border-white/5 space-y-8 group hover:border-amber-500/20 transition-all">
+											<div className="flex items-center justify-between">
+												<div className="h-14 w-14 rounded-2xl bg-white/5 flex items-center justify-center text-white/40 group-hover:bg-amber-500 group-hover:text-black transition-all">
+													<card.icon className="h-7 w-7" />
+												</div>
+												<div className="text-4xl font-black text-white dossier-number">{card.value[0]}%</div>
+											</div>
+											<div className="space-y-2">
+												<h4 className="text-xl font-black text-white uppercase tracking-tighter">{card.title}</h4>
+												<p className="text-[11px] text-white/30 font-mono uppercase leading-relaxed">{card.note}</p>
+											</div>
+											<Slider 
+												value={card.value} 
+												onValueChange={(v) => {
+													if (idx === 0) setGlobalReach(v);
+													if (idx === 1) setNationalIdentity(v);
+													if (idx === 2) setStateIdentity(v);
+													if (idx === 3) setLanguageIdentity(v);
+												}} 
+												max={100} 
+											/>
+										</div>
+									))}
 								</div>
-								<div className="rounded-2xl bg-gray-50 border border-gray-200 p-4">
-									<div className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold mb-2">Community identity score</div>
-									<div className="text-3xl font-bold text-gray-900">{communityScore}%</div>
-									<div className="text-sm text-gray-600 mt-1">A simple average of the identity layers above.</div>
-								</div>
-								<div className="flex justify-between gap-3">
-									<Button onClick={() => setStep(0)} variant="outline" className="px-6 py-3 rounded-2xl">Back</Button>
-									<Button onClick={() => setStep(2)} className="px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300">Next: Signal</Button>
-								</div>
-							</section>
 							)}
 
 							{step === 2 && (
-							<section className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm space-y-5">
-								<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold"><Flame className="h-4 w-4" />Surface 3 · Collective signal</div>
-								<div className="grid gap-4 md:grid-cols-[0.9fr_1.1fr]">
-									<div className="space-y-4">
-										<div className="rounded-3xl bg-gradient-to-br from-amber-50 to-white border border-amber-100 p-5 shadow-sm">
-											<div className="text-xs uppercase tracking-[0.25em] text-amber-500 font-semibold mb-2">Amplification effect</div>
-											<div className="text-3xl font-bold text-gray-900 mb-2">{attentionMultiplier.toFixed(1)}x</div>
-											<div className="text-sm text-gray-600">How much audience attention grows relative to the paid creative effort.</div>
-										</div>
-										<div className="rounded-3xl bg-gray-50 border border-gray-200 p-5 shadow-sm">
-											<div className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold mb-2">Collective cultural impact</div>
-											<div className="text-3xl font-bold text-gray-900">{socialValue}</div>
-											<div className="text-sm text-gray-600 mt-1">A story index for reach, identity, and shared memory.</div>
-										</div>
-									</div>
-									<div className="space-y-3">
-										<div className="rounded-2xl bg-white border border-gray-200 p-4">
-											<div className="flex items-center gap-2 mb-2"><Sparkles className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Cultural memory</span></div>
-											<div className="text-sm text-gray-600">The movie moves from a single act into shared symbol, repeated talk, and public recall.</div>
-										</div>
-										<div className="relative rounded-3xl border border-gray-200 bg-white p-5 overflow-hidden">
-											<div className="absolute inset-0 bg-gradient-to-br from-white via-amber-50/40 to-white" />
-											<div className="relative">
-												<div className="flex items-center justify-center mb-6">
-													<div className="w-24 h-24 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg text-3xl">🎬</div>
-												</div>
-												<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-													{signalChain.map((node, index) => {
-														const Icon = node.icon;
-														return (
-															<div key={node.label} className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-																<div className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center mb-3"><Icon className="h-4 w-4" /></div>
-																<div className="font-semibold text-gray-900">{node.label}</div>
-																<div className="text-xs text-gray-500 mt-1 leading-relaxed">{node.note}</div>
-																<div className="mt-3 text-xs uppercase tracking-[0.25em] text-amber-500 font-semibold">0{index + 1}</div>
-															</div>
-														);
-													})}
+								<div className="space-y-12">
+									<div className="grid md:grid-cols-3 gap-8">
+										{signalNotes.map((note, idx) => (
+											<div key={idx} className="p-8 bg-white/[0.02] rounded-3xl border border-white/5 space-y-6">
+												<note.icon className="h-8 w-8 text-amber-500/40" />
+												<div className="space-y-2">
+													<h4 className="text-lg font-black text-white uppercase tracking-tighter">{note.title}</h4>
+													<p className="text-[11px] text-white/30 font-mono uppercase leading-relaxed">{note.body}</p>
 												</div>
 											</div>
-										</div>
-										<div className="grid gap-3 md:grid-cols-3">
-											{signalNotes.map((note) => {
-												const Icon = note.icon;
-												return (
-													<div key={note.title} className="rounded-2xl bg-white border border-gray-200 p-3">
-														<div className="flex items-center gap-2 mb-2"><Icon className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900 text-sm">{note.title}</span></div>
-														<div className="text-xs text-gray-500 leading-relaxed">{note.body}</div>
-													</div>
-												);
-											})}
+										))}
+									</div>
+									<div className="p-12 bg-white/5 rounded-[3rem] border border-white/5 text-center space-y-6">
+										<span className="text-[11px] font-black text-white/20 uppercase tracking-[0.5em]">Systemic Summary</span>
+										<p className="text-3xl font-black text-white uppercase max-w-2xl mx-auto leading-tight italic font-serif">
+											"The community transforms a static media file into a living cultural artifact through cumulative attention."
+										</p>
+										<div className="pt-6">
+											<Button asChild className="h-16 px-12 rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] hover:bg-amber-500 transition-all shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+												<Link href="/macro">View Policy Implications</Link>
+											</Button>
 										</div>
 									</div>
 								</div>
-								<div className="flex justify-between gap-3">
-									<Button onClick={() => setStep(1)} variant="outline" className="px-6 py-3 rounded-2xl">Back</Button>
-									<Button onClick={() => setStep(0)} variant="outline" className="px-6 py-3 rounded-2xl">Restart</Button>
-								</div>
-							</section>
 							)}
 
-							{step === 2 && (
-								<div className="rounded-3xl p-5 bg-amber-50 border border-amber-100">
-									<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold mb-3">Community result</div>
-									<div className="grid gap-4 md:grid-cols-3">
-										<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Attention multiplier</div><div className="text-2xl font-bold text-gray-900">{attentionMultiplier.toFixed(1)}x</div></div>
-										<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Average hourly wage</div><div className="text-2xl font-bold text-gray-900">₹{Math.round(averageHourlyWage)}</div></div>
-										<div className="rounded-2xl bg-white p-4 border border-gray-200"><div className="text-xs text-gray-500">Audience hours</div><div className="text-2xl font-bold text-gray-900">{totalAudienceHours.toLocaleString()}</div></div>
-									</div>
+							<div className="flex items-center justify-between pt-10 border-t border-white/5">
+								<Button 
+									variant="ghost" 
+									onClick={() => setStep(Math.max(0, step - 1))}
+									disabled={step === 0}
+									className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 hover:text-white"
+								>
+									<ChevronLeft className="h-4 w-4 mr-2" /> Back
+								</Button>
+								<div className="flex gap-2">
+									{stepLabels.map((_, i) => (
+										<div key={i} className={cn("h-1.5 w-8 rounded-full transition-all", i === step ? "bg-amber-500 w-12" : "bg-white/10")} />
+									))}
 								</div>
-							)}
-						</div>
-					</motion.div>
+								<Button 
+									onClick={() => setStep(Math.min(2, step + 1))}
+									disabled={step === 2}
+									className="bg-white/10 text-white hover:bg-white/20 text-[10px] font-black uppercase tracking-[0.3em]"
+								>
+									Next <ChevronRight className="h-4 w-4 ml-2" />
+								</Button>
+							</div>
+						</motion.div>
+					</div>
 				</div>
-			</div>
+			</main>
 			<Footer />
-		</div>
+		</>
 	);
 }

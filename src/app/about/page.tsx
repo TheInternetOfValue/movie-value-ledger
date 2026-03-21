@@ -3,24 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { NavigationBar } from "@/components/NavigationBar";
 import {
-	Home,
-	ChevronLeft,
-	ChevronRight,
 	BookOpen,
 	HelpCircle,
 	ShieldCheck,
 	Sparkles,
 	FileText,
-	Users,
-	Heart,
-	Globe,
-	MessageCircle,
 	Layers,
 	ArrowRight,
-	Film,
-	Link2,
 } from "lucide-react";
 
 const faqGroups = [
@@ -83,151 +74,96 @@ const assumptions = [
 
 export default function AboutPage() {
 	return (
-		<div className="min-h-screen bg-white text-black">
-			<div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-				<div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+		<main className="dossier-bg min-h-screen text-white pb-32">
+			<NavigationBar currentPage="about" />
+			
+			<div className="mx-auto max-w-7xl px-6 pt-32">
+				{/* Header Section */}
+				<div className="mb-20 space-y-8">
+					<div className="flex items-center gap-4 text-amber-500 font-black uppercase tracking-[0.4em] text-[10px]">
+						<Layers className="h-4 w-4" />
+						Project Reference / Documentation
+					</div>
+					
+					<h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-[0.8] uppercase">
+						The <br/><span className="text-white/10 outline-text">System Logic</span>
+					</h1>
+
+					<div className="dossier-card p-10 border-white/5 bg-amber-500/5 max-w-3xl">
+						<p className="text-sm md:text-xl text-white/60 font-medium leading-relaxed">
+							The goal is <span className="text-white font-black underline decoration-amber-500/50 underline-offset-4">honesty</span>. We keep the story rich and visual, but never hide the logic. If a number is a story metric, it says so. If a formula is canonical, it stays canonical.
+						</p>
+					</div>
+				</div>
+
+				<div className="grid lg:grid-cols-2 gap-8 mb-32">
+					<Link href="/whitepaper" className="group">
+						<div className="dossier-card p-10 border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all h-full flex flex-col justify-between group">
+							<div className="space-y-6">
+								<BookOpen className="h-10 w-10 text-amber-500" />
+								<h3 className="text-3xl font-black uppercase tracking-tighter">IoV Whitepaper</h3>
+								<p className="text-white/40 leading-relaxed uppercase text-xs tracking-widest font-mono">
+									The core protocol definitions, wellbeing battery math, and value capture mechanics.
+								</p>
+							</div>
+							<ArrowRight className="h-6 w-6 text-white/20 group-hover:text-amber-500 group-hover:translate-x-2 transition-all mt-10" />
+						</div>
+					</Link>
+
+					<div className="grid gap-8">
+						<Link href="/faq" className="group">
+							<div className="dossier-card p-8 border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all flex items-center justify-between group">
+								<div className="flex items-center gap-6">
+									<HelpCircle className="h-8 w-8 text-amber-500/60" />
+									<div className="space-y-1">
+										<h3 className="text-xl font-black uppercase tracking-tighter">FAQ</h3>
+										<p className="text-[10px] text-white/30 uppercase tracking-widest">Common questions & app usage</p>
+									</div>
+								</div>
+								<ArrowRight className="h-4 w-4 text-white/10 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+							</div>
+						</Link>
+
+						<Link href="/debate" className="group">
+							<div className="dossier-card p-8 border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all flex items-center justify-between group">
+								<div className="flex items-center gap-6">
+									<Layers className="h-8 w-8 text-amber-500/40" />
+									<div className="space-y-1">
+										<h3 className="text-xl font-black uppercase tracking-tighter text-white/60">The Debate</h3>
+										<p className="text-[10px] text-white/20 uppercase tracking-widest">Conflicting views on system value</p>
+									</div>
+								</div>
+								<ArrowRight className="h-4 w-4 text-white/10 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+							</div>
+						</Link>
+					</div>
+				</div>
+
+				{/* FAQ Section */}
+				<div className="space-y-16">
 					<div className="flex items-center gap-4">
-						<Link href="/">
-							<Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-								<Home className="h-4 w-4 mr-2" />Home
-							</Button>
-						</Link>
-						<div className="h-4 w-px bg-gray-300" />
-						<div className="text-sm text-gray-500">About</div>
+						<div className="h-px flex-1 bg-white/5" />
+						<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">System Diagnostics / FAQ</div>
+						<div className="h-px flex-1 bg-white/5" />
 					</div>
-					<div className="flex items-center gap-2">
-						<Link href="/community">
-							<Button variant="outline" size="sm" className="text-gray-600 border-gray-300">
-								<ChevronLeft className="h-4 w-4 mr-1" />Community
-							</Button>
-						</Link>
-						<Link href="/">
-							<Button variant="outline" size="sm" className="text-gray-600 border-gray-300">
-								Home<ChevronRight className="h-4 w-4 ml-1" />
-							</Button>
-						</Link>
+
+					<div className="grid md:grid-cols-3 gap-12">
+						{faqGroups.map((group) => (
+							<div key={group.title} className="space-y-8">
+								<h4 className="text-lg font-black text-amber-500 uppercase tracking-tighter border-b border-white/5 pb-4">{group.title}</h4>
+								<div className="space-y-10">
+									{group.items.map((faq) => (
+										<div key={faq.question} className="space-y-3 group">
+											<div className="text-sm font-black text-white uppercase tracking-tight group-hover:text-amber-500 transition-colors">{faq.question}</div>
+											<p className="text-xs text-white/40 font-medium leading-relaxed group-hover:text-white/60 transition-colors italic">{faq.answer}</p>
+										</div>
+									))}
+								</div>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
-
-			<div className="pt-20 px-4 py-8">
-				<div className="mx-auto max-w-5xl space-y-8">
-					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">About</div>
-						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Project Intelligence</h1>
-						<p className="mx-auto max-w-4xl text-base text-gray-700 md:text-lg leading-relaxed">
-							The Dhurandhar Ledger translates cinematic experience into economic and wellbeing-adjusted value. Explore the math, the debate, and the logic below.
-						</p>
-					</motion.div>
-
-					<section className="grid gap-6 md:grid-cols-2">
-						{/* WHITE PAPER */}
-						<div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-							<div className="flex items-center gap-3 mb-4">
-								<div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center">
-									<FileText className="h-5 w-5 text-amber-600" />
-								</div>
-								<h2 className="text-lg font-bold text-gray-900">Project Whitepaper</h2>
-							</div>
-							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
-								Detailed analysis of the Dhurandhar cinematic event, its 4-lens structure, and the translation from film to ledger.
-							</p>
-							<Link href="/whitepaper">
-								<Button className="w-full bg-gray-900 text-white hover:bg-black rounded-xl">Read Whitepaper</Button>
-							</Link>
-						</div>
-
-						{/* DEBATE */}
-						<div className="rounded-3xl border border-red-100 bg-red-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
-							<div className="flex items-center gap-3 mb-4">
-								<div className="h-10 w-10 rounded-full bg-red-500/10 flex items-center justify-center">
-									<MessageCircle className="h-5 w-5 text-red-600" />
-								</div>
-								<h2 className="text-lg font-bold text-gray-900">The Debate</h2>
-							</div>
-							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
-								The logic vs beauty conflict. Moses Sam Paul explains why "DEFEAT" is a system diagnostic, not a punishment.
-							</p>
-							<Link href="/debate">
-								<Button variant="outline" className="w-full border-red-200 text-red-700 hover:bg-red-100 rounded-xl">Enter the Debate</Button>
-							</Link>
-						</div>
-
-						{/* MACRO/MICRO DOCS */}
-						<div className="rounded-3xl border border-blue-100 bg-blue-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
-							<div className="flex items-center gap-3 mb-4">
-								<div className="h-10 w-10 rounded-full bg-blue-500/10 flex items-center justify-center">
-									<Globe className="h-5 w-5 text-blue-600" />
-								</div>
-								<h2 className="text-lg font-bold text-gray-900">Economic Documentation</h2>
-							</div>
-							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
-								Technical breakdown of the Macro GDP footprint, Studio ROI identities, and Community social capital models.
-							</p>
-							<div className="flex gap-2">
-								<Link href="/macro/dhurandhar_macro_data" className="flex-1">
-									<Button variant="ghost" className="w-full text-blue-700 border border-blue-100 rounded-xl">Macro</Button>
-								</Link>
-								<Link href="/micro/dhurandhar_micro_data" className="flex-1">
-									<Button variant="ghost" className="w-full text-blue-700 border border-blue-100 rounded-xl">Micro</Button>
-								</Link>
-							</div>
-						</div>
-
-						{/* FAQ */}
-						<div className="rounded-3xl border border-amber-100 bg-amber-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
-							<div className="flex items-center gap-3 mb-4">
-								<div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center">
-									<HelpCircle className="h-5 w-5 text-amber-600" />
-								</div>
-								<h2 className="text-lg font-bold text-gray-900">FAQ</h2>
-							</div>
-							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
-								Frequently asked questions about the IoV wellbeing nodes, the marginal utility math, and film basics.
-							</p>
-							<Link href="/faq">
-								<Button variant="outline" className="w-full border-amber-200 text-amber-700 hover:bg-amber-100 rounded-xl">View FAQ</Button>
-							</Link>
-						</div>
-					</section>
-
-					<section className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><ShieldCheck className="h-4 w-4" />Assumptions and boundaries</div>
-						<div className="grid gap-3 md:grid-cols-2">
-							{assumptions.map((item) => (
-								<div key={item} className="rounded-2xl bg-white border border-gray-200 p-4 text-sm text-gray-700 leading-relaxed">
-									{item}
-								</div>
-							))}
-						</div>
-					</section>
-
-					<section className="rounded-3xl border border-amber-100 bg-amber-50 shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><MessageCircle className="h-4 w-4" />Why this exists</div>
-						<p className="text-sm md:text-base text-gray-700 leading-relaxed max-w-4xl">
-							The goal is honesty: keep the story rich and visual, but never hide the logic. If a number is a story metric, it should say so. If a formula is canonical, it should stay canonical.
-						</p>
-					</section>
-
-					<section className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><Link2 className="h-4 w-4" />Links</div>
-						<div className="grid gap-4 md:grid-cols-3">
-							<a href="http://author.theinternetofvalue.xyz/" target="_blank" rel="noreferrer" className="rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-amber-200 hover:bg-amber-50 transition-colors">
-								<div className="font-semibold text-gray-900">MosesSamPaul J.</div>
-								<div className="text-sm text-gray-600 mt-1">Author page</div>
-							</a>
-							<a href="https://theinternetofvalue.xyz/" target="_blank" rel="noreferrer" className="rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-amber-200 hover:bg-amber-50 transition-colors">
-								<div className="font-semibold text-gray-900">The Internet of Value</div>
-								<div className="text-sm text-gray-600 mt-1">Main site</div>
-							</a>
-							<a href="/whitepaper" className="rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-amber-200 hover:bg-amber-50 transition-colors">
-								<div className="font-semibold text-gray-900">Whitepaper</div>
-								<div className="text-sm text-gray-600 mt-1">Open the full on-site version</div>
-							</a>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
+		</main>
 	);
 }

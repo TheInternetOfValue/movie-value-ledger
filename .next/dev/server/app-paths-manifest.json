@@ -1,11 +1,9 @@
 {
   "/community/page": "app/community/page.js",
-  "/faq/page": "app/faq/page.js",
   "/individual/page": "app/individual/page.js",
   "/macro/page": "app/macro/page.js",
   "/micro/page": "app/micro/page.js",
   "/page": "app/page.js",
-  "/propaganda-maybe/page": "app/propaganda-maybe/page.js",
   "/propaganda-no/page": "app/propaganda-no/page.js",
   "/propaganda-yes/page": "app/propaganda-yes/page.js",
   "/systems-pov/page": "app/systems-pov/page.js"

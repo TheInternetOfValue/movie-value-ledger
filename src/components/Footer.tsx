@@ -3,41 +3,38 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black py-6">
-      <div className="mx-auto max-w-[1400px] px-6">
-        <div className="grid grid-cols-3 items-center text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
-          {/* Left: About */}
-          <div className="flex justify-start">
-            <Link href="/about" className="hover:text-amber-400 transition-colors text-white/60">
+      <div className="mx-auto max-w-[1400px] px-6 text-center">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="hover:text-amber-500 transition-colors">
               About
             </Link>
+            <Link href="/faq" className="hover:text-amber-500 transition-colors">
+              Protocol FAQ
+            </Link>
           </div>
-          
-          {/* Center: Main Line */}
-          <div className="flex justify-center text-center">
-            <span className="whitespace-nowrap">
-              Movie&apos;s Impact - 
-              <a 
-                href="https://theinternetofvalue.xyz/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors px-1 underline decoration-white/10 underline-offset-4"
-              >
-                The Internet of Value&apos;s
-              </a>
-              Systems POV &copy; 2026
-            </span>
-          </div>
-          
-          {/* Right: Credit */}
-          <div className="flex justify-end items-center gap-2">
-            <span className="opacity-50">Built by</span>
+
+          <div className="flex items-center gap-2">
+            <span className="opacity-40 tracking-[0.1em]">Impact Intelligence by</span>
             <a 
-              href="https://www.linkedin.com/in/mosessampaul/" 
+              href="https://author.theinternetofvalue.xyz/" 
               target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-white/80 hover:text-amber-400 transition-all font-black tracking-widest"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-500 transition-all font-black underline decoration-white/10 underline-offset-8"
             >
               Moses Sam Paul
+            </a>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <span>Systems POV &copy; 2026</span>
+            <a 
+              href="https://theinternetofvalue.xyz/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white transition-colors"
+            >
+              The Internet of Value
             </a>
           </div>
         </div>

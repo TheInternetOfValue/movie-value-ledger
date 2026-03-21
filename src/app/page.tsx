@@ -8,9 +8,9 @@ import { ShieldAlert, Heart, BarChart3, HelpCircle } from "lucide-react";
 
 export default function PropagandaGatePage() {
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden flex flex-col items-center justify-center p-6 text-center">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden flex flex-col items-center justify-center p-6 text-center dossier-bg">
       {/* Background Cinematic Texture */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-50">
         <Image 
           src="/dhurandhar/part-1-poster.jpg" 
           alt="Cinematic Background" 
@@ -18,7 +18,7 @@ export default function PropagandaGatePage() {
           className="object-cover opacity-30 mix-blend-screen scale-110 grayscale"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c0c]/90 via-[#0c0c0c]/60 to-[#0c0c0c]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,black_100%)] opacity-90" />
       </div>
 

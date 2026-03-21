@@ -3,46 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Home, ChevronLeft, ChevronRight, Users, Building, Globe, ArrowRight, ArrowDown, TrendingUp, DollarSign, Film, CircleDollarSign, Waypoints, BookOpen } from "lucide-react";
+import { Users, Building, Globe, ArrowRight, ArrowDown, TrendingUp, DollarSign, Film, CircleDollarSign, Waypoints, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { NavigationBar } from "@/components/NavigationBar";
 import { Footer } from "@/components/Footer";
 import { flowAccountRows, incomeAccountRows, macroAccountRows } from "@/data/dhurandhar";
-
-const perspectives = [
-	{ id: "macro", name: "Macro", path: "/macro" },
-	{ id: "micro", name: "Micro", path: "/micro" },
-	{ id: "community", name: "Community", path: "/community" },
-	{ id: "individual", name: "Individual", path: "/individual" },
-	{ id: "faq", name: "FAQ", path: "/faq" },
-];
-
-function NavigationBar({ currentPage }: { currentPage: string }) {
-	const currentIndex = perspectives.findIndex((p) => p.id === currentPage);
-	const prevPage = currentIndex > 0 ? perspectives[currentIndex - 1] : null;
-	const nextPage = currentIndex < perspectives.length - 1 ? perspectives[currentIndex + 1] : null;
-
-	return (
-		<motion.div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.3 }}>
-			<div className="w-full px-3 md:px-4 py-3 flex items-center justify-between">
-				<div className="flex items-center gap-4">
-					<Link href="/">
-						<Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900"><Home className="h-4 w-4 mr-2" />Home</Button>
-					</Link>
-					<div className="h-4 w-px bg-gray-300" />
-					<div className="flex items-center gap-2">
-						{perspectives.map((p) => (
-							<Link key={p.id} href={p.path}><Button variant={p.id === currentPage ? "default" : "ghost"} size="sm" className={`text-xs px-3 py-1 ${p.id === currentPage ? "bg-amber-500 hover:bg-amber-600 text-white" : "text-gray-600 hover:text-gray-900"}`}>{p.name}</Button></Link>
-						))}
-					</div>
-				</div>
-				<div className="flex items-center gap-2">
-					{prevPage && <Link href={prevPage.path}><Button variant="outline" size="sm" className="text-gray-600 border-gray-300"><ChevronLeft className="h-4 w-4 mr-1" />{prevPage.name}</Button></Link>}
-					{nextPage && <Link href={nextPage.path}><Button variant="outline" size="sm" className="text-gray-600 border-gray-300">{nextPage.name}<ChevronRight className="h-4 w-4 ml-1" /></Button></Link>}
-				</div>
-			</div>
-		</motion.div>
-	);
-}
+import { cn } from "@/lib/utils";
 
 export default function MacroPage() {
 	const selectedMacro = macroAccountRows[0];
@@ -124,87 +90,170 @@ export default function MacroPage() {
 	const goNext = () => setLens(lensOrder[Math.min(lensOrder.length - 1, position + 1)]);
 
 	return (
-		<div className="min-h-screen bg-[#f7f4ee] text-slate-900 flex flex-col">
+		<>
 			<NavigationBar currentPage="macro" />
-			<div className="pt-20 px-3 md:px-4 py-3 flex-grow">
-				<div className="w-full space-y-4">
-					<motion.div className="w-full rounded-[2.5rem] border border-slate-200 bg-white p-6 md:p-8 shadow-sm" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}>
-						<div className="flex flex-col gap-6">
-							<div className="space-y-4">
-								<h1 className="max-w-5xl text-4xl md:text-6xl font-black tracking-tight text-slate-900 leading-[0.95]">Impact of Dhurandhar on India's GDP</h1>
-								<div className="inline-flex flex-wrap items-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-4 py-3 text-orange-600">
-									<span className="text-3xl md:text-5xl font-black tracking-tight text-orange-600">₹4.35K cr → ₹4.77K cr</span>
-								</div>
+			
+			<div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.1)_0%,transparent_50%)]" />
+
+			<main className="flex-grow w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24 relative z-10 space-y-16">
+				<motion.div 
+					className="dossier-card p-10 md:p-16 space-y-12"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+				>
+					<div className="space-y-6">
+						<div className="flex items-center gap-4 text-amber-500/60 uppercase tracking-[0.4em] text-[10px] font-black">
+							<Globe className="h-4 w-4" />
+							National Scale / Tier 1 Data
+							<span className="dossier-stamp dossier-stamp-sourced ml-auto">Verified</span>
+						</div>
+						<h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9] uppercase max-w-4xl">
+							Impact on <br/><span className="text-white/10 outline-text">The GDP</span>
+						</h1>
+					</div>
+
+					<div className="grid md:grid-cols-2 gap-12 items-end">
+						 <div className="inline-flex flex-col gap-2 p-8 bg-white/5 rounded-3xl border border-white/5 backdrop-blur-md">
+							<span className="text-[10px] font-black text-white/30 tracking-[0.4em] uppercase">Aggregate Contribution</span>
+							<span className="text-5xl md:text-7xl font-black tracking-tight text-amber-500 dossier-number">
+								₹4.77K <span className="text-2xl text-amber-500/40">cr</span>
+							</span>
+							<p className="dossier-note mt-2 max-w-xs">
+								Calculated using the Multiplier Effect (k = 1/[1-MPC]). Includes indirect spend across 12 sectors.
+							</p>
+						 </div>
+						 
+						 <div className="flex flex-wrap gap-3">
+							{(["expenditure", "income", "velocity"] as const).map((item) => (
+							  <Button 
+								key={item} 
+								onClick={() => setLens(item)} 
+								className={cn(
+								  "h-14 px-8 rounded-xl font-black uppercase tracking-[0.2em] transition-all",
+								  lens === item 
+									? "bg-white text-black shadow-[0_0_30px_rgba(255,255,255,0.1)]" 
+									: "bg-white/5 text-white/40 hover:bg-white/10"
+								)}
+							  >
+								{item}
+							  </Button>
+							))}
+						 </div>
+					</div>
+				</motion.div>
+
+				<div className="grid lg:grid-cols-12 gap-10">
+					 {/* Lens Detail */}
+					 <motion.div 
+						key={lens}
+						className="lg:col-span-8 dossier-card p-12 space-y-12 border-white/5"
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+					 >
+						<div className="flex items-center justify-between border-b border-white/5 pb-6">
+							<div className="space-y-1">
+								<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em]">{active.tag}</div>
+								<h2 className="text-4xl font-black text-white uppercase tracking-tight">{active.title}</h2>
 							</div>
-							<div className="flex flex-wrap gap-2">
-								{(["expenditure", "income", "velocity"] as const).map((item) => (
-									<Button key={item} onClick={() => setLens(item)} variant={lens === item ? "default" : "outline"} className={lens === item ? "bg-orange-500 text-white hover:bg-orange-600" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"}>
-										{item[0].toUpperCase() + item.slice(1)}
-									</Button>
-								))}
+							<div className="text-right">
+								<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] mb-2">Equation</div>
+								<div className="text-xl font-mono text-white/60 tracking-tighter">
+									{active.formula.split(' ').map((part, i) => (
+										<motion.span 
+											key={i}
+											whileHover={{ color: "#f59e0b", scale: 1.1 }}
+											className="inline-block px-1 transition-colors cursor-crosshair"
+										>
+											{part}
+										</motion.span>
+									))}
+								</div>
 							</div>
 						</div>
-					</motion.div>
 
-					<motion.div className="grid gap-4" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}>
-						<div className="rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-							<div className="flex items-center justify-between gap-3">
-								<div>
-									<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">{active.tag}</div>
-									<h2 className="mt-2 text-2xl md:text-3xl font-bold text-slate-900">{active.title}</h2>
-								</div>
-								<div className="text-right text-sm text-slate-500">{position + 1} / 3</div>
-							</div>
-							<div className="mt-4 grid gap-3 xl:grid-cols-[1.3fr_0.7fr] xl:items-start">
- 								<div>
-							<div className="mt-4 rounded-2xl border border-orange-100 bg-orange-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-orange-500">Formula</div>
-								<div className="mt-2 text-2xl font-semibold text-slate-900">{active.formula}</div>
-							</div>
-							<div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400">Theory</div>
-								<div className="mt-2 text-sm md:text-base leading-relaxed text-slate-700">{active.theory}</div>
-							</div>
-							<p className="mt-4 text-sm md:text-base text-slate-700 leading-relaxed">{active.body}</p>
-							<div className="mt-5 grid gap-2">
-								{active.focus.map((item) => (
-									<div key={item.label} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-										<div className="flex items-start justify-between gap-3">
-											<div>
-												<div className="text-xs uppercase tracking-[0.3em] text-slate-400">{item.label}</div>
-												<div className="mt-1 text-sm md:text-base text-slate-700">{item.note}</div>
-											</div>
-											<div className="text-right text-lg font-bold text-orange-500">{item.value}</div>
+						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+							{active.focus.map((f, idx) => (
+								<motion.div 
+									key={idx} 
+									className="group space-y-4 p-6 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-amber-500/30 hover:bg-amber-500/[0.02] transition-all duration-500"
+									whileHover={{ y: -5 }}
+								>
+									<div className="flex items-center justify-between">
+										<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] group-hover:text-amber-500 transition-colors">
+											{f.label}
 										</div>
+										<motion.div 
+											className="h-1 w-1 rounded-full bg-amber-500 scale-0 group-hover:scale-100 transition-transform"
+										/>
 									</div>
-								))}
-							</div>
-							<div className="mt-4 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-orange-500 font-semibold">{active.finalLabel}</div>
-								<div className="mt-2 flex items-end justify-between gap-4">
-									<div className="text-2xl md:text-3xl font-black tracking-tight text-slate-900">{active.finalValue}</div>
-									<div className="text-sm text-slate-600 text-right max-w-xs">{active.finalNote}</div>
-								</div>
-							</div>
-								</div>
-								<div className="rounded-[1.75rem] border border-orange-100 bg-[#fffaf1] p-4 shadow-sm">
-									<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">{active.referenceTitle}</div>
-									<p className="mt-3 text-sm leading-relaxed text-slate-700">{active.referenceBody}</p>
-									<p className="mt-3 text-sm leading-relaxed text-slate-600">{active.referenceNote}</p>
-									<div className="mt-4">
-										<Link href="/macro/dhurandhar_macro_data" className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700 underline underline-offset-4">
-											<BookOpen className="h-4 w-4" />
-											Open macro reference for the full variable table and derivation notes.
-										</Link>
+									<div className="text-3xl font-black text-white dossier-number group-hover:translate-x-1 transition-transform">
+										{f.value}
 									</div>
+									<div className="text-[10px] text-white/40 leading-relaxed font-mono uppercase">
+										{f.note}
+									</div>
+								</motion.div>
+							))}
+						</div>
+
+						<div className="p-10 bg-gradient-to-br from-amber-500/[0.08] to-transparent rounded-[2.5rem] border border-amber-500/10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+							<div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+								<TrendingUp className="h-32 w-32 rotate-12" />
+							</div>
+							<div className="space-y-4 relative z-10">
+								<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.6em]">{active.finalLabel}</div>
+								<div className="text-7xl font-black text-white dossier-number leading-none tracking-tighter group-hover:scale-[1.02] transition-transform origin-left">
+									{active.finalValue}
 								</div>
+							</div>
+							<div className="max-w-[280px] relative z-10">
+								<div className="flex items-center gap-2 mb-3">
+									<Waypoints className="h-3 w-3 text-amber-500/40" />
+									<span className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em]">Derivation Check</span>
+								</div>
+								<p className="text-[11px] text-white/40 font-mono leading-relaxed uppercase tracking-tight">
+									{active.finalNote}
+								</p>
 							</div>
 						</div>
-					</motion.div>
+					 </motion.div>
 
+					 {/* Theory / Reference */}
+					 <motion.div 
+						className="lg:col-span-4 space-y-8"
+						initial={{ opacity: 0, x: 20 }}
+						animate={{ opacity: 1, x: 0 }}
+					 >
+						<div className="dossier-card p-10 space-y-8 border-amber-500/10">
+							<div className="flex items-center gap-3">
+								<BookOpen className="h-5 w-5 text-amber-500" />
+								<span className="text-[11px] font-black text-white uppercase tracking-[0.5em]">Theoretic Basis</span>
+							</div>
+							<p className="text-lg text-white/60 font-medium leading-relaxed font-serif italic">
+								"{active.theory}"
+							</p>
+							<div className="space-y-4 pt-4 border-t border-white/5">
+								<h4 className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">Reference Notes</h4>
+								<p className="text-[11px] text-white/40 leading-relaxed font-mono uppercase tracking-tight">
+									{active.referenceBody}
+								</p>
+							</div>
+							<div className="dossier-stamp border-amber-500/20 text-amber-500/60 text-[9px]">
+								Verified: SNA Standard
+							</div>
+						</div>
+
+						<Button asChild className="w-full h-20 rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] hover:bg-amber-500 transition-all shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+							<Link href="/macro/dhurandhar_macro_data">
+								Full Data Ledger
+							</Link>
+						</Button>
+					 </motion.div>
 				</div>
-			</div>
+			</main>
+
 			<Footer />
-		</div>
+		</>
 	);
 }

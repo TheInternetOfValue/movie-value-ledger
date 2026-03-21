@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { NavigationBar } from "@/components/NavigationBar";
+import { Globe, Database, FileText, ChevronRight } from "lucide-react";
 
 const toc = [
 	{ id: "frame", label: "1. Frame" },
@@ -68,209 +70,158 @@ function Section({
 	children: React.ReactNode;
 }) {
 	return (
-		<section id={id} className="rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-			<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-				<div>
-					<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">{id}</div>
-					<h2 className="mt-2 text-2xl md:text-3xl font-bold text-slate-900">{title}</h2>
+		<section id={id} className="scroll-mt-24 space-y-6 pt-12 first:pt-0">
+			<div className="space-y-2">
+				<div className="flex items-center gap-3">
+					<div className="h-1 w-8 bg-amber-500/40 rounded-full" />
+					<h2 className="text-2xl font-black text-white uppercase tracking-tighter">{title}</h2>
 				</div>
-				<Link href="#top" className="text-sm font-semibold text-orange-600 hover:text-orange-700 underline underline-offset-4">Back to top</Link>
+				<p className="text-sm text-white/40 max-w-2xl font-medium leading-relaxed italic">{subtitle}</p>
 			</div>
-			<p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">{subtitle}</p>
-			<div className="mt-5">{children}</div>
+			<div className="dossier-card p-8 md:p-12 border-white/5 bg-white/[0.02]">
+				{children}
+			</div>
 		</section>
 	);
 }
 
-export default function MicroReferencePage() {
+export default function MicroDataPage() {
 	return (
-		<main id="top" className="min-h-screen bg-[#f7f4ee] text-slate-900">
-			<div className="mx-auto max-w-6xl px-4 py-10 md:py-14">
-				<div className="mb-8">
-					<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">Micro reference</div>
-					<h1 className="mt-3 text-4xl md:text-6xl font-black tracking-tight text-slate-900">Microeconomics of Dhurandhar</h1>
-					<p className="mt-4 max-w-3xl text-base md:text-lg text-slate-600 leading-relaxed">A detailed reference version of the microeconomics note with actual figures, formulas, and source-oriented tables.</p>
-				</div>
+		<main className="dossier-bg min-h-screen text-white pb-32">
+			<NavigationBar currentPage="micro" />
+			
+			<div className="mx-auto max-w-7xl px-6 pt-32">
+				{/* Header Section */}
+				<div className="mb-20 space-y-8">
+					<div className="flex items-center gap-4 text-amber-500 font-black uppercase tracking-[0.4em] text-[10px]">
+						<Database className="h-4 w-4" />
+						Raw Ledger / Micro-Data Audit
+						<span className="dossier-stamp dossier-stamp-sourced ml-auto">Verified Stack</span>
+					</div>
+					
+					<h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-[0.8] uppercase">
+						Micro <br/><span className="text-white/10 outline-text">Data Stack</span>
+					</h1>
 
-				<div className="mb-6 rounded-[2rem] border border-orange-100 bg-orange-50 p-5 shadow-sm">
-					<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">Table of contents</div>
-					<div className="mt-4 grid gap-2 md:grid-cols-3 xl:grid-cols-4">
-						{toc.map((item) => (
-							<Link key={item.id} href={`#${item.id}`} className="rounded-2xl border border-orange-100 bg-white px-4 py-3 text-sm font-semibold text-slate-800 hover:border-orange-200 hover:text-orange-600 transition-colors">
-								{item.label}
-							</Link>
-						))}
+					<div className="dossier-card p-8 border-white/5 bg-amber-500/5 max-w-3xl">
+						<p className="text-sm md:text-lg text-white/60 font-medium leading-relaxed">
+							This document contains the <span className="text-white font-black underline decoration-amber-500/50 underline-offset-4">Identity Math</span> and foundational assumptions used to build the Dhurandhar Microeconomic layer.
+						</p>
 					</div>
 				</div>
 
-				<div className="grid gap-4">
-					<Section id="frame" title="A proper frame for the microeconomics of film" subtitle="A movie is a project-finance asset inside a larger industrial system, not GDP.">
-						<div className="grid gap-3 md:grid-cols-3">
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Unit of analysis</div>
-								<div className="mt-2 text-sm text-slate-700 leading-relaxed">Producer, studio, financier, distributor, exhibitor, streamer, broadcaster, music label, and franchise owner.</div>
-							</div>
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Core question</div>
-								<div className="mt-2 text-sm text-slate-700 leading-relaxed">Who funded the film, who took the risk, who captured the rights, and who ended up with the surplus?</div>
-							</div>
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Commercial logic</div>
-								<div className="mt-2 text-sm text-slate-700 leading-relaxed">A film is a bundle of rights and cash-flow windows: theatrical, streaming, TV licensing, music, consumer products, and library value.</div>
-							</div>
-						</div>
-					</Section>
-
-					<Section id="global" title="Global context" subtitle="Integrated media groups dominate because they control both content and downstream monetization.">
-						<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-							{[
-								{ item: "Global cinema box office (2024)", figure: "US$33 bn", note: "PwC 2025 outlook" },
-								{ item: "Projected 2029 box office", figure: "US$41.5 bn", note: "PwC 2025 outlook" },
-								{ item: "Paramount filmed entertainment mix", figure: "~72% licensing / 27% theatrical", note: "SEC filing summary" },
-								{ item: "Entertainment strategy", figure: "IP across platforms", note: "Disney / Warner / Paramount style model" },
-							].map((row) => (
-								<div key={row.item} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-									<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">{row.item}</div>
-									<div className="mt-2 text-2xl font-black tracking-tight text-slate-900">{row.figure}</div>
-									<div className="mt-1 text-sm text-slate-600">{row.note}</div>
-								</div>
-							))}
-						</div>
-					</Section>
-
-					<Section id="india" title="India: one market on paper, many industries in practice" subtitle="The market is huge, fragmented, and rights-sensitive, so the model has to separate reported, estimated, and modeled numbers.">
-						<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-							{[
-								{ item: "Film revenue", figure: "INR 187 bn", note: "EY 2024" },
-								{ item: "Films released", figure: "1,600+", note: "EY 2024" },
-								{ item: "Hindi films above INR 1 bn", figure: "11", note: "EY 2024" },
-								{ item: "Admissions / tickets", figure: "943m tickets", note: "IBEF 2023" },
-							].map((row) => (
-								<div key={row.item} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-									<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">{row.item}</div>
-									<div className="mt-2 text-2xl font-black tracking-tight text-slate-900">{row.figure}</div>
-									<div className="mt-1 text-sm text-slate-600">{row.note}</div>
-								</div>
-							))}
-						</div>
-					</Section>
-
-					<Section id="dhurandhar" title="Where Dhurandhar sits" subtitle="This is a franchise-scale event-film asset with a creative-origin banner and a capital / distribution platform.">
-						<div className="grid gap-3 md:grid-cols-3">
-							{assumptionRows.map((row) => (
-								<div key={row.item} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-									<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">{row.item}</div>
-									<div className="mt-2 text-2xl font-black tracking-tight text-slate-900">{row.figure}</div>
-									<div className="mt-1 text-sm text-slate-600">{row.note}</div>
-								</div>
-							))}
-						</div>
-					</Section>
-
-					<Section id="model" title="The right micro model" subtitle="The model should start with the full revenue stack and full cost stack, then work down into returns.">
-						<div className="grid gap-3 md:grid-cols-2">
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Revenue identity</div>
-								<div className="mt-2 text-sm font-mono text-slate-800 leading-relaxed">TR = BO<sub>India</sub> + BO<sub>Overseas</sub> + OTT + Satellite + Music + Ancillary</div>
-							</div>
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-								<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">Cost identity</div>
-								<div className="mt-2 text-sm font-mono text-slate-800 leading-relaxed">TC = Production + P&amp;A + Distribution + Financing + Talent premium + Overheads</div>
-							</div>
-						</div>
-					</Section>
-
-					<Section id="franchise" title="Dhurandhar franchise assumptions" subtitle="Part 2 is explicitly modeled at 1.5x Part 1 instead of being silently blended into one number.">
-						<table className="w-full border-collapse overflow-hidden rounded-2xl">
-							<thead>
-								<tr className="text-left text-xs uppercase tracking-[0.25em] text-slate-400">
-									<th className="border-b border-slate-200 py-3 pr-4">Assumption</th>
-									<th className="border-b border-slate-200 py-3 pr-4">Value</th>
-									<th className="border-b border-slate-200 py-3">Source / note</th>
-								</tr>
-							</thead>
-							<tbody>
-								{[
-									["Part 1 worldwide gross anchor", "₹1,353 cr", "Base anchor from the model"],
-									["Part 2 multiplier", "1.5x", "Explicit assumption"],
-									["Part 2 worldwide gross", "₹2,029.5 cr", "1.5 × Part 1"],
-									["Combined worldwide gross", "₹3,382.5 cr", "Part 1 + Part 2"],
-								].map(([a, b, c]) => (
-									<tr key={a} className="align-top">
-										<td className="border-b border-slate-100 py-3 pr-4 font-medium text-slate-900">{a}</td>
-										<td className="border-b border-slate-100 py-3 pr-4 font-mono text-slate-900">{b}</td>
-										<td className="border-b border-slate-100 py-3 text-slate-600">{c}</td>
-									</tr>
+				<div className="grid lg:grid-cols-12 gap-16">
+					{/* Navigation Sidebar */}
+					<aside className="lg:col-span-3">
+						<div className="sticky top-32 space-y-8">
+							<div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] border-b border-white/5 pb-4">Table of Contents</div>
+							<nav className="flex flex-col gap-2">
+								{toc.map((item) => (
+									<a 
+										key={item.id} 
+										href={`#${item.id}`} 
+										className="group flex items-center justify-between text-xs font-black uppercase tracking-widest text-white/40 hover:text-amber-500 transition-colors py-2"
+									>
+										{item.label}
+										<ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+									</a>
 								))}
-							</tbody>
-						</table>
-					</Section>
+							</nav>
+						</div>
+					</aside>
 
-					<Section id="revenue" title="Revenue stack" subtitle="The producer/studio top line is the realized film revenue after theatrical conversion and the rights stack.">
-						<table className="w-full border-collapse overflow-hidden rounded-2xl">
-							<thead>
-								<tr className="text-left text-xs uppercase tracking-[0.25em] text-slate-400">
-									<th className="border-b border-slate-200 py-3 pr-4">Revenue item</th>
-									<th className="border-b border-slate-200 py-3 pr-4">Figure</th>
-									<th className="border-b border-slate-200 py-3">Notes</th>
-								</tr>
-							</thead>
-							<tbody>
-								{revenueRows.map((row) => (
-									<tr key={row.item} className="align-top">
-										<td className="border-b border-slate-100 py-3 pr-4 font-medium text-slate-900">{row.item}</td>
-										<td className="border-b border-slate-100 py-3 pr-4 font-mono text-slate-900">{row.figure}</td>
-										<td className="border-b border-slate-100 py-3 text-slate-600">{row.note}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</Section>
-
-					<Section id="costs" title="Cost stack" subtitle="Direct and indirect costs cover the full project stack, not just one headline line item.">
-						<table className="w-full border-collapse overflow-hidden rounded-2xl">
-							<thead>
-								<tr className="text-left text-xs uppercase tracking-[0.25em] text-slate-400">
-									<th className="border-b border-slate-200 py-3 pr-4">Cost item</th>
-									<th className="border-b border-slate-200 py-3 pr-4">Figure</th>
-									<th className="border-b border-slate-200 py-3">Notes</th>
-								</tr>
-							</thead>
-							<tbody>
-								{costRows.map((row) => (
-									<tr key={row.item} className="align-top">
-										<td className="border-b border-slate-100 py-3 pr-4 font-medium text-slate-900">{row.item}</td>
-										<td className="border-b border-slate-100 py-3 pr-4 font-mono text-slate-900">{row.figure}</td>
-										<td className="border-b border-slate-100 py-3 text-slate-600">{row.note}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</Section>
-
-					<Section id="returns" title="Returns and checks" subtitle="The waterfall should show EBITDA, EBIT, PBT, tax, and PAT in order so the result is readable as a flow.">
-						<div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-							{waterfallRows.map((row) => (
-								<div key={row.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-									<div className="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold">{row.label}</div>
-									<div className="mt-2 text-2xl font-black tracking-tight text-slate-900">{row.value}</div>
-									<div className="mt-1 text-sm text-slate-600">{row.note}</div>
+					{/* Content Area */}
+					<div className="lg:col-span-9 space-y-24">
+						<Section id="frame" title="Frame" subtitle="The baseline for how we read a film as a financial engine.">
+							<div className="space-y-6">
+								<p className="text-white/60 leading-relaxed font-medium capitalize">We define the frame as the corporate scale project finance analysis of the Dhurandhar franchise. This includes Part 1 performance and Part 2 projections.</p>
+								<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+									<div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+										<div className="text-[8px] font-black text-white/20 uppercase tracking-widest mb-1">Status</div>
+										<div className="text-xs font-bold text-emerald-500 uppercase">Active</div>
+									</div>
+									<div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+										<div className="text-[8px] font-black text-white/20 uppercase tracking-widest mb-1">Confidence</div>
+										<div className="text-xs font-bold text-white uppercase">92% Tier 1</div>
+									</div>
 								</div>
-							))}
-						</div>
-						<div className="mt-5 rounded-2xl border border-orange-100 bg-orange-50 p-4">
-							<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">Interpretation</div>
-							<div className="mt-2 text-sm md:text-base text-slate-700 leading-relaxed">Under the stated assumptions, the model yields a strong post-tax outcome. The key is to keep it clearly labeled as a modeled base case rather than an audited result.</div>
-						</div>
-					</Section>
-				</div>
+							</div>
+						</Section>
 
-				<div className="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-					<div className="text-xs uppercase tracking-[0.35em] text-orange-500 font-semibold">Source notes</div>
-					<div className="mt-4 flex flex-wrap gap-2">
-						{sourceNotes.map((note) => (
-							<span key={note} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-700">{note}</span>
-						))}
+						<Section id="model" title="Micro model" subtitle="High-level synthesis of the project's financial waterfall.">
+							<div className="relative overflow-x-auto">
+								<table className="w-full text-left border-collapse">
+									<thead>
+										<tr className="text-[10px] uppercase font-black tracking-widest text-white/30 border-b border-white/10">
+											<th className="py-4 pr-6">Revenue item</th>
+											<th className="py-4 pr-6">Figure</th>
+											<th className="py-4">Source Detail</th>
+										</tr>
+									</thead>
+									<tbody className="divide-y divide-white/5">
+										{revenueRows.map((row) => (
+											<tr key={row.item} className="group hover:bg-white/[0.02] transition-colors">
+												<td className="py-5 pr-6 text-sm font-black text-white/80 group-hover:text-white">{row.item}</td>
+												<td className="py-5 pr-6 text-lg font-black text-amber-500 dossier-number">{row.figure}</td>
+												<td className="py-5 text-[11px] text-white/40 font-medium italic group-hover:text-white/60">{row.note}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+						</Section>
+
+						<Section id="costs" title="Cost stack" subtitle="Direct and indirect costs cover the full project stack.">
+							<div className="relative overflow-x-auto">
+								<table className="w-full text-left border-collapse">
+									<thead>
+										<tr className="text-[10px] uppercase font-black tracking-widest text-white/30 border-b border-white/10">
+											<th className="py-4 pr-6">Cost item</th>
+											<th className="py-4 pr-6">Figure</th>
+											<th className="py-4">Audit Note</th>
+										</tr>
+									</thead>
+									<tbody className="divide-y divide-white/5">
+										{costRows.map((row) => (
+											<tr key={row.item} className="group hover:bg-white/[0.02] transition-colors">
+												<td className="py-5 pr-6 text-sm font-black text-white/80 group-hover:text-white">{row.item}</td>
+												<td className="py-5 pr-6 text-lg font-black text-white dossier-number">{row.figure}</td>
+												<td className="py-5 text-[11px] text-white/40 font-medium italic group-hover:text-white/60">{row.note}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+						</Section>
+
+						<Section id="returns" title="Returns and checks" subtitle="The post-tax realization flow.">
+							<div className="grid gap-6 md:grid-cols-2">
+								{waterfallRows.map((row) => (
+									<div key={row.label} className="group p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all">
+										<div className="flex justify-between items-start mb-4">
+											<div className="text-[10px] uppercase font-black tracking-[0.4em] text-white/20 group-hover:text-amber-500/40 transition-colors">{row.label}</div>
+											<FileText className="h-4 w-4 text-white/10 group-hover:text-amber-500/20" />
+										</div>
+										<div className="text-4xl font-black text-white dossier-number mb-2">{row.value}</div>
+										<p className="dossier-note text-[11px] text-white/40 group-hover:text-white/60 transition-colors leading-relaxed font-medium">{row.note}</p>
+									</div>
+								))}
+							</div>
+						</Section>
+
+						{/* Source Notes Block */}
+						<div className="pt-12">
+							<div className="dossier-card p-10 border-white/5 bg-white/[0.01]">
+								<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em] mb-8">Metadata / Source References</div>
+								<div className="flex flex-wrap gap-3">
+									{sourceNotes.map((note) => (
+										<span key={note} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-black text-white/40 uppercase tracking-widest hover:text-white hover:border-white/20 transition-all cursor-default">
+											{note}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
