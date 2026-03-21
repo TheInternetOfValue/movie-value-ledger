@@ -217,7 +217,9 @@ export default function HomePage() {
 
         {/* Footer removed to keep the home story cleaner */}
       </div>
-      <Footer />
+      <div className="relative z-50 mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }

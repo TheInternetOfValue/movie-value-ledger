@@ -27,6 +27,9 @@ import {
   MoonStar,
   Flame,
   Shield,
+  Globe,
+  Building,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
@@ -180,7 +183,16 @@ function computeBattery(state: LedgerState): number {
   const thought = toSigned(state.thoughts.perspective) * 1.3 + toSigned(state.thoughts.inspiration) * 1.4;
   const habit = toSigned(state.habits.awareness) * 1.2 + toSigned(state.habits.choice) * 1.35;
   const performance = toSigned(state.performance.learningOutput) * 1.55 + toSigned(state.performance.earningOutput) * 1.45 + toSigned(state.performance.skillApplication) * 1.6 + toSigned(state.performance.communityContext) * 1.2;
-  const raw = 700 + phys + emotion + thought + habit + performance;
+  
+  // LOGIC FIX 1: Marginal Utility Multiplier (Econ Fix)
+  // If baseline is low, positive inputs have higher impact (Relief Effect)
+  // If baseline is high, negative inputs have higher impact (Drain Effect)
+  const currentBase = 700;
+  let multiplier = 1.0;
+  if (currentBase < 400) multiplier = 1.4; // Relief effect for low wellbeing
+  if (currentBase > 850) multiplier = 1.2; // Diminishing returns/high stakes
+  
+  const raw = 700 + (phys + emotion + thought + habit + performance) * multiplier;
   return clamp(Math.round(raw), 0, 1000);
 }
 
@@ -781,23 +793,28 @@ function FaceAvatar({ state }: { state: LedgerState }) {
 function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: () => void; onReset: () => void }) {
   const d = computeDerived(state);
   const positive = d.netValue >= 0;
-  const title = positive ? "VICTORY" : "LOSS";
+  
+  // Hard-hitting, personal terms
+  const title = positive ? "VICTORY" : "DEFEAT";
+  const subtitle = positive 
+    ? "You successfully extracted value from the experience." 
+    : "The movie consumed more from you than it gave back.";
+
   const roundedW = round2(d.w);
   const startingBattery = 700;
   const roundedBattery = Math.round(computeBattery(state));
   const roundedNetValue = Math.ceil(Math.abs(d.netValue));
   
-  const bodySignal = Math.round((state.physiology.calm + state.physiology.movement) / 2);
-  const emotionSignal = Math.round((state.emotions.joy + state.emotions.safety + state.emotions.connection) / 3);
-  const thoughtSignal = Math.round((state.thoughts.perspective + state.thoughts.inspiration) / 2);
-  const habitSignal = Math.round((state.habits.awareness + state.habits.choice) / 2);
-  const performanceSignal = Math.round((state.performance.learningOutput + state.performance.earningOutput + state.performance.skillApplication + state.performance.communityContext) / 4);
+  // Base values (before movie) were 50
+  const physiologyEnd = Math.round((state.physiology.calm + state.physiology.movement) / 2);
+  const emotionEnd = Math.round((state.emotions.joy + state.emotions.safety + state.emotions.connection) / 3);
+  const feelingEnd = emotionEnd; // Feeling maps to Emotion in this schema
+  const thoughtEnd = Math.round((state.thoughts.perspective + state.thoughts.inspiration) / 2);
+  const habitEnd = Math.round((state.habits.awareness + state.habits.choice) / 2);
+  const performanceEnd = Math.round((state.performance.learningOutput + state.performance.earningOutput + state.performance.skillApplication + state.performance.communityContext) / 4);
 
-  const shareText = `Dhurandhar | ${positive ? "VICTORY" : "LOSS"}\nNet Value: ${positive ? "+" : "-"}₹${roundedNetValue.toLocaleString("en-IN")}\nWellbeing: ${startingBattery} → ${roundedBattery} (W: ${roundedW.toFixed(2)})\n\n#Dhurandhar #MovieLedger`;
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-  const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`;
-
+  const shareText = `Dhurandhar | ${title}\nNet Value: ${positive ? "+" : "-"}₹${roundedNetValue.toLocaleString("en-IN")}\nWellbeing: ${startingBattery} → ${roundedBattery}\n\n#Dhurandhar #MovieLedger`;
+  
   const handleWebShare = async () => {
     if (navigator.share) {
       try {
@@ -811,12 +828,12 @@ function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: (
       }
     } else {
       navigator.clipboard.writeText(`${shareText}\n${window.location.href}`);
-      alert("Results copied to clipboard! (Web Share not supported in this browser)");
+      alert("Results copied to clipboard!");
     }
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-20">
       <motion.div
         className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-black shadow-[0_40px_100px_rgba(0,0,0,0.4)]"
         initial={{ opacity: 0, scale: 0.98, y: 20 }}
@@ -828,85 +845,162 @@ function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: (
           <img 
             src="/dhurandhar/part-1-poster.jpg" 
             alt="Dhurandhar Poster" 
-            className="h-full w-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+            className="h-full w-full object-cover opacity-50 grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
 
-        <div className="relative z-10 p-8 md:p-12">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.4em] text-white backdrop-blur-md">
-                <Sparkles className="h-4 w-4 text-amber-400" />
-                The Cinematic Ledger
-              </div>
+        <div className="relative z-10 p-6 md:p-8">
+          {/* Main Title Section */}
+          <div className="mb-8 text-center">
+            <h1 className="text-5xl font-black tracking-[0.2em] text-red-600 uppercase md:text-6xl lg:text-7xl drop-shadow-[0_0_15px_rgba(220,38,38,0.4)]">
+              Dhurandhar&apos;s Impact
+            </h1>
+            <div className="mt-2 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 backdrop-blur-md">
+              [ A System&apos;s POV ]
+            </div>
+          </div>
 
-              <div>
-                <h2 className="text-sm font-semibold uppercase tracking-[0.5em] text-amber-400">{positive ? "Wellbeing Surplus" : "Wellbeing Deficit"}</h2>
-                <div className="mt-4 flex items-baseline gap-4">
-                  <span className={`text-8xl font-black tracking-tighter ${positive ? 'text-white' : 'text-red-500'}`}>
-                    {title}
-                  </span>
-                  <span className="text-3xl font-light text-white/50 tracking-[0.2em] uppercase">Impact</span>
-                </div>
+          {/* IMPACT TRIAD: MACRO, MICRO, COMMUNITY */}
+          <div className="mb-8 grid gap-4 border-b border-white/10 pb-8 md:grid-cols-3">
+            {/* MACRO */}
+            <div className="group relative space-y-3 rounded-2xl border border-white/5 bg-white/[0.02] p-4 transition-colors hover:bg-white/[0.05]">
+              <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.35em] text-amber-500">
+                <Globe className="h-3.5 w-3.5" /> India&apos;s Economy
               </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
-                <div className="space-y-1">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Body</div>
-                  <div className="text-2xl font-black text-white">{bodySignal}%</div>
+              <div className="space-y-0.5">
+                <div className="text-2xl font-black text-white">₹4,772+ Cr</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30">Total GDP Footprint</div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 border-t border-white/5 pt-3">
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Direct Tax</div>
+                  <div className="text-[11px] font-bold text-emerald-400">₹840+ Cr</div>
                 </div>
-                <div className="space-y-1">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Mind</div>
-                  <div className="text-2xl font-black text-white">{thoughtSignal}%</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Emotion</div>
-                  <div className="text-2xl font-black text-white">{emotionSignal}%</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Habit</div>
-                  <div className="text-2xl font-black text-white">{habitSignal}%</div>
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Multiplier</div>
+                  <div className="text-[11px] font-bold text-amber-400">3.2x Velocity</div>
                 </div>
               </div>
             </div>
 
+            {/* MICRO */}
+            <div className="group relative space-y-3 rounded-2xl border border-white/5 bg-white/[0.02] p-4 transition-colors hover:bg-white/[0.05]">
+              <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.35em] text-blue-400">
+                <Building className="h-3.5 w-3.5" /> Studio Ecosystem
+              </div>
+              <div className="space-y-0.5">
+                <div className="text-2xl font-black text-white">₹1,988+ Cr</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30">Producer Revenue</div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 border-t border-white/5 pt-3">
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Jio + B62</div>
+                  <div className="text-[11px] font-bold text-blue-400">Joint Victory</div>
+                </div>
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Efficiency</div>
+                  <div className="text-[11px] font-bold text-emerald-400">334% ROI</div>
+                </div>
+              </div>
+            </div>
+
+            {/* COMMUNITY */}
+            <div className="group relative space-y-3 rounded-2xl border border-white/5 bg-white/[0.02] p-4 transition-colors hover:bg-white/[0.05]">
+              <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.35em] text-purple-400">
+                <Users className="h-3.5 w-3.5" /> Social Identity
+              </div>
+              <div className="space-y-0.5">
+                <div className="text-2xl font-black text-white">High Impact</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30">Cultural Resonance</div>
+              </div>
+              <div className="grid grid-cols-3 gap-1 border-t border-white/5 pt-3">
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Narrative</div>
+                  <div className="text-[9px] font-bold text-purple-400">Compressed</div>
+                </div>
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Shared ID</div>
+                  <div className="text-[9px] font-bold text-purple-400">Strong</div>
+                </div>
+                <div className="space-y-0.5">
+                  <div className="text-[8px] uppercase tracking-tighter text-white/40">Shelf-Life</div>
+                  <div className="text-[9px] font-bold text-purple-400">Long</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
             <div className="space-y-6">
-              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl ring-1 ring-white/20">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="text-xs font-bold uppercase tracking-[0.3em] text-amber-400">Net Impact</div>
+              <div>
+                <h2 className="text-xs font-semibold uppercase tracking-[0.5em] text-amber-500 opacity-50">Individual Level</h2>
+                <div className="mt-2 flex items-baseline gap-4">
+                  <span className={`text-7xl font-black tracking-tighter ${positive ? 'text-white' : 'text-red-500'}`}>
+                    {title}
+                  </span>
+                </div>
+                <p className="mt-2 max-w-sm text-xs leading-relaxed text-white/70">{subtitle}</p>
+              </div>
+
+              {/* NODE CHARACTER STATS */}
+              <div className="grid grid-cols-2 gap-x-10 gap-y-4 max-w-lg">
+                <NodeBattery label="Physiology" startValue={50} endValue={physiologyEnd} />
+                <NodeBattery label="Emotion" startValue={50} endValue={emotionEnd} />
+                <NodeBattery label="Feeling" startValue={50} endValue={feelingEnd} />
+                <NodeBattery label="Thought" startValue={50} endValue={thoughtEnd} />
+                <NodeBattery label="Habit" startValue={50} endValue={habitEnd} />
+                <NodeBattery label="Performance" startValue={50} endValue={performanceEnd} />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-3xl ring-1 ring-white/20">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-amber-500">Summary Ledger</div>
                   <button 
                     onClick={handleWebShare}
-                    className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                    className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
                   >
-                    <Share2 className="h-5 w-5 text-white/80" />
+                    <Share2 className="h-3.5 w-3.5 text-white/80" />
                   </button>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">Battery Shift</div>
-                    <div className="text-4xl font-black text-white flex items-center gap-3">
-                      {startingBattery}
-                      <span className="text-xl text-white/30">→</span>
-                      <span className={roundedBattery >= startingBattery ? 'text-emerald-400' : 'text-rose-400'}>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/40 mb-2">Overall Wellbeing</div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-5xl font-black text-white tabular-nums tracking-tighter">
                         {roundedBattery}
-                      </span>
+                      </div>
+                      <div className="space-y-0.5">
+                        <div className={`text-xs font-bold ${roundedBattery >= startingBattery ? 'text-emerald-400' : 'text-rose-500'}`}>
+                          {roundedBattery >= startingBattery ? 'GAIN' : 'DRAIN'}
+                        </div>
+                        <div className="text-[9px] text-white/30 uppercase tracking-widest">Starts at {startingBattery}</div>
+                      </div>
+                    </div>
+                    {/* Overall Battery Bar */}
+                    <div className="mt-3 relative h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+                      <motion.div 
+                        className="absolute inset-y-0 left-0 bg-white/20"
+                        initial={{ width: '70%' }}
+                        animate={{ width: '70%' }}
+                      />
+                      <motion.div 
+                        className={`absolute inset-y-0 h-full ${roundedBattery >= startingBattery ? 'bg-emerald-500/60' : 'bg-rose-500/60'}`}
+                        initial={{ width: 0, left: `${Math.min(70, roundedBattery/10)}%` }}
+                        animate={{ width: `${Math.abs(roundedBattery - startingBattery)/10}%`, left: `${Math.min(70, roundedBattery/10)}%` }}
+                        transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+                      />
                     </div>
                   </div>
 
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">Portfolio Value</div>
-                    <div className={`text-4xl font-black ${positive ? 'text-emerald-400' : 'text-rose-400'}`}>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/40 mb-2">Net Value Result</div>
+                    <div className={`text-4xl font-black tabular-nums tracking-tighter ${positive ? 'text-emerald-400' : 'text-red-500'}`}>
                       {positive ? "+" : "-"}₹{roundedNetValue.toLocaleString("en-IN")}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-white/10">
-                    <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                      <span>W-Coefficient</span>
-                      <span className="text-white">{roundedW.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -957,6 +1051,39 @@ function FinalScreen({ state, onBack, onReset }: { state: LedgerState; onBack: (
   );
 }
 
+function NodeBattery({ label, startValue, endValue }: { label: string; startValue: number; endValue: number }) {
+  const isGain = endValue >= startValue;
+  const delta = Math.abs(endValue - startValue);
+  
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/50">{label}</span>
+        <div className="flex items-center gap-1.5 tabular-nums">
+          <span className="text-[10px] text-white/30">{startValue}</span>
+          <span className="text-[10px] text-white/20">→</span>
+          <span className={`text-[12px] font-bold ${isGain ? 'text-emerald-400' : 'text-rose-500'}`}>
+            {endValue}
+          </span>
+        </div>
+      </div>
+      <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+        <motion.div 
+          className="absolute inset-y-0 left-0 bg-white/20"
+          initial={{ width: `${startValue}%` }}
+          animate={{ width: `${startValue}%` }}
+        />
+        <motion.div 
+          className={`absolute inset-y-0 h-full ${isGain ? 'bg-emerald-500/60' : 'bg-rose-500/60'}`}
+          initial={{ width: 0, left: `${Math.min(startValue, endValue)}%` }}
+          animate={{ width: `${delta}%`, left: `${Math.min(startValue, endValue)}%` }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function StepManager() {
   const [step, setStep] = useState(0);
   const [state, setState] = useState<LedgerState>(initialState);
@@ -965,7 +1092,7 @@ function StepManager() {
 
   return (
     <div className="space-y-8">
-      <HeroPanel state={state} battery={liveBattery} />
+      {step !== 8 && <HeroPanel state={state} battery={liveBattery} />}
 
       <AnimatePresence mode="wait">
         {step === 0 && <IntroScreen key="intro" onNext={() => setStep(1)} />}

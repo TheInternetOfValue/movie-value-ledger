@@ -114,74 +114,80 @@ export default function AboutPage() {
 				<div className="mx-auto max-w-5xl space-y-8">
 					<motion.div className="space-y-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
 						<div className="text-sm uppercase tracking-[0.3em] text-amber-500 font-semibold">About</div>
-						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Whitepaper + FAQ</h1>
+						<h1 className="text-4xl md:text-5xl font-bold text-gray-900">Project Intelligence</h1>
 						<p className="mx-auto max-w-4xl text-base text-gray-700 md:text-lg leading-relaxed">
-							This page keeps the assumptions visible: what the app means, what the numbers mean, and what is story versus strict measurement.
+							The Dhurandhar Ledger translates cinematic experience into economic and wellbeing-adjusted value. Explore the math, the debate, and the logic below.
 						</p>
 					</motion.div>
 
-					<section className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><BookOpen className="h-4 w-4" />Whitepaper</div>
-						<div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 mb-6">
-							<div className="flex items-center gap-3 mb-3">
-								<div className="h-12 w-12 rounded-full bg-amber-500 text-white flex items-center justify-center shadow-md"><Sparkles className="h-5 w-5" /></div>
-								<div>
-									<div className="text-sm font-semibold text-gray-900">A public doorway into the spec</div>
-									<div className="text-xs text-gray-500">Read this first if you want the short version before the full paper.</div>
+					<section className="grid gap-6 md:grid-cols-2">
+						{/* WHITE PAPER */}
+						<div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
+							<div className="flex items-center gap-3 mb-4">
+								<div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center">
+									<FileText className="h-5 w-5 text-amber-600" />
 								</div>
+								<h2 className="text-lg font-bold text-gray-900">Project Whitepaper</h2>
 							</div>
-							<p className="text-sm text-gray-600 leading-relaxed">The whitepaper is the deeper reference. This page just makes it easier for new visitors to understand the story before they open the full document.</p>
+							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
+								Detailed analysis of the Dhurandhar cinematic event, its 4-lens structure, and the translation from film to ledger.
+							</p>
+							<Link href="/whitepaper">
+								<Button className="w-full bg-gray-900 text-white hover:bg-black rounded-xl">Read Whitepaper</Button>
+							</Link>
 						</div>
-						<div className="rounded-2xl bg-gray-50 border border-gray-200 p-4 mb-6">
-							<div className="flex items-center gap-2 mb-2"><Film className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">What the paper says</span></div>
-							<p className="text-sm text-gray-600 leading-relaxed">The paper explains the movie-first front end, the four-lens structure, the normalized wellbeing baseline, and the difference between story metrics and canonical measures.</p>
-						</div>
-						<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-							<div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
-								<div className="flex items-center gap-2 mb-2"><Sparkles className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Movie-first interface</span></div>
-								<p className="text-sm text-gray-600">The app uses cinema as the front door into [the Internet of Value](https://theinternetofvalue.xyz/).</p>
-							</div>
-							<div className="rounded-2xl bg-white border border-gray-200 p-4">
-								<div className="flex items-center gap-2 mb-2"><Users className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Four lenses</span></div>
-								<p className="text-sm text-gray-600">Individual, Micro, Macro, and Community each tell one layer of the same experience.</p>
-							</div>
-							<div className="rounded-2xl bg-white border border-gray-200 p-4">
-								<div className="flex items-center gap-2 mb-2"><Heart className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Normalized wellbeing</span></div>
-								<p className="text-sm text-gray-600">The live model treats 1.0 as the neutral baseline.</p>
-							</div>
-							<div className="rounded-2xl bg-white border border-gray-200 p-4">
-								<div className="flex items-center gap-2 mb-2"><Globe className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Canonical truth</span></div>
-								<p className="text-sm text-gray-600">Storytelling may be playful, but the mapping back to the spec must stay clear.</p>
-							</div>
-						</div>
-						<div className="mt-6 rounded-2xl bg-gray-50 border border-gray-200 p-4">
-							<div className="flex items-center gap-2 mb-2"><FileText className="h-4 w-4 text-amber-500" /><span className="font-semibold text-gray-900">Read the full paper</span></div>
-							<p className="text-sm text-gray-600 mb-4">The whitepaper explains the lens structure, the movie-first rationale, and the canonical assumptions behind the UI.</p>
-							<a href="/whitepaper" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700">
-								Open whitepaper <ArrowRight className="h-4 w-4" />
-							</a>
-						</div>
-					</section>
 
-					<section className="rounded-3xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-						<div className="flex items-center gap-2 text-amber-500 text-xs uppercase tracking-[0.3em] font-semibold mb-4"><HelpCircle className="h-4 w-4" />FAQ</div>
-						<div className="space-y-6">
-							{faqGroups.map((group) => (
-								<div key={group.title} className="rounded-2xl border border-gray-200 bg-gray-50 p-4 md:p-5">
-									<div className="flex items-center gap-2 mb-4">
-										<BookOpen className="h-4 w-4 text-amber-500" />
-										<div className="font-semibold text-gray-900">{group.title}</div>
-									</div>
-									<div className="grid gap-4 md:grid-cols-2">
-										{group.items.map((item) => (
-											<div key={item.question} className="rounded-2xl border border-gray-200 bg-white p-4">
-												<div className="font-semibold text-gray-900 mb-2">{item.question}</div>
-												<div className="text-sm text-gray-600 leading-relaxed">{item.answer}</div>
-											</div>
-										))}
-									</div>
+						{/* DEBATE */}
+						<div className="rounded-3xl border border-red-100 bg-red-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+							<div className="flex items-center gap-3 mb-4">
+								<div className="h-10 w-10 rounded-full bg-red-500/10 flex items-center justify-center">
+									<MessageCircle className="h-5 w-5 text-red-600" />
 								</div>
-							))}
+								<h2 className="text-lg font-bold text-gray-900">The Debate</h2>
+							</div>
+							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
+								The logic vs beauty conflict. Moses Sam Paul explains why "DEFEAT" is a system diagnostic, not a punishment.
+							</p>
+							<Link href="/debate">
+								<Button variant="outline" className="w-full border-red-200 text-red-700 hover:bg-red-100 rounded-xl">Enter the Debate</Button>
+							</Link>
+						</div>
+
+						{/* MACRO/MICRO DOCS */}
+						<div className="rounded-3xl border border-blue-100 bg-blue-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+							<div className="flex items-center gap-3 mb-4">
+								<div className="h-10 w-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+									<Globe className="h-5 w-5 text-blue-600" />
+								</div>
+								<h2 className="text-lg font-bold text-gray-900">Economic Documentation</h2>
+							</div>
+							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
+								Technical breakdown of the Macro GDP footprint, Studio ROI identities, and Community social capital models.
+							</p>
+							<div className="flex gap-2">
+								<Link href="/macro/dhurandhar_macro_data" className="flex-1">
+									<Button variant="ghost" className="w-full text-blue-700 border border-blue-100 rounded-xl">Macro</Button>
+								</Link>
+								<Link href="/micro/dhurandhar_micro_data" className="flex-1">
+									<Button variant="ghost" className="w-full text-blue-700 border border-blue-100 rounded-xl">Micro</Button>
+								</Link>
+							</div>
+						</div>
+
+						{/* FAQ */}
+						<div className="rounded-3xl border border-amber-100 bg-amber-50/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+							<div className="flex items-center gap-3 mb-4">
+								<div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center">
+									<HelpCircle className="h-5 w-5 text-amber-600" />
+								</div>
+								<h2 className="text-lg font-bold text-gray-900">FAQ</h2>
+							</div>
+							<p className="text-sm text-gray-600 mb-4 leading-relaxed">
+								Frequently asked questions about the IoV wellbeing nodes, the marginal utility math, and film basics.
+							</p>
+							<Link href="/faq">
+								<Button variant="outline" className="w-full border-amber-200 text-amber-700 hover:bg-amber-100 rounded-xl">View FAQ</Button>
+							</Link>
 						</div>
 					</section>
 

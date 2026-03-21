@@ -1,11 +1,12 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/about/page": "app/about/page.js",
   "/community/page": "app/community/page.js",
+  "/debate/page": "app/debate/page.js",
   "/faq/page": "app/faq/page.js",
   "/individual/page": "app/individual/page.js",
   "/macro/dhurandhar_macro_data/page": "app/macro/dhurandhar_macro_data/page.js",
   "/macro/page": "app/macro/page.js",
-  "/macro_dhurandhar/page": "app/macro_dhurandhar/page.js",
   "/micro/dhurandhar_micro_data/page": "app/micro/dhurandhar_micro_data/page.js",
   "/micro/page": "app/micro/page.js",
   "/page": "app/page.js",
