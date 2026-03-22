@@ -130,11 +130,11 @@ export default function IndividualLedger() {
     <div className="space-y-8 pb-24 max-w-6xl mx-auto px-4 md:px-0">
       {/* Dynamic Header: Hidden on Final Step */}
       {!isFinalStep && (
-        <div className="mb-16 space-y-6">
-          <div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.6em] animate-pulse">
+        <div className="mb-10 sm:mb-16 space-y-4 sm:space-y-6 px-2 sm:px-0">
+          <div className="text-[8px] sm:text-[10px] font-black text-amber-500 uppercase tracking-[0.4em] sm:tracking-[0.6em] animate-pulse">
             Pulse Scale / Personal Experience
           </div>
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-[0.8] uppercase">
+          <h1 className="text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] sm:leading-[0.8] uppercase">
             Individual <br/><span className="text-white/10">Wellbeing Ledger</span>
           </h1>
         </div>
@@ -143,16 +143,16 @@ export default function IndividualLedger() {
       {/* Sticky Header for Real-time Feedback (Hidden on Final Step) */}
       {!isFinalStep && (
         <motion.div 
-          className="sticky top-4 z-50 dossier-card border-white/10 bg-black/80 backdrop-blur-xl p-6 grid grid-cols-[1fr_auto] gap-8 items-center shadow-2xl"
+          className="sticky top-2 sm:top-4 z-50 dossier-card border-white/10 bg-black/80 backdrop-blur-xl p-3 sm:p-6 flex flex-col sm:grid sm:grid-cols-[1fr_auto] gap-4 sm:gap-8 items-center shadow-2xl rounded-2xl sm:rounded-none"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="space-y-3">
+          <div className="w-full space-y-2 sm:space-y-3">
              <div className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
-                <div className="text-[9px] uppercase tracking-[0.4em] text-amber-500 font-black">Active Diagnostic Profile</div>
+                <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.4em] text-amber-500 font-black">Active Diagnostic Profile</div>
              </div>
-             <div className="grid grid-cols-6 gap-2 opacity-60">
+             <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 sm:gap-2 opacity-60">
                 <MiniStatTick label="PHYS" value={50 + (state.physiology.calm + state.physiology.movement)} />
                 <MiniStatTick label="EMO" value={50 + (state.emotions.joy + state.emotions.safety)} />
                 <MiniStatTick label="FEEL" value={50 + (state.feelings.perspective + state.feelings.inspiration)} />
@@ -161,29 +161,33 @@ export default function IndividualLedger() {
                 <MiniStatTick label="PERF" value={50 + (state.performance.learning + state.performance.community)} />
              </div>
           </div>
-          <div className="text-right flex flex-col items-end">
-             <span className="text-4xl font-black text-white dossier-number tracking-tighter leading-none">{battery}</span>
-             <span className="text-[8px] font-black text-white/20 uppercase tracking-widest mt-1">Aura Level</span>
+          <div className="w-full sm:w-auto flex sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0">
+             <div className="sm:hidden text-[8px] font-black text-white/40 uppercase tracking-widest">Aura Level</div>
+             <div className="flex items-baseline gap-1">
+               <span className="text-3xl sm:text-4xl font-black text-white dossier-number tracking-tighter leading-none">{battery}</span>
+               <span className="sm:hidden text-[10px] text-white/20">/ 1000</span>
+             </div>
+             <span className="hidden sm:inline text-[8px] font-black text-white/20 uppercase tracking-widest mt-1">Aura Level</span>
           </div>
         </motion.div>
       )}
 
       {/* Navigation Scrubber (Hidden on Final Step) */}
       {!isFinalStep && (
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="flex overflow-x-auto sm:flex-wrap items-center sm:justify-center gap-2 pb-4 sm:pb-0 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
           {stepLabels.map((label, idx) => (
             <button 
               key={label} 
               onClick={() => idx <= step && setStep(idx)}
               className={cn(
-                "flex items-center gap-2 px-3 py-2 rounded-lg transition-all border",
+                "flex items-center gap-2 px-3 py-2 rounded-lg transition-all border shrink-0",
                 idx === step ? "bg-white border-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)]" : 
                 idx < step ? "bg-white/10 border-emerald-500/50 text-emerald-500" : 
                 "bg-white/[0.02] border-white/5 text-white/20 hover:border-white/20"
               )}
             >
               <span className="text-[10px] font-black">{idx < step ? "✓" : idx + 1}</span>
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] hidden sm:inline">{label}</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.2em]">{label}</span>
             </button>
           ))}
         </div>

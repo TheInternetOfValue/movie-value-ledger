@@ -35,33 +35,33 @@ export function NavigationBar({ currentPage }: { currentPage: string }) {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link href="/systems-pov">
-              <div className="flex items-center gap-3 group">
-                <div className="h-2 w-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse" />
-                <span className="text-[10px] font-black tracking-[0.5em] uppercase text-white/90 group-hover:text-white transition-colors">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4 sm:gap-8 min-w-0">
+            <Link href="/systems-pov" className="shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 group">
+                <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse shrink-0" />
+                <span className="text-[8px] sm:text-[10px] font-black tracking-[0.3em] sm:tracking-[0.5em] uppercase text-white/90 group-hover:text-white transition-colors truncate max-w-[80px] sm:max-w-none">
                   Systemic Ledger
                 </span>
               </div>
             </Link>
             
-            <div className="h-4 w-px bg-white/10 hidden md:block" />
+            <div className="h-4 w-px bg-white/10 hidden sm:block shrink-0" />
             
             <button 
               onClick={() => setIsScrubberOpen(!isScrubberOpen)}
-              className="group flex items-center gap-4 px-4 py-2 rounded-full bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all active:scale-95"
+              className="group flex items-center gap-2 sm:gap-4 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 shrink-0"
             >
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-amber-500">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] sm:tracking-[0.3em] uppercase text-amber-500">
                   {currentPage}
                 </span>
-                <ChevronDown className={cn("h-3 w-3 text-white/40 transition-transform duration-300", isScrubberOpen && "rotate-180")} />
+                <ChevronDown className={cn("h-2.5 w-2.5 sm:h-3 sm:w-3 text-white/40 transition-transform duration-300", isScrubberOpen && "rotate-180")} />
               </div>
             </button>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 shrink-0">
             {perspectives.map((p) => (
               <Link key={p.id} href={p.path}>
                 <Button 
@@ -81,10 +81,6 @@ export function NavigationBar({ currentPage }: { currentPage: string }) {
           </div>
 
           <div className="flex items-center gap-4">
-             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-sm border border-emerald-500/20 bg-emerald-500/5">
-                <Shield className="h-3 w-3 text-emerald-500/70" />
-                <span className="text-[9px] font-black tracking-[0.2em] uppercase text-emerald-500/70">Protocol Active</span>
-             </div>
              <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group cursor-pointer hover:border-amber-500/50 transition-all">
                 <LayoutGrid className="h-4 w-4 text-white/40 group-hover:text-amber-500" />
              </div>

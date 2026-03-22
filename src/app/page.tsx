@@ -38,19 +38,19 @@ export default function PropagandaGatePage() {
             Dhurandhar
           </motion.div>
           
-          <div className="relative inline-block">
-            <h1 className="text-8xl md:text-[11rem] font-black tracking-[calc(-0.06em)] text-white leading-[0.85] uppercase drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+          <div className="relative inline-block w-full px-4">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-black tracking-tight sm:tracking-[calc(-0.06em)] text-white leading-[0.85] uppercase drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)] break-words">
               PROPAGANDA?
             </h1>
             <motion.div 
               initial={{ width: 0 }}
               animate={{ width: "60%" }}
               transition={{ delay: 0.8, duration: 1.2 }}
-              className="h-[6px] bg-red-600 mx-auto mt-6 rounded-full shadow-[0_0_30px_rgba(220,38,38,0.8)]" 
+              className="h-[4px] md:h-[6px] bg-red-600 mx-auto mt-4 md:mt-6 rounded-full shadow-[0_0_30px_rgba(220,38,38,0.8)]" 
             />
           </div>
 
-          <p className="text-base md:text-xl uppercase tracking-[0.5em] text-white/40 font-bold max-w-3xl mx-auto pt-8">
+          <p className="text-sm sm:text-base md:text-xl uppercase tracking-[0.3em] sm:tracking-[0.5em] text-white/40 font-bold max-w-3xl mx-auto pt-4 md:pt-8 px-4">
             The interrogation of a cinematic intervention
           </p>
         </motion.div>

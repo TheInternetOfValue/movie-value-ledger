@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Users, Globe, MessageCircle, Sparkles, Shield, Languages, Layers, Eye, Clapperboard, RadioTower, PlayCircle, Megaphone as Loudspeaker, ChevronLeft, ChevronRight } from "lucide-react";
+import { Users, Globe, MessageCircle, Sparkles, Shield, Languages, Layers, Eye, Clapperboard, RadioTower, PlayCircle, Megaphone as Loudspeaker, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { NavigationBar } from "@/components/NavigationBar";
 import { Footer } from "@/components/Footer";
@@ -232,16 +232,22 @@ export default function CommunityPage() {
 											</div>
 										))}
 									</div>
-									<div className="p-12 bg-white/5 rounded-[3rem] border border-white/5 text-center space-y-6">
-										<span className="text-[11px] font-black text-white/20 uppercase tracking-[0.5em]">Systemic Summary</span>
-										<p className="text-3xl font-black text-white uppercase max-w-2xl mx-auto leading-tight italic font-serif">
-											"The community transforms a static media file into a living cultural artifact through cumulative attention."
-										</p>
-										<div className="pt-6">
-											<Button asChild className="h-16 px-12 rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] hover:bg-amber-500 transition-all shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-												<Link href="/macro">View Policy Implications</Link>
-											</Button>
+									<div className="p-10 md:p-16 bg-gradient-to-br from-amber-500/[0.08] to-transparent rounded-[3rem] border border-amber-500/10 flex flex-col md:flex-row items-center justify-between gap-12 text-left transition-all hover:bg-amber-500/[0.12] group">
+										<div className="space-y-6 max-w-2xl text-center md:text-left">
+											<div className="space-y-2">
+												<div className="text-[11px] font-black text-amber-500/60 uppercase tracking-[0.6em]">Final Scale</div>
+												<h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-[0.9]">The Human <br/><span className="text-white/10 outline-text">Perspective</span></h2>
+											</div>
+											<p className="text-sm md:text-base text-white/40 font-mono leading-relaxed uppercase tracking-tight">
+												Systems, firms, and communities are built from individual choices. Calculate your own wellbeing ROI.
+											</p>
 										</div>
+										<Button asChild className="h-24 px-12 rounded-3xl bg-amber-500 text-black font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-[0_0_40px_rgba(245,158,11,0.2)] group shrink-0">
+											<Link href="/individual" className="flex items-center gap-6">
+												Open Ledger
+												<ArrowRight className="h-7 w-7 transition-transform group-hover:translate-x-2" />
+											</Link>
+										</Button>
 									</div>
 								</div>
 							)}

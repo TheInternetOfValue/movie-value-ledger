@@ -184,6 +184,19 @@ export default function MicroPage() {
 											</motion.div>
 										))}
 									</div>
+
+									<div className="pt-10 border-t border-white/5 flex justify-end">
+										<Button 
+											onClick={() => setOpenSection("costs")}
+											className="h-16 px-10 rounded-2xl bg-white/5 hover:bg-white/10 text-white group flex items-center gap-4 transition-all"
+										>
+											<div className="text-right">
+												<div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Next Ledger</div>
+												<div className="text-sm font-black uppercase tracking-[0.1em]">Costs Allocation</div>
+											</div>
+											<ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+										</Button>
+									</div>
 								</div>
 							)}
 
@@ -213,6 +226,19 @@ export default function MicroPage() {
 											</motion.div>
 										))}
 									</div>
+
+									<div className="pt-10 border-t border-white/5 flex justify-end">
+										<Button 
+											onClick={() => setOpenSection("profit")}
+											className="h-16 px-10 rounded-2xl bg-white/5 hover:bg-white/10 text-white group flex items-center gap-4 transition-all"
+										>
+											<div className="text-right">
+												<div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Next Ledger</div>
+												<div className="text-sm font-black uppercase tracking-[0.1em]">Profit Waterfall</div>
+											</div>
+											<ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+										</Button>
+									</div>
 								</div>
 							)}
 
@@ -234,6 +260,22 @@ export default function MicroPage() {
 												<div className="text-2xl font-black text-white dossier-number">₹{item.value.toFixed(2)}cr</div>
 											</div>
 										))}
+									</div>
+
+									<div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+										<div className="space-y-2">
+											<div className="text-[10px] font-black text-amber-500 uppercase tracking-[0.5em]">Scaling Bridge</div>
+											<h4 className="text-xl font-black text-white uppercase tracking-tighter">Beyond the Balance Sheet</h4>
+											<p className="text-sm text-white/40 font-mono leading-relaxed max-w-md">
+												Firm profits are just one vector. The next scale captures how this value flows into local employment and communal trust.
+											</p>
+										</div>
+										<Button asChild className="h-20 px-10 rounded-2xl bg-amber-500 text-black font-black uppercase tracking-[0.3em] hover:bg-white transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)] group shrink-0">
+											<Link href="/community" className="flex items-center gap-4">
+												View Community Impact
+												<ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
+											</Link>
+										</Button>
 									</div>
 								</div>
 							)}

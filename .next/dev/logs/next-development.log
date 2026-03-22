@@ -1,3 +1,20 @@
-[00:00:00.728] Server  LOG     ✓ Ready in 562ms
-[00:00:03.168] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:14.442] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.026] Server  WARN    ⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+[00:00:01.163] Server  LOG     ✓ Ready in 986ms
+[00:00:04.131] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.315] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:42.428] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:19.916] Server  LOG     ✓ Compiled in 236ms
+[00:07:26.967] Server  LOG     ✓ Compiled in 114ms
+[00:07:38.342] Server  LOG     ✓ Compiled in 99ms
+[00:16:06.276] Server  LOG     ✓ Compiled in 239ms
+[00:16:47.980] Server  LOG     ✓ Compiled in 168ms
+[00:17:22.397] Server  LOG     ✓ Compiled in 251ms
+[00:17:34.854] Server  LOG     ✓ Compiled in 140ms
+[00:20:28.184] Browser WARN    'oklab(0.999994 0.0000455678 0.0000200868 / 0.02)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:20:38.087] Server  LOG     ✓ Compiled in 243ms
+[00:23:14.122] Server  LOG     ✓ Compiled in 215ms
+[00:27:10.019] Server  LOG     ✓ Compiled in 101ms
+[00:27:30.080] Server  LOG     ✓ Compiled in 74ms
+[00:38:17.437] Server  LOG     ✓ Compiled in 113ms
+[00:38:19.979] Server  LOG     ✓ Compiled in 37ms
+[00:38:22.763] Server  LOG     ✓ Compiled in 228ms

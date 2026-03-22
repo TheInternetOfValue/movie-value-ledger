@@ -31,29 +31,29 @@ const voices = [
 
 export default function PropagandaNoPage() {
 	return (
-		<div className="min-h-screen bg-black text-white p-8 md:p-16 flex flex-col items-center">
+		<div className="min-h-screen bg-black text-white p-4 sm:p-8 md:p-16 flex flex-col items-center">
 			<SocialScripts />
-			<div className="w-full max-w-6xl space-y-12">
+			<div className="w-full max-w-6xl space-y-8 sm:space-y-12">
 				<Link
 					href="/"
-					className="inline-flex items-center text-white/40 hover:text-white transition-colors gap-2 uppercase text-xs tracking-widest font-bold"
+					className="inline-flex items-center text-white/40 hover:text-white transition-colors gap-2 uppercase text-[10px] sm:text-xs tracking-widest font-bold"
 				>
 					<ArrowLeft className="h-4 w-4" /> Back to Interrogation
 				</Link>
 
 				<header className="space-y-4">
-					<div className="flex items-center gap-4">
-						<Heart className="h-12 w-12 text-emerald-500" />
-						<h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-emerald-500">
+					<div className="flex flex-col sm:flex-row sm:items-center gap-4">
+						<Heart className="h-10 w-10 sm:h-12 md:h-12 text-emerald-500" />
+						<h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase text-emerald-500">
 							NO
 						</h1>
 					</div>
-					<p className="text-xl text-emerald-200/60 max-w-2xl leading-relaxed">
+					<p className="text-lg sm:text-xl text-emerald-200/60 max-w-2xl leading-relaxed">
 						"Art is the only thing that doesn't have to be anything but itself."
 					</p>
 				</header>
 
-				<div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+				<div className="grid gap-8 sm:gap-12 md:grid-cols-2 lg:grid-cols-3">
 					{/* Column 1: Expert Signals */}
 					<div className="space-y-8">
 						<h2 className="text-xs font-bold uppercase tracking-[0.4em] text-white/30 border-b border-white/10 pb-4">
@@ -122,13 +122,13 @@ export default function PropagandaNoPage() {
 
 				<div className="pt-12 border-t border-white/10 text-center">
 					<p className="text-sm text-white/40 mb-6 uppercase tracking-widest underline underline-offset-8 decoration-emerald-500/30">
-						Is raw feeling enough to ignore systemic impact?
+						Is there a middle ground in this extraction?
 					</p>
 					<Link
-						href="/systems-pov"
+						href="/propaganda-maybe"
 						className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-emerald-500 transition-all hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
 					>
-						Explore the Systems Math{" "}
+						See the Neutral Analysis{" "}
 						<ArrowLeft className="h-4 w-4 rotate-180" />
 					</Link>
 				</div>
